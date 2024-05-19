@@ -17,7 +17,7 @@
 #pragma warning disable 8625 // Disable "CS8625 Cannot convert null literal to non-nullable reference type"
 #pragma warning disable CS8765 // Nullability of type of parameter doesn't match overridden member (possibly because of nullability attributes).
 
-namespace MoveIt.Api
+namespace Infrastructure.ApiClients.MoveIt
 {
     using Newtonsoft.Json;
     using System = global::System;
