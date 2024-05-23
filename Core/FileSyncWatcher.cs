@@ -31,8 +31,10 @@ namespace Core
         /// <summary>
         /// Starts watching the specified directory for file changes.
         /// </summary>
-        public void Start()
+        public async Task Start()
         {
+            await _cloudFileSyncManager.InitializeAsync();
+
             _watcher.EnableRaisingEvents = true;
 
             _logger.LogInformation("Started watching");

@@ -6,6 +6,12 @@
     public interface ICloudFileSyncManager
     {
         /// <summary>
+        /// Initializes the cloud file synchronization manager.
+        /// </summary>
+        /// <returns>A task representing the asynchronous operation.</returns>
+        Task InitializeAsync();
+
+        /// <summary>
         /// Asynchronously uploads a file to cloud storage.
         /// </summary>
         /// <param name="filePath">The path of the local file to be uploaded.</param>
