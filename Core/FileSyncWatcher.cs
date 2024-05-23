@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Core.Configurations;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace Core
@@ -53,12 +54,12 @@ namespace Core
             _watcher.NotifyFilter = NotifyFilters.FileName | NotifyFilters.DirectoryName;
             _watcher.Filter = "*";
 
-            _watcher.Created += this.OnCreated;
-            _watcher.Deleted += this.OnDeleted;
+            _watcher.Created += async (s, e) => await this.OnCreatedAsync(s, e);
+            _watcher.Deleted += async (s, e) => await this.OnDeletedAsync(s, e);
             _watcher.Error += this.OnError;
         }
 
-        private void OnCreated(object sender, FileSystemEventArgs e)
+        private async Task OnCreatedAsync(object sender, FileSystemEventArgs e)
         {
             if (IsDirectory(e.FullPath))
             {
@@ -72,11 +73,11 @@ namespace Core
                     return;
                 }
 
-                _cloudFileSyncManager.UploadAsync(e.FullPath, e.Name).GetAwaiter().GetResult();
+                await _cloudFileSyncManager.UploadAsync(e.FullPath, e.Name);
             }
         }
 
-        private void OnDeleted(object sender, FileSystemEventArgs e)
+        private async Task OnDeletedAsync(object sender, FileSystemEventArgs e)
         {
             if (string.IsNullOrEmpty(e.Name))
             {
@@ -84,7 +85,7 @@ namespace Core
                 return;
             }
 
-            _cloudFileSyncManager.DeleteFileAsync(e.Name).GetAwaiter().GetResult();
+            await _cloudFileSyncManager.DeleteFileAsync(e.Name);
         }
 
         private void OnError(object sender, ErrorEventArgs e)
