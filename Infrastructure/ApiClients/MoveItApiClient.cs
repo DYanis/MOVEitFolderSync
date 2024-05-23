@@ -4,6 +4,8 @@
 // </auto-generated>
 //----------------------
 
+#nullable enable
+
 #pragma warning disable 108 // Disable "CS0108 '{derivedDto}.ToJson()' hides inherited member '{dtoBase}.ToJson()'. Use the new keyword if hiding was intended."
 #pragma warning disable 114 // Disable "CS0114 '{derivedDto}.RaisePropertyChanged(String)' hides inherited member 'dtoBase.RaisePropertyChanged(String)'. To make the current member override that implementation, add the override keyword. Otherwise add the new keyword."
 #pragma warning disable 472 // Disable "CS0472 The result of the expression is always 'false' since a value of type 'Int32' is never equal to 'null' of type 'Int32?'
@@ -19,1207 +21,24 @@
 
 namespace Infrastructure.ApiClients.MoveIt
 {
-    using Newtonsoft.Json;
     using System = global::System;
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial interface IMoveItApiClient
-    {
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get aging and expiration in the organization
-        /// </summary>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<AdHocTransferAgingExpirationModel> ApiV1SettingsAdhoctransferMaintenanceAgingexpirationAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Update the organization branding logos.
-        /// </summary>
-        /// <remarks>
-        /// The content type of the request must be "multipart/form-data".
-        /// </remarks>
-        /// <param name="leftlogo">Left logo file</param>
-        /// <param name="rightlogo">Right logo file</param>
-        /// <param name="backgroundlogo">Header background logo file</param>
-        /// <param name="usecustomnotifbranding">Whether to enable or disable custom notification branding (1 or 0)</param>
-        /// <param name="resetrightlogo">When set to 1, resets the right logo to an empty image</param>
-        /// <param name="resetbackgroundlogo">When set to 1, resets the header background logo to an empty image</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<LogosModel> ApiV1SettingsAppearanceBrandLogosAsync(FileParameter leftlogo = null, FileParameter rightlogo = null, FileParameter backgroundlogo = null, string usecustomnotifbranding = null, string resetrightlogo = null, string resetbackgroundlogo = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get list of identity providers in the organization
-        /// </summary>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <param name="sortField">Name of field to sort the results by. (name); Default is Name.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <param name="orgId">Organization Id.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfPublicIdPInformationModel> ApiV1AuthIdentityprovidersAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, int? orgId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Become administrator in specific organization
-        /// </summary>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ActAsAdminDto> ApiV1AuthActasadminAsync(OrgRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// List contacts
-        /// </summary>
-        /// <param name="searchString">Search String. The Name and Email values will be searched.</param>
-        /// <param name="onBehalfOf">User to get contacts on behalf of.</param>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <param name="sortField">Name of field to sort the results by. (email, name); Default is Name.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfContactModel> ApiV1ContactsGetAsync(string searchString = null, string onBehalfOf = null, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Create new contact
-        /// </summary>
-        /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ContactModel> ApiV1ContactsPostAsync(ContactAddModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Delete contact
-        /// </summary>
-        /// <param name="id">Contact ID</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Void> ApiV1ContactsDeleteAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Update existing contact
-        /// </summary>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ApiV1ContactsPatchAsync(string id, ContactUpdateModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Return file details
-        /// </summary>
-        /// <param name="id">File ID</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileDetailsModel> ApiV1FilesGetAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Delete file
-        /// </summary>
-        /// <param name="id">File ID</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Void> ApiV1FilesDeleteAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Partial file update
-        /// </summary>
-        /// <param name="id">ID of the file to update</param>
-        /// <param name="body">Request body</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileDetailsModel> ApiV1FilesPatchAsync(string id, FilePatchModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Download file
-        /// </summary>
-        /// <param name="id">File ID</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileResponse> ApiV1FilesDownloadAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Return collection of users with file is new information
-        /// </summary>
-        /// <remarks>
-        /// Available for org admin or higher
-        /// </remarks>
-        /// <param name="id">File ID</param>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <param name="sortField">Name of field to sort the results by. (username, isnew); Default is username.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfFileIsNewForUserModel> ApiV1FilesNewstatesGetAsync(string id, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Set file is new for user
-        /// </summary>
-        /// <remarks>
-        /// Available for org admin or higher
-        /// </remarks>
-        /// <param name="id">File ID</param>
-        /// <param name="body">Request body</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileIsNewForUserModel> ApiV1FilesNewstatesPostAsync(string id, FileSetIsNewForUserModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get list of files current user can view
-        /// </summary>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <param name="sortField">Name of field to sort the results by. (name, size, datetime, uploadstamp or path); Default is Path.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <param name="newOnly">Filter new files</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfSimpleFileResourceModel> ApiV1FilesGetAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, bool? newOnly = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Copy file into another folder
-        /// </summary>
-        /// <param name="id">ID of the file to copy</param>
-        /// <param name="body">File copy request details</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileDetailsModel> ApiV1FilesCopyAsync(string id, FileCopyMoveModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Move file into another folder
-        /// </summary>
-        /// <param name="id">ID of the file to move</param>
-        /// <param name="body">File move request details</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileDetailsModel> ApiV1FilesMoveAsync(string id, FileCopyMoveModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Create attachment from existing file
-        /// </summary>
-        /// <param name="id">ID for file existing in MOVEit Transfer</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileDetailsModel> ApiV1FilesAttachmentsAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Set file as not new for user
-        /// </summary>
-        /// <remarks>
-        /// Available for org admin or higher
-        /// </remarks>
-        /// <param name="id">File ID</param>
-        /// <param name="userId">ID for existing user</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Void> ApiV1FilesNewstatesDeleteAsync(string id, string userId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get file details in folder. Redirect
-        /// </summary>
-        /// <param name="folderId">Parent folder ID</param>
-        /// <param name="fileId">File ID</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ApiV1FoldersFilesGetAsync(int folderId, string fileId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Download file. Redirect
-        /// </summary>
-        /// <remarks>
-        /// The response header includes information about base64-encoded SHA1 digest value returned with file download response
-        /// </remarks>
-        /// <param name="folderId">Parent folder ID</param>
-        /// <param name="fileId">File ID</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ApiV1FoldersFilesDownloadAsync(int folderId, string fileId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get subfolder details. Redirect
-        /// </summary>
-        /// <param name="parentId">Parent folder ID</param>
-        /// <param name="subfolderId">Folder ID to Get</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ApiV1FoldersSubfoldersGetAsync(int parentId, int subfolderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Delete subfolder. Redirect
-        /// </summary>
-        /// <param name="parentId">Parent folder ID</param>
-        /// <param name="subfolderId">Folder ID to Delete</param>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task ApiV1FoldersSubfoldersDeleteAsync(int parentId, int subfolderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get list of subfolders in folder
-        /// </summary>
-        /// <param name="id">Parent Folder ID</param>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <param name="sortField">Field to sort by; Default is name.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <param name="name">Folder Name mask to search by</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfSimpleFolderModel> ApiV1FoldersSubfoldersGetAsync(string id, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, string name = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Create new subfolder in folder
-        /// </summary>
-        /// <param name="id">ID of the folder where new folder should be added</param>
-        /// <param name="body">Request body.</param>
-        /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FolderDetailsModel> ApiV1FoldersSubfoldersPostAsync(int id, AddFolderModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get list of files in folder
-        /// </summary>
-        /// <param name="id">Parent Folder ID</param>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <param name="sortField">Field to sort by; Default is name.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <param name="name">File Name mask to search by</param>
-        /// <param name="newOnly">Filter new files</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfSimpleFileResourceModel> ApiV1FoldersFilesGetAsync(string id, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, string name = null, bool? newOnly = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Upload file into folder
-        /// </summary>
-        /// <remarks>
-        /// The content type of the request must be "multipart/form-data".
-        /// <br/>For large files upload (larger then maxAllowedContentLength attribute in Web.config) use chunked upload.
-        /// </remarks>
-        /// <param name="id">Folder ID</param>
-        /// <param name="file">File contents</param>
-        /// <param name="hashtype">Type of hash provided (sha-1, sha-256, sha-384, sha-512)</param>
-        /// <param name="hash">Hash of file</param>
-        /// <param name="comments">File upload comments</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ResumableFileUploadModel> ApiV1FoldersFilesPostAsync(string id, FileParameter file, string hashtype = null, string hash = null, string comments = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get content of the folder
-        /// </summary>
-        /// <param name="id">Parent Folder ID</param>
-        /// <param name="pathHash">Parent Folder path hash</param>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <param name="sortField">Field to sort by; (type, time, size or name); Sorting order starts with type and ends with name</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <param name="name">Name mask to search by</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfFolderContentItemModel> ApiV1FoldersContentAsync(string id, string pathHash = null, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, string name = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get list of folders current user can view
-        /// </summary>
-        /// <param name="name">File name mask for filtering list of Folders</param>
-        /// <param name="path">File path mask for filtering list of Folders</param>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <param name="sortField">Name of field to sort the results by. (Name, Type or Path); Default is Path.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfSimpleFolderModel> ApiV1FoldersGetAsync(string name = null, string path = null, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Collections.Generic.IEnumerable<string> sharedTo = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Return folder details
-        /// </summary>
-        /// <param name="id">Folder ID</param>
-        /// <param name="skipCounts">Whether to skip including counts of various folder properties like files
-        /// <br/>and subfolders in the folder details results.</param>
-        /// <param name="pathHash">File path hash for getting proper folder relations</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FolderDetailsModel> ApiV1FoldersGetAsync(string id, bool? skipCounts = null, string pathHash = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Delete folder
-        /// </summary>
-        /// <param name="id">Folder ID</param>
-        /// <param name="pathHash">File path hash for getting proper folder relations</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Void> ApiV1FoldersDeleteAsync(string id, string pathHash = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Partial Folder update
-        /// </summary>
-        /// <param name="id">ID of the folder to update</param>
-        /// <param name="body">Request body.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FolderDetailsModel> ApiV1FoldersPatchAsync(int id, FolderPatchModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Lists the Access Controls for a given folder
-        /// </summary>
-        /// <param name="id">Folder ID</param>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <param name="sortField">Field to sort by; Default is name.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <param name="pathHash">File path hash for getting proper folder relations</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfFolderAclEntryResourceModel> ApiV1FoldersAclsGetAsync(string id, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, string pathHash = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Change the Access Controls for a given folder
-        /// </summary>
-        /// <param name="id">ID of the folder to change access control</param>
-        /// <param name="body">Access control</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfFolderAclEntryResourceModel> ApiV1FoldersAclsPutAsync(int id, PutFolderAclEntryRequestModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Set the Access Controls for a given folder
-        /// </summary>
-        /// <param name="id">ID of the folder to set access control</param>
-        /// <param name="body">Access control</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfFolderAclEntryResourceModel> ApiV1FoldersAclsPostAsync(int id, SetFolderAclEntryRequestModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Delete the Access Controls for a given folder
-        /// </summary>
-        /// <param name="id">ID of the folder to delete access control</param>
-        /// <param name="body">Entity type and ID</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Void> ApiV1FoldersAclsDeleteAsync(int id, DeleteFolderAclEntryRequestModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Copy folder into another folder
-        /// </summary>
-        /// <param name="id">ID of the folder to copy</param>
-        /// <param name="body">Folder copy request details</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FolderDetailsModel> ApiV1FoldersCopyAsync(int id, FolderCopyMoveModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Move folder into another folder
-        /// </summary>
-        /// <param name="id">ID of the folder to move</param>
-        /// <param name="body">Folder move request details</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FolderDetailsModel> ApiV1FoldersMoveAsync(int id, FolderCopyMoveModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Change Allowed File Masks
-        /// </summary>
-        /// <param name="id">ID of the folder</param>
-        /// <param name="body">Folder update filemasks settings</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FolderFileMasksSettingsModel> ApiV1FoldersFilemasksAsync(int id, UpdateFolderFileMasksSettingsModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Change Automated Maintenance Settings
-        /// </summary>
-        /// <param name="id">ID of the folder</param>
-        /// <param name="body">Folder update maintenance settings</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FolderMaintenanceSettingsModel> ApiV1FoldersMaintenanceAsync(int id, UpdateFolderMaintenanceSettingsModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Change Miscellaneous Settings
-        /// </summary>
-        /// <param name="id">ID of the folder</param>
-        /// <param name="body">Folder update miscellaneous settings</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FolderMaintenanceSettingsModel> ApiV1FoldersMiscellaneousAsync(int id, UpdateFolderMiscellaneousSettingsModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Change folder update notifications
-        /// </summary>
-        /// <param name="id">ID of the folder to change folder update notification settings</param>
-        /// <param name="body">Folder update notification settings</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FolderNotificationSettingsModel> ApiV1FoldersNotificationsAsync(int id, UpdateFolderNotificationSettingsModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Change the single user Access Controls for a given folder
-        /// </summary>
-        /// <param name="id">ID of the folder to set access control</param>
-        /// <param name="entryId">ID of the access control to change. The format of this entryId is type!id, where type can be user or group, and id is the user or group id.</param>
-        /// <param name="body">Access control</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FolderAclEntryResourceModel> ApiV1FoldersAclsPatchAsync(int id, string entryId, UpdateFolderAclEntryRequestModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Change file and folder name character restrictions
-        /// </summary>
-        /// <param name="id">ID of the folder to change character restrictions</param>
-        /// <param name="body">Folder character restrictions</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FolderCharacterRestrictionsModel> ApiV1FoldersCharacterRestrictionsAsync(int id, UpdateFolderCharacterRestrictionsModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get list of groups current user can view
-        /// </summary>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfGroupModel> ApiV1GroupsGetAsync(int? page = null, int? perPage = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Create new group
-        /// </summary>
-        /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<GroupModel> ApiV1GroupsPostAsync(BaseGroupModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get a list of the members of a group
-        /// </summary>
-        /// <param name="id">Group ID</param>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfSimpleUserModel> ApiV1GroupsMembersGetAsync(string id, int? page = null, int? perPage = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Add members(s) to group
-        /// </summary>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfSimpleUserModel> ApiV1GroupsMembersPostAsync(string id, GroupAddMemberRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Remove member from group
-        /// </summary>
-        /// <param name="id">Group ID</param>
-        /// <param name="userId">User ID</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfSimpleUserModel> ApiV1GroupsMembersDeleteAsync(string id, string userId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get log's info
-        /// </summary>
-        /// <param name="id">Log ID</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<LogDetailsModel> ApiV1LogsGetAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get list of logs current user can view
-        /// </summary>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <param name="sortField">Name of field to sort the results by. (logtime, action, username, userrealname, targetname, filename, fileid, folderpath, xfersize, duration, rate, ipaddress, agentbrand, resilnode); Default is logtime.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <param name="startDateTime">Start Date/Time (MM-dd-yy, MM-dd-yyyy, MM-dd-yyyy HH:mm:ss, MM/dd/yyyy, MM/dd/yyyy HH:mm etc.)</param>
-        /// <param name="endDateTime">End Date/Time (MM-dd-yy, MM-dd-yyyy, MM-dd-yyyy HH:mm:ss, MM/dd/yyyy, MM/dd/yyyy HH:mm etc.)</param>
-        /// <param name="action">Name of action to filter by</param>
-        /// <param name="userNameContains">Show usernames like this (For admin users only)</param>
-        /// <param name="userId">Show only this user id (For admin users only. For non admin users current user ID is used.)</param>
-        /// <param name="fileIdContains">Show file IDs like this</param>
-        /// <param name="fileNameContains">Show file names like this</param>
-        /// <param name="sizeComparison">File size comparison selection</param>
-        /// <param name="size">File size (in KB)</param>
-        /// <param name="folderId">Show only this Folder id</param>
-        /// <param name="folderPathContains">Show folder path like this</param>
-        /// <param name="ipContains">Show IP address like this</param>
-        /// <param name="agentBrandContains">Show Agent Brand like this</param>
-        /// <param name="successFailure">Filter Success/Errors</param>
-        /// <param name="suppressSigns">Suppress sign on/ sign off. Default is true</param>
-        /// <param name="suppressEmailNotes">Suppress email notes. Default is true</param>
-        /// <param name="suppressLogViews">Suppress log views. Default is true</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfSimpleLogModel> ApiV1LogsGetAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, string startDateTime = null, string endDateTime = null, Action? action = null, string userNameContains = null, string userId = null, string fileIdContains = null, string fileNameContains = null, SizeComparison? sizeComparison = null, string size = null, string folderId = null, string folderPathContains = null, string ipContains = null, string agentBrandContains = null, SuccessFailure? successFailure = null, bool? suppressSigns = null, bool? suppressEmailNotes = null, bool? suppressLogViews = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Retrieve mailboxes list
-        /// </summary>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<MailboxModel>> ApiV1MailboxesGetAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Retrieve mailbox info
-        /// </summary>
-        /// <param name="id">ID of the mailbox</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MailboxModel> ApiV1MailboxesGetAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Retrieve mailbox content
-        /// </summary>
-        /// <param name="id">ID of the mailbox</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<SimplePackageModel>> ApiV1MailboxesPackagesGetAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Move package
-        /// </summary>
-        /// <param name="id">ID of the destination mailbox</param>
-        /// <param name="body">Request body.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PackageDetailsModel> ApiV1MailboxesPackagesPostAsync(string id, PackageMovePatchModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get package info
-        /// </summary>
-        /// <param name="id">Mailbox id</param>
-        /// <param name="packageId">Package id</param>
-        /// <param name="action">Package action (Reply, ReplyAll, Forward, Resend)</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PackageDetailsModel> ApiV1MailboxesPackagesGetAsync(string id, string packageId, string action = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Remove package from user's mailbox
-        /// </summary>
-        /// <param name="id">ID of the mailbox</param>
-        /// <param name="packageId">ID of the package to delete</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Void> ApiV1MailboxesPackagesDeleteAsync(string id, string packageId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Partial package update
-        /// </summary>
-        /// <param name="id">ID of the mailbox</param>
-        /// <param name="packageId">ID of the package to update</param>
-        /// <param name="body">Request body.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SimplePackageModel> ApiV1MailboxesPackagesPatchAsync(string id, string packageId, PackagePatchModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Empty trash
-        /// </summary>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Void> ApiV1MailboxesTrashAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Update audit logs settings.
-        /// </summary>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<LogsSettingsModel> ApiV1SettingsMiscellaneousAgingLogsAsync(LogsSettingsUpdateRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Gets detailed information about organization
-        /// </summary>
-        /// <param name="orgId">The Id of the target Org for this request</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrgDetailedModel> ApiV1OrganizationsGetAsync(string orgId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get list of organizations
-        /// </summary>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <param name="sortField">Name of field to sort the results by. (name, id); Default is Name.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfSimpleOrgModel> ApiV1OrganizationsGetAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Create new organization
-        /// </summary>
-        /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrgDetailedModel> ApiV1OrganizationsPostAsync(OrgAddModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Update maximum user counts for the organization
-        /// </summary>
-        /// <param name="orgId">Organization id</param>
-        /// <param name="body">Represents maximum user counts for an organization.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrgMaxUserCountsModel> ApiV1OrganizationsMaxusercountsAsync(int orgId, OrgMaxUserCountsModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Update administrator package access for the organization
-        /// </summary>
-        /// <param name="orgId">Organization id</param>
-        /// <param name="body">Represents administrator package access settings update model for an organization.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrgPackageAccessModel> ApiV1OrganizationsPackageaccessAsync(int orgId, OrgPackageAccessUpdateModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Update administrators password reset settings for the organization
-        /// </summary>
-        /// <param name="orgId">Organization id</param>
-        /// <param name="body">Represents administrator password reset settings for an organization.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrgAdminPasswordResetSettingsModel> ApiV1OrganizationsPasswordresetAsync(int orgId, OrgAdminPasswordResetSettingsModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Update user interface configuration for the organization
-        /// </summary>
-        /// <param name="orgId">Organization id</param>
-        /// <param name="body">Represents user interface configuration</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrgUiConfigurationModel> ApiV1OrganizationsInterfaceconfigurationAsync(int orgId, OrgUiConfigurationModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Edit general organization information
-        /// </summary>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<OrgDetailedModel> ApiV1OrganizationsPatchAsync(int orgId, OrgPatchModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get all packages current user can view
-        /// </summary>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <param name="sortField">Name of field to sort the results by. (sendStamp); Default is sendStamp.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <param name="newOnly">Filter new files</param>
-        /// <param name="sentTo">Filter by recipients</param>
-        /// <param name="receivedFrom">Filter by senders</param>
-        /// <param name="mailboxId">Filter by mailbox ID</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfSimplePackageModel> ApiV1PackagesGetAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, bool? newOnly = null, System.Collections.Generic.IEnumerable<string> sentTo = null, System.Collections.Generic.IEnumerable<string> receivedFrom = null, string mailboxId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Save or send package
-        /// </summary>
-        /// <param name="body">Request body.</param>
-        /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PackageDetailsModel> ApiV1PackagesPostAsync(CreatePackageRequestModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get package requirements
-        /// </summary>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PackageRequirementsModel> ApiV1PackagesRequirementsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get package recipient info
-        /// </summary>
-        /// <param name="id">Package id</param>
-        /// <param name="mailboxId">Mailbox id</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<CollectionModelOfRecipientListItem> ApiV1PackagesRecipientsAsync(string id, string mailboxId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get package info
-        /// </summary>
-        /// <param name="id">Package id</param>
-        /// <param name="action">Package action (Reply, ReplyAll, Forward, Resend)</param>
-        /// <param name="mailboxId">Mailbox id</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PackageDetailsModel> ApiV1PackagesGetAsync(string id, string action = null, string mailboxId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Remove package from user's mailboxes
-        /// </summary>
-        /// <param name="id">Package id</param>
-        /// <param name="mailboxId">Mailbox id</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Void> ApiV1PackagesDeleteAsync(string id, string mailboxId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Partial package update
-        /// </summary>
-        /// <param name="id">ID of the package to update</param>
-        /// <param name="body">Request body.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SimplePackageModel> ApiV1PackagesPatchAsync(string id, PackagePatchModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get package notification message.
-        /// </summary>
-        /// <param name="id">Package id</param>
-        /// <param name="mailboxId">Mailbox id</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<NotificationModel> ApiV1PackagesNotificationAsync(string id, bool? includeImages = null, string mailboxId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Upload attachment.
-        /// </summary>
-        /// <remarks>
-        /// The content type of the request must be "multipart/form-data".
-        /// <br/>For large files upload (larger then maxAllowedContentLength attribute in Web.config) use chunked upload.
-        /// <br/>Some clients, like Swagger and Postman, are not using chunked upload, so the upload might fail with unexpected error (404.13)
-        /// <br/>More info how to setup chunked upload: https://www.ipswitch.com/Transfer2018/ChunkedUploaderExample/
-        /// </remarks>
-        /// <param name="file">File contents</param>
-        /// <param name="hashtype">Type of hash provided (sha-1, sha-256, sha-384, sha-512)</param>
-        /// <param name="hash">Hash of file</param>
-        /// <param name="comments">File upload comments</param>
-        /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FileDetailsModel> ApiV1PackagesAttachmentsPostAsync(FileParameter file, string hashtype = null, string hash = null, string comments = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Delete attachment.
-        /// </summary>
-        /// <param name="id">File ID</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Void> ApiV1PackagesAttachmentsDeleteAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Gets public information about organization
-        /// </summary>
-        /// <param name="orgId">Organization ID</param>
-        /// <param name="language">Response language</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PublicOrgModel> ApiV1InfoAsync(int? orgId = null, string language = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Download report run result
-        /// </summary>
-        /// <param name="id">Report Id</param>
-        /// <param name="format">Report output format. If value is null, the default report format is used.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<object> ApiV1ReportsResultsDownloadAsync(string id, Format? format = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get all reports current user can view
-        /// </summary>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <param name="sortField">Name of field to sort the results by. (title); Default is title.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfSimpleReportModel> ApiV1ReportsAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Create new custom report from file
-        /// </summary>
-        /// <remarks>
-        /// The content type of the request must be "multipart/form-data".
-        /// </remarks>
-        /// <param name="file">Report xml file</param>
-        /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ReportDetailedModel> ApiV1ReportsImportAsync(FileParameter file, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// List password aging policies
-        /// </summary>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <param name="sortField">Name of field to sort the results by. (name); Default is Name.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfSimplePasswordAgingPolicyModel> ApiV1SettingsSecurityPasswordAgingPoliciesGetAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Create password aging policy
-        /// </summary>
-        /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PasswordAgingPolicyModel> ApiV1SettingsSecurityPasswordAgingPoliciesPostAsync(PasswordAgingPolicyAddModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// List user auth expiration policies
-        /// </summary>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <param name="sortField">Name of field to sort the results by. (name); Default is Name.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfSimpleExpirationPolicyModel> ApiV1SettingsSecurityUserauthExpirationPoliciesGetAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Create user auth expiration policy
-        /// </summary>
-        /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<ExpirationPolicyModel> ApiV1SettingsSecurityUserauthExpirationPoliciesPostAsync(ExpirationPolicyAddModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Create new default rule for remote access
-        /// </summary>
-        /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<RemoteAccessRuleModel> ApiV1SettingsSecurityRemoteaccessRulesAsync(RemoteAccessRuleAddModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Update password permissions settings
-        /// </summary>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PasswordPermissionsModel> ApiV1SettingsSecurityPasswordPermissionsAsync(PasswordPermissionsUpdateRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Update account user password aging policy
-        /// </summary>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<UserClassPasswordAgingPolicyModel> ApiV1SettingsSecurityPasswordAgingAsync(UserClassPasswordAgingPolicyPatchModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Update account user auth expiration policy
-        /// </summary>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<UserClassExpirationPolicyModel> ApiV1SettingsSecurityUserauthExpirationAsync(UserClassExpirationPolicyPatchModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Gets information about server
-        /// </summary>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<object> ApiV1ServerinfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Gets Transfer status information
-        /// </summary>
-        /// <param name="recentlyCompletedPeriod">Time period in seconds to return recently completed data. Default: 0</param>
-        /// <param name="statusDistributionPeriod">Time period in seconds to calculate status distribution for. Default: RecentlyCompletedPeriod</param>
-        /// <param name="userLoginName">Filter expression for Login name</param>
-        /// <param name="userFullName">Filter expression for User Display name</param>
-        /// <param name="userIp">Filter expression for User IP</param>
-        /// <param name="folderName">Filter expression for Folder name</param>
-        /// <param name="fileName">Filter expression for File name</param>
-        /// <param name="transferStatus">Filter for status. Uses OR logic</param>
-        /// <param name="search">Filter expression for several fields. Fields are matched with OR logic. AND logic is used if you provide expression for each particular query. Fields being matched: userLoginName, userFullName, userIp, folderName, fileName</param>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection</param>
-        /// <param name="sortField">Name of field to sort the results by.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<TransferStatusPagedModel> ApiV1XferstatusAsync(int? recentlyCompletedPeriod = null, int? statusDistributionPeriod = null, string userLoginName = null, string userFullName = null, string userIp = null, string folderName = null, string fileName = null, System.Collections.Generic.IEnumerable<Anonymous> transferStatus = null, string search = null, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get current user details
-        /// </summary>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<UserDetailsModel> ApiV1UsersSelfAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get user details
-        /// </summary>
-        /// <param name="id">User ID</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<UserDetailsModel> ApiV1UsersGetAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Delete user
-        /// </summary>
-        /// <param name="id">User ID</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Void> ApiV1UsersDeleteAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Partial user update
-        /// </summary>
-        /// <param name="id">ID of user to update</param>
-        /// <param name="body">Request body.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<UserDetailsModel> ApiV1UsersPatchAsync(string id, UserPatchModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get list of user groups
-        /// </summary>
-        /// <param name="id">User ID.</param>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfUserGroupModel> ApiV1UsersGroupsAsync(string id, int? page = null, int? perPage = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get current user external tokens
-        /// </summary>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <param name="sortField">Name of field to sort the results by. (TokenId, LastUsed, RegisteredAt or TokenType); Default is DisplayName.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfUserExternalTokenModel> ApiV1UsersSelfExternaltokensGetAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Register an external token with the current user's account.
-        /// </summary>
-        /// <param name="request">Request to register an external token with the current user account.</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Void> ApiV1UsersSelfExternaltokensPostAsync(RegisterExternalTokenRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Delete external token of the current user using the encoded token string.
-        /// </summary>
-        /// <param name="request">Request to delete an external token using the encoded token string.</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Void> ApiV1UsersSelfExternaltokensDeleteAsync(CurrentUserDeleteExternalTokenByTokenRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get user external tokens
-        /// </summary>
-        /// <param name="id">User ID.</param>
-        /// <param name="page">Page number to display</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25</param>
-        /// <param name="sortField">Name of field to sort the results by. (TokenId, LastUsed, RegisteredAt or TokenType); Default is DisplayName.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfUserExternalTokenModel> ApiV1UsersExternaltokensGetAsync(string id, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Get list of users
-        /// </summary>
-        /// <param name="page">Page number to display.</param>
-        /// <param name="perPage">Items per page in result collection; Default is 25.</param>
-        /// <param name="sortField">Name of field to sort the results by. (username, fullname, lastLoginStamp or email); Default is username.</param>
-        /// <param name="sortDirection">Sort direction; Default is ascending.</param>
-        /// <param name="permission">User permission filter.</param>
-        /// <param name="status">User status filter.</param>
-        /// <param name="username">User login name.</param>
-        /// <param name="fullName">User full name.</param>
-        /// <param name="email">User email.</param>
-        /// <param name="isExactMatch">If true, it will search for exact match of username, fullname and email.</param>
-        /// <param name="orgId">Organization ID. (For sysadmin users only. For non sysadmin users current user organization ID is used.)</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<PagedModelOfSimpleUserModel> ApiV1UsersGetAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, Permission? permission = null, Status? status = null, string username = null, string fullName = null, string email = null, bool? isExactMatch = null, int? orgId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Create new user
-        /// </summary>
-        /// <remarks>
-        /// If SourceUserId specified in user model clone operation will be executed
-        /// </remarks>
-        /// <returns>Created</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<UserDetailsModel> ApiV1UsersPostAsync(AddUserModel body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Delete external token of the current user.
-        /// </summary>
-        /// <param name="id">Token ID.</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Void> ApiV1UsersSelfExternaltokensDeleteAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Delete external token of the user.
-        /// </summary>
-        /// <param name="userId">User ID.</param>
-        /// <param name="id">Token ID.</param>
-        /// <returns>No Content</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Void> ApiV1UsersExternaltokensDeleteAsync(string userId, string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Retrieve API token
-        /// </summary>
-        /// <remarks>
-        /// Retrieve API token
-        /// </remarks>
-        /// <param name="grant_type">Type of authentication used</param>
-        /// <param name="username">User name. Use with "password" or "otp" grant_type</param>
-        /// <param name="password">User password. Use with "password" or "otp" grant_type</param>
-        /// <param name="language">Language to use. Optional. Use with "password", "otp" or "code" grant_type</param>
-        /// <param name="orgId">Organization ID to authenticate against. Optional. Use with "password", "otp" or "code" grant_type</param>
-        /// <param name="refresh_token">Refresh token. Use with "refresh_token" grant_type</param>
-        /// <param name="mfa_access_token">Multi-factor authentication access token. Use with "otp" grant_type</param>
-        /// <param name="otp">One-time password. Use with "otp" grant_type</param>
-        /// <param name="code">Authorization code. Use with "code" grant_type</param>
-        /// <param name="code_verifier">Code verifier. Use with "code" grant_type</param>
-        /// <param name="accept_security_notice">Accept security notice. Use with "password" or "otp" grant_type</param>
-        /// <param name="mfa_remember_this_device">Multi-factor authentication remember this device. Use with "otp" grant_type</param>
-        /// <param name="mfa_trust_device_token">Multi-factor authentication trust device token. Use with "password" grant_type</param>
-        /// <param name="external_token_type">External token type. Use with "external_token" grant_type</param>
-        /// <param name="external_token">External token. Use with "external_token" grant type</param>
-        /// <param name="new_password">New password to apply to account when required to change password. Use with "password" or "otp" grant_type.</param>
-        /// <returns>Represents successful token request response</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<TokenAcquiredModel> ApiV1TokenAsync(Grant_type grant_type, string username = null, string password = null, string language = null, string orgId = null, string refresh_token = null, string mfa_access_token = null, string otp = null, string code = null, string code_verifier = null, object accept_security_notice = null, object mfa_remember_this_device = null, string mfa_trust_device_token = null, External_token_type? external_token_type = null, string external_token = null, string new_password = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Revokes API token
-        /// </summary>
-        /// <remarks>
-        /// Response for Revoke token operation
-        /// </remarks>
-        /// <param name="token">Access token or Refresh token to revoke</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<RevokeTokenResponse> ApiV1TokenRevokeAsync(string token, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <summary>
-        /// Send one-time password
-        /// </summary>
-        /// <remarks>
-        /// Response for send otp operation
-        /// </remarks>
-        /// <param name="mfa_access_token">Multi-factor authentication access token</param>
-        /// <returns>OK</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SendOtpResponseModel> ApiV1TokenOtpAsync(string mfa_access_token, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class MoveItApiClient : IMoveItApiClient
+    public partial class MoveItApiClient
     {
 #pragma warning disable 8618
         private string _baseUrl;
 #pragma warning restore 8618
 
+        private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public MoveItApiClient()
+        public MoveItApiClient(System.Net.Http.HttpClient httpClient)
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             BaseUrl = "https://testserver.moveitcloud.com";
+            _httpClient = httpClient;
         }
 
         private static Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
@@ -1256,8 +75,8 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual async System.Threading.Tasks.Task<AdHocTransferAgingExpirationModel> ApiV1SettingsAdhoctransferMaintenanceAgingexpirationAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -1357,10 +176,10 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="resetbackgroundlogo">When set to 1, resets the header background logo to an empty image</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<LogosModel> ApiV1SettingsAppearanceBrandLogosAsync(FileParameter leftlogo = null, FileParameter rightlogo = null, FileParameter backgroundlogo = null, string usecustomnotifbranding = null, string resetrightlogo = null, string resetbackgroundlogo = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<LogosModel> ApiV1SettingsAppearanceBrandLogosAsync(FileParameter leftlogo = null, FileParameter rightlogo = null, FileParameter backgroundlogo = null, string? usecustomnotifbranding = null, string? resetrightlogo = null, string? resetbackgroundlogo = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -1510,10 +329,10 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="orgId">Organization Id.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfPublicIdPInformationModel> ApiV1AuthIdentityprovidersAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, int? orgId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfPublicIdPInformationModel> ApiV1AuthIdentityprovidersAsync(int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, int? orgId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -1631,8 +450,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (request == null)
                 throw new System.ArgumentNullException("request");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -1733,10 +552,10 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="sortDirection">Sort direction; Default is ascending.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfContactModel> ApiV1ContactsGetAsync(string searchString = null, string onBehalfOf = null, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfContactModel> ApiV1ContactsGetAsync(string? searchString = null, string? onBehalfOf = null, int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -1858,8 +677,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -1960,8 +779,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -2070,8 +889,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -2189,8 +1008,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -2288,8 +1107,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -2329,10 +1148,6 @@ namespace Infrastructure.ApiClients.MoveIt
                         if (status_ == 204)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Void>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
                             return objectResponse_.Object;
                         }
                         else
@@ -2391,8 +1206,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -2494,8 +1309,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -2536,7 +1351,7 @@ namespace Infrastructure.ApiClients.MoveIt
                         if (status_ == 200 || status_ == 206)
                         {
                             var responseStream_ = response_.Content == null ? System.IO.Stream.Null : await response_.Content.ReadAsStreamAsync().ConfigureAwait(false);
-                            var fileResponse_ = new FileResponse(status_, headers_, responseStream_, client_, response_);
+                            var fileResponse_ = new FileResponse(status_, headers_, responseStream_, null, response_);
                             disposeClient_ = false; disposeResponse_ = false; // response and client are disposed by FileResponse
                             return fileResponse_;
                         }
@@ -2594,13 +1409,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="sortDirection">Sort direction; Default is ascending.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfFileIsNewForUserModel> ApiV1FilesNewstatesGetAsync(string id, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfFileIsNewForUserModel> ApiV1FilesNewstatesGetAsync(string id, int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -2724,8 +1539,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -2827,10 +1642,10 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="newOnly">Filter new files</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleFileResourceModel> ApiV1FilesGetAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, bool? newOnly = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleFileResourceModel> ApiV1FilesGetAsync(int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, bool? newOnly = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -2953,8 +1768,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -3081,8 +1896,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -3205,8 +2020,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -3313,8 +2128,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (userId == null)
                 throw new System.ArgumentNullException("userId");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -3417,8 +2232,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (fileId == null)
                 throw new System.ArgumentNullException("fileId");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -3526,8 +2341,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (fileId == null)
                 throw new System.ArgumentNullException("fileId");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -3643,8 +2458,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (subfolderId == null)
                 throw new System.ArgumentNullException("subfolderId");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -3749,8 +2564,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (subfolderId == null)
                 throw new System.ArgumentNullException("subfolderId");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -3852,13 +2667,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="name">Folder Name mask to search by</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleFolderModel> ApiV1FoldersSubfoldersGetAsync(string id, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, string name = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleFolderModel> ApiV1FoldersSubfoldersGetAsync(string id, int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, string? name = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -3983,8 +2798,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -4088,13 +2903,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="newOnly">Filter new files</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleFileResourceModel> ApiV1FoldersFilesGetAsync(string id, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, string name = null, bool? newOnly = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleFileResourceModel> ApiV1FoldersFilesGetAsync(string id, int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, string? name = null, bool? newOnly = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -4222,13 +3037,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="comments">File upload comments</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<ResumableFileUploadModel> ApiV1FoldersFilesPostAsync(string id, FileParameter file, string hashtype = null, string hash = null, string comments = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<ResumableFileUploadModel> ApiV1FoldersFilesPostAsync(string id, FileParameter file, string? hashtype = null, string? hash = null, string? comments = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -4313,7 +3128,7 @@ namespace Infrastructure.ApiClients.MoveIt
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            throw new ApiException<FileDetailsModel>("Created", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                            return new ResumableFileUploadModel() { FileId = objectResponse_.Object.Id };
                         }
                         else
                         if (status_ == 403)
@@ -4378,13 +3193,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="name">Name mask to search by</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfFolderContentItemModel> ApiV1FoldersContentAsync(string id, string pathHash = null, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, string name = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfFolderContentItemModel> ApiV1FoldersContentAsync(string id, string? pathHash = null, int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, string? name = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -4509,10 +3324,10 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="sortDirection">Sort direction; Default is ascending.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleFolderModel> ApiV1FoldersGetAsync(string name = null, string path = null, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Collections.Generic.IEnumerable<string> sharedTo = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleFolderModel> ApiV1FoldersGetAsync(string? name = null, string? path = null, int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, System.Collections.Generic.IEnumerable<string>? sharedTo = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -4637,13 +3452,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="pathHash">File path hash for getting proper folder relations</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<FolderDetailsModel> ApiV1FoldersGetAsync(string id, bool? skipCounts = null, string pathHash = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<FolderDetailsModel> ApiV1FoldersGetAsync(string id, bool? skipCounts = null, string? pathHash = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -4747,13 +3562,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="pathHash">File path hash for getting proper folder relations</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<Void> ApiV1FoldersDeleteAsync(string id, string pathHash = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Void> ApiV1FoldersDeleteAsync(string id, string? pathHash = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -4861,8 +3676,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -4964,13 +3779,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="pathHash">File path hash for getting proper folder relations</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfFolderAclEntryResourceModel> ApiV1FoldersAclsGetAsync(string id, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, string pathHash = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfFolderAclEntryResourceModel> ApiV1FoldersAclsGetAsync(string id, int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, string? pathHash = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -5095,8 +3910,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -5203,8 +4018,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -5311,8 +4126,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -5419,8 +4234,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -5547,8 +4362,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -5675,8 +4490,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -5783,8 +4598,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -5891,8 +4706,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -5999,8 +4814,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -6111,8 +4926,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -6220,8 +5035,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -6322,8 +5137,8 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual async System.Threading.Tasks.Task<PagedModelOfGroupModel> ApiV1GroupsGetAsync(int? page = null, int? perPage = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -6429,8 +5244,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -6533,8 +5348,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -6645,8 +5460,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -6753,8 +5568,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (userId == null)
                 throw new System.ArgumentNullException("userId");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -6854,8 +5669,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -6968,10 +5783,10 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="suppressLogViews">Suppress log views. Default is true</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleLogModel> ApiV1LogsGetAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, string startDateTime = null, string endDateTime = null, Action? action = null, string userNameContains = null, string userId = null, string fileIdContains = null, string fileNameContains = null, SizeComparison? sizeComparison = null, string size = null, string folderId = null, string folderPathContains = null, string ipContains = null, string agentBrandContains = null, SuccessFailure? successFailure = null, bool? suppressSigns = null, bool? suppressEmailNotes = null, bool? suppressLogViews = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleLogModel> ApiV1LogsGetAsync(int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, string? startDateTime = null, string? endDateTime = null, Action? action = null, string? userNameContains = null, string? userId = null, string? fileIdContains = null, string? fileNameContains = null, SizeComparison? sizeComparison = null, string? size = null, string? folderId = null, string? folderPathContains = null, string? ipContains = null, string? agentBrandContains = null, SuccessFailure? successFailure = null, bool? suppressSigns = null, bool? suppressEmailNotes = null, bool? suppressLogViews = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -7150,8 +5965,8 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<MailboxModel>> ApiV1MailboxesGetAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -7248,8 +6063,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -7347,8 +6162,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -7451,8 +6266,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -7552,7 +6367,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="action">Package action (Reply, ReplyAll, Forward, Resend)</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PackageDetailsModel> ApiV1MailboxesPackagesGetAsync(string id, string packageId, string action = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PackageDetailsModel> ApiV1MailboxesPackagesGetAsync(string id, string packageId, string? action = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -7560,8 +6375,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (packageId == null)
                 throw new System.ArgumentNullException("packageId");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -7681,8 +6496,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (packageId == null)
                 throw new System.ArgumentNullException("packageId");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -7800,8 +6615,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -7911,8 +6726,8 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual async System.Threading.Tasks.Task<Void> ApiV1MailboxesTrashAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -8008,8 +6823,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (request == null)
                 throw new System.ArgumentNullException("request");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -8090,8 +6905,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (orgId == null)
                 throw new System.ArgumentNullException("orgId");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -8167,10 +6982,10 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="sortDirection">Sort direction; Default is ascending.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleOrgModel> ApiV1OrganizationsGetAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleOrgModel> ApiV1OrganizationsGetAsync(int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -8264,8 +7079,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -8350,8 +7165,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -8438,8 +7253,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -8526,8 +7341,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -8614,8 +7429,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -8700,8 +7515,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -8785,10 +7600,10 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="mailboxId">Filter by mailbox ID</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfSimplePackageModel> ApiV1PackagesGetAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, bool? newOnly = null, System.Collections.Generic.IEnumerable<string> sentTo = null, System.Collections.Generic.IEnumerable<string> receivedFrom = null, string mailboxId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfSimplePackageModel> ApiV1PackagesGetAsync(int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, bool? newOnly = null, System.Collections.Generic.IEnumerable<string>? sentTo = null, System.Collections.Generic.IEnumerable<string>? receivedFrom = null, string? mailboxId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -8919,8 +7734,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -9017,8 +7832,8 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual async System.Threading.Tasks.Task<PackageRequirementsModel> ApiV1PackagesRequirementsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -9111,13 +7926,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="mailboxId">Mailbox id</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<CollectionModelOfRecipientListItem> ApiV1PackagesRecipientsAsync(string id, string mailboxId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<CollectionModelOfRecipientListItem> ApiV1PackagesRecipientsAsync(string id, string? mailboxId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -9219,13 +8034,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="mailboxId">Mailbox id</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PackageDetailsModel> ApiV1PackagesGetAsync(string id, string action = null, string mailboxId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PackageDetailsModel> ApiV1PackagesGetAsync(string id, string? action = null, string? mailboxId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -9329,13 +8144,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="mailboxId">Mailbox id</param>
         /// <returns>No Content</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<Void> ApiV1PackagesDeleteAsync(string id, string mailboxId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Void> ApiV1PackagesDeleteAsync(string id, string? mailboxId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -9443,8 +8258,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -9542,13 +8357,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="mailboxId">Mailbox id</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<NotificationModel> ApiV1PackagesNotificationAsync(string id, bool? includeImages = null, string mailboxId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<NotificationModel> ApiV1PackagesNotificationAsync(string id, bool? includeImages = null, string? mailboxId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -9661,10 +8476,10 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="comments">File upload comments</param>
         /// <returns>Created</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<FileDetailsModel> ApiV1PackagesAttachmentsPostAsync(FileParameter file, string hashtype = null, string hash = null, string comments = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<FileDetailsModel> ApiV1PackagesAttachmentsPostAsync(FileParameter file, string? hashtype = null, string? hash = null, string? comments = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -9801,8 +8616,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -9896,10 +8711,10 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="language">Response language</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PublicOrgModel> ApiV1InfoAsync(int? orgId = null, string language = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PublicOrgModel> ApiV1InfoAsync(int? orgId = null, string? language = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -9997,8 +8812,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -10101,10 +8916,10 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="sortDirection">Sort direction; Default is ascending.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleReportModel> ApiV1ReportsAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleReportModel> ApiV1ReportsAsync(int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -10219,8 +9034,8 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual async System.Threading.Tasks.Task<ReportDetailedModel> ApiV1ReportsImportAsync(FileParameter file, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -10340,10 +9155,10 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="sortDirection">Sort direction; Default is ascending.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfSimplePasswordAgingPolicyModel> ApiV1SettingsSecurityPasswordAgingPoliciesGetAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfSimplePasswordAgingPolicyModel> ApiV1SettingsSecurityPasswordAgingPoliciesGetAsync(int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -10437,8 +9252,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -10517,10 +9332,10 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="sortDirection">Sort direction; Default is ascending.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleExpirationPolicyModel> ApiV1SettingsSecurityUserauthExpirationPoliciesGetAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleExpirationPolicyModel> ApiV1SettingsSecurityUserauthExpirationPoliciesGetAsync(int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -10614,8 +9429,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -10695,8 +9510,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -10776,8 +9591,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (request == null)
                 throw new System.ArgumentNullException("request");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -10857,8 +9672,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -10938,8 +9753,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -11016,8 +9831,8 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual async System.Threading.Tasks.Task<object> ApiV1ServerinfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -11101,10 +9916,10 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="sortDirection">Sort direction; Default is ascending.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<TransferStatusPagedModel> ApiV1XferstatusAsync(int? recentlyCompletedPeriod = null, int? statusDistributionPeriod = null, string userLoginName = null, string userFullName = null, string userIp = null, string folderName = null, string fileName = null, System.Collections.Generic.IEnumerable<Anonymous> transferStatus = null, string search = null, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<TransferStatusPagedModel> ApiV1XferstatusAsync(int? recentlyCompletedPeriod = null, int? statusDistributionPeriod = null, string? userLoginName = null, string? userFullName = null, string? userIp = null, string? folderName = null, string? fileName = null, System.Collections.Generic.IEnumerable<Anonymous>? transferStatus = null, string? search = null, int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -11251,8 +10066,8 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual async System.Threading.Tasks.Task<UserDetailsModel> ApiV1UsersSelfAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -11349,8 +10164,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -11448,8 +10263,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -11551,8 +10366,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -11656,8 +10471,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -11764,10 +10579,10 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="sortDirection">Sort direction; Default is ascending.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfUserExternalTokenModel> ApiV1UsersSelfExternaltokensGetAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfUserExternalTokenModel> ApiV1UsersSelfExternaltokensGetAsync(int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -11882,8 +10697,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (request == null)
                 throw new System.ArgumentNullException("request");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -11984,8 +10799,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (request == null)
                 throw new System.ArgumentNullException("request");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -12085,13 +10900,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="sortDirection">Sort direction; Default is ascending.</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfUserExternalTokenModel> ApiV1UsersExternaltokensGetAsync(string id, int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfUserExternalTokenModel> ApiV1UsersExternaltokensGetAsync(string id, int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -12213,10 +11028,10 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="orgId">Organization ID. (For sysadmin users only. For non sysadmin users current user organization ID is used.)</param>
         /// <returns>OK</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleUserModel> ApiV1UsersGetAsync(int? page = null, int? perPage = null, string sortField = null, string sortDirection = null, Permission? permission = null, Status? status = null, string username = null, string fullName = null, string email = null, bool? isExactMatch = null, int? orgId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<PagedModelOfSimpleUserModel> ApiV1UsersGetAsync(int? page = null, int? perPage = null, string? sortField = null, string? sortDirection = null, Permission? permission = null, Status? status = null, string? username = null, string? fullName = null, string? email = null, bool? isExactMatch = null, int? orgId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -12361,8 +11176,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (body == null)
                 throw new System.ArgumentNullException("body");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -12463,8 +11278,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -12566,8 +11381,8 @@ namespace Infrastructure.ApiClients.MoveIt
             if (id == null)
                 throw new System.ArgumentNullException("id");
 
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -12680,10 +11495,10 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <param name="new_password">New password to apply to account when required to change password. Use with "password" or "otp" grant_type.</param>
         /// <returns>Represents successful token request response</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<TokenAcquiredModel> ApiV1TokenAsync(Grant_type grant_type, string username = null, string password = null, string language = null, string orgId = null, string refresh_token = null, string mfa_access_token = null, string otp = null, string code = null, string code_verifier = null, object accept_security_notice = null, object mfa_remember_this_device = null, string mfa_trust_device_token = null, External_token_type? external_token_type = null, string external_token = null, string new_password = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<TokenAcquiredModel> ApiV1TokenAsync(Grant_type grant_type, string? username = null, string? password = null, string? language = null, string? orgId = null, string? refresh_token = null, string? mfa_access_token = null, string? otp = null, string? code = null, string? code_verifier = null, object? accept_security_notice = null, object? mfa_remember_this_device = null, string? mfa_trust_device_token = null, External_token_type? external_token_type = null, string? external_token = null, string? new_password = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -12846,8 +11661,8 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual async System.Threading.Tasks.Task<RevokeTokenResponse> ApiV1TokenRevokeAsync(string token, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -12940,8 +11755,8 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual async System.Threading.Tasks.Task<SendOtpResponseModel> ApiV1TokenOtpAsync(string mfa_access_token, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            var client_ = new System.Net.Http.HttpClient();
-            var disposeClient_ = true;
+            var client_ = _httpClient;
+            var disposeClient_ = false;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
@@ -13041,7 +11856,7 @@ namespace Infrastructure.ApiClients.MoveIt
         {
             if (response == null || response.Content == null)
             {
-                return new ObjectResponseResult<T>(default(T), string.Empty);
+                return new ObjectResponseResult<T>(default(T)!, string.Empty);
             }
 
             if (ReadResponseAsString)
@@ -13050,7 +11865,7 @@ namespace Infrastructure.ApiClients.MoveIt
                 try
                 {
                     var typedBody = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(responseText, JsonSerializerSettings);
-                    return new ObjectResponseResult<T>(typedBody, responseText);
+                    return new ObjectResponseResult<T>(typedBody!, responseText);
                 }
                 catch (Newtonsoft.Json.JsonException exception)
                 {
@@ -13068,7 +11883,7 @@ namespace Infrastructure.ApiClients.MoveIt
                     {
                         var serializer = Newtonsoft.Json.JsonSerializer.Create(JsonSerializerSettings);
                         var typedBody = serializer.Deserialize<T>(jsonTextReader);
-                        return new ObjectResponseResult<T>(typedBody, string.Empty);
+                        return new ObjectResponseResult<T>(typedBody!, string.Empty);
                     }
                 }
                 catch (Newtonsoft.Json.JsonException exception)
@@ -13079,7 +11894,7 @@ namespace Infrastructure.ApiClients.MoveIt
             }
         }
 
-        private string ConvertToString(object value, System.Globalization.CultureInfo cultureInfo)
+        private string ConvertToString(object? value, System.Globalization.CultureInfo cultureInfo)
         {
             if (value == null)
             {
@@ -13147,27 +11962,27 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Number of hours packages remain new.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("packageRemainsNewForHours", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PackageRemainsNewForHours { get; set; }
+        public int? PackageRemainsNewForHours { get; set; } = default!;
 
         /// <summary>
         /// Number of hours after packages expire and delete.
         /// <br/>-1 if not applied.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("maxUserPackageExpirationHours", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? MaxUserPackageExpirationHours { get; set; }
+        public int? MaxUserPackageExpirationHours { get; set; } = default!;
 
         /// <summary>
         /// Archive expired packages to the location before deleting.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("archivePackages", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ArchivePackages { get; set; }
+        public bool? ArchivePackages { get; set; } = default!;
 
         /// <summary>
         /// Value in hours which users can set specific expirations on their packages.
         /// <br/>-1 if not allowed.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("defaultUserPackageExpirationHours", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? DefaultUserPackageExpirationHours { get; set; }
+        public int? DefaultUserPackageExpirationHours { get; set; } = default!;
 
     }
 
@@ -13181,7 +11996,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// An explanation specific to this occurrence of the error
         /// </summary>
         [Newtonsoft.Json.JsonProperty("detail", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Detail { get; set; }
+        public string? Detail { get; set; } = default!;
 
         /// <summary>
         /// An error number, defined by the application
@@ -13193,7 +12008,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Short summary of the error type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Title { get; set; }
+        public string? Title { get; set; } = default!;
 
     }
 
@@ -13201,16 +12016,16 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class LogosModel
     {
         [Newtonsoft.Json.JsonProperty("leftLogoFilename", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string LeftLogoFilename { get; set; }
+        public string? LeftLogoFilename { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("rightLogoFilename", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string RightLogoFilename { get; set; }
+        public string? RightLogoFilename { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("backgroundLogoFilename", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string BackgroundLogoFilename { get; set; }
+        public string? BackgroundLogoFilename { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("useCustomNotifBranding", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? UseCustomNotifBranding { get; set; }
+        public bool? UseCustomNotifBranding { get; set; } = default!;
 
     }
 
@@ -13224,13 +12039,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Detailed information about errors in provided parameters
         /// </summary>
         [Newtonsoft.Json.JsonProperty("errors", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<FieldErrorModel> Errors { get; set; }
+        public System.Collections.Generic.ICollection<FieldErrorModel>? Errors { get; set; } = default!;
 
         /// <summary>
         /// An explanation specific to this occurrence of the error
         /// </summary>
         [Newtonsoft.Json.JsonProperty("detail", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Detail { get; set; }
+        public string? Detail { get; set; } = default!;
 
         /// <summary>
         /// An error number, defined by the application
@@ -13242,7 +12057,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Short summary of the error type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Title { get; set; }
+        public string? Title { get; set; } = default!;
 
     }
 
@@ -13256,19 +12071,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Name of the field that's invalid
         /// </summary>
         [Newtonsoft.Json.JsonProperty("field", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Field { get; set; }
+        public string? Field { get; set; } = default!;
 
         /// <summary>
         /// Value of the field that's invalid
         /// </summary>
         [Newtonsoft.Json.JsonProperty("rejected", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Rejected { get; set; }
+        public string? Rejected { get; set; } = default!;
 
         /// <summary>
         /// Explanation of the error
         /// </summary>
         [Newtonsoft.Json.JsonProperty("message", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Message { get; set; }
+        public string? Message { get; set; } = default!;
 
     }
 
@@ -13279,31 +12094,31 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Name of field to sort the results by. (name); Default is Name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
         /// <summary>
         /// Organization Id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orgId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OrgId { get; set; }
+        public int? OrgId { get; set; } = default!;
 
     }
 
@@ -13317,19 +12132,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<PublicIdPInformationModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<PublicIdPInformationModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -13340,13 +12155,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Name of the identity provider.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Direct link to the identity provider.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("link", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Link { get; set; }
+        public string? Link { get; set; } = default!;
 
     }
 
@@ -13360,25 +12175,25 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Current page in collection
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Total items in collection
         /// </summary>
         [Newtonsoft.Json.JsonProperty("totalItems", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? TotalItems { get; set; }
+        public long? TotalItems { get; set; } = default!;
 
         /// <summary>
         /// Total number of pages in collection
         /// </summary>
         [Newtonsoft.Json.JsonProperty("totalPages", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? TotalPages { get; set; }
+        public int? TotalPages { get; set; } = default!;
 
     }
 
@@ -13386,11 +12201,11 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class SortFieldDto
     {
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public SortFieldDtoSortDirection? SortDirection { get; set; }
+        public SortFieldDtoSortDirection? SortDirection { get; set; } = default!;
 
     }
 
@@ -13401,7 +12216,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// The Id of the target Org for this request
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orgId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OrgId { get; set; }
+        public int? OrgId { get; set; } = default!;
 
     }
 
@@ -13409,11 +12224,11 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class ActAsAdminDto
     {
         [Newtonsoft.Json.JsonProperty("orgId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OrgId { get; set; }
+        public int? OrgId { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("permission", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public ActAsAdminDtoPermission? Permission { get; set; }
+        public ActAsAdminDtoPermission? Permission { get; set; } = default!;
 
     }
 
@@ -13424,37 +12239,37 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Search String. The Name and Email values will be searched.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("searchString", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SearchString { get; set; }
+        public string? SearchString { get; set; } = default!;
 
         /// <summary>
         /// User to get contacts on behalf of.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("onBehalfOf", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string OnBehalfOf { get; set; }
+        public string? OnBehalfOf { get; set; } = default!;
 
         /// <summary>
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Name of field to sort the results by. (email, name); Default is Name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
     }
 
@@ -13468,19 +12283,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<ContactModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<ContactModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -13494,26 +12309,26 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Contact name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Contact email address.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("email", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Email { get; set; }
+        public string? Email { get; set; } = default!;
 
         /// <summary>
         /// Contact ID.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Identifier { get; set; }
+        public string? Identifier { get; set; } = default!;
 
         /// <summary>
         /// Contact type (user, group, unreg).
         /// </summary>
         [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public ContactModelType? Type { get; set; }
+        public ContactModelType? Type { get; set; } = default!;
 
     }
 
@@ -13527,14 +12342,14 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Contact name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Contact email address.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("email", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        public string Email { get; set; }
+        public string Email { get; set; } = default!;
 
     }
 
@@ -13545,13 +12360,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Contact name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Contact email address.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("email", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Email { get; set; }
+        public string? Email { get; set; } = default!;
 
     }
 
@@ -13562,7 +12377,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Contact ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
     }
 
@@ -13579,7 +12394,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// File ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
     }
 
@@ -13593,147 +12408,147 @@ namespace Infrastructure.ApiClients.MoveIt
         /// ID of the organization this file exists in.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orgID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string OrgID { get; set; }
+        public string? OrgID { get; set; } = default!;
 
         /// <summary>
         /// ID of the folder this file is currently in.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? FolderID { get; set; }
+        public int? FolderID { get; set; } = default!;
 
         /// <summary>
         /// Describes what type of file this file was originally.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("originalFileType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FileDetailsModelOriginalFileType? OriginalFileType { get; set; }
+        public FileDetailsModelOriginalFileType? OriginalFileType { get; set; } = default!;
 
         /// <summary>
         /// Describes what type of file this file is currently.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("currentFileType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FileDetailsModelCurrentFileType? CurrentFileType { get; set; }
+        public FileDetailsModelCurrentFileType? CurrentFileType { get; set; } = default!;
 
         /// <summary>
         /// Any optional comments uploaded with this file.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("uploadComment", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UploadComment { get; set; }
+        public string? UploadComment { get; set; } = default!;
 
         /// <summary>
         /// The IP Address, if any, from which this file was uploaded.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("uploadIP", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UploadIP { get; set; }
+        public string? UploadIP { get; set; } = default!;
 
         /// <summary>
         /// Brand of the agent used to upload this file.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("uploadAgentBrand", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UploadAgentBrand { get; set; }
+        public string? UploadAgentBrand { get; set; } = default!;
 
         /// <summary>
         /// Version of the agent used to upload this file.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("uploadAgentVersion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UploadAgentVersion { get; set; }
+        public string? UploadAgentVersion { get; set; } = default!;
 
         /// <summary>
         /// 1 if file was uploaded with integrity checking, 0 if file was not.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("uploadIntegrity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? UploadIntegrity { get; set; }
+        public int? UploadIntegrity { get; set; } = default!;
 
         /// <summary>
         /// If true, the file was determined to not have a DLP violation; otherwise, the file was either not checked, or does contain a violation.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("dlpChecked", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? DlpChecked { get; set; }
+        public bool? DlpChecked { get; set; } = default!;
 
         /// <summary>
         /// If 1, the file’s metadata contains DLP violations, and should not be displayed. Otherwise, if 0, there are no DLP violations in the file metadata.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("dlpMetaData", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? DlpMetaData { get; set; }
+        public int? DlpMetaData { get; set; } = default!;
 
         /// <summary>
         /// File DLP violation info
         /// </summary>
         [Newtonsoft.Json.JsonProperty("dlpViolation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string DlpViolation { get; set; }
+        public string? DlpViolation { get; set; } = default!;
 
         /// <summary>
         /// When true, the file contains DLP violations that prevent it from being downloaded, according to currently configured DLP rules.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("dlpBlocked", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? DlpBlocked { get; set; }
+        public bool? DlpBlocked { get; set; } = default!;
 
         /// <summary>
         /// The username of the user account which uploaded this file.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("uploadUsername", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UploadUsername { get; set; }
+        public string? UploadUsername { get; set; } = default!;
 
         /// <summary>
         /// The real name of the user account which uploaded this file.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("uploadUserFullName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UploadUserFullName { get; set; }
+        public string? UploadUserFullName { get; set; } = default!;
 
         /// <summary>
         /// Number of times this file has been downloaded.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("downloadCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? DownloadCount { get; set; }
+        public int? DownloadCount { get; set; } = default!;
 
         /// <summary>
         /// The original name of this file.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("originalFilename", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string OriginalFilename { get; set; }
+        public string? OriginalFilename { get; set; } = default!;
 
         /// <summary>
         /// SHA-1 hash of the file
         /// </summary>
         [Newtonsoft.Json.JsonProperty("hash", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Hash { get; set; }
+        public string? Hash { get; set; } = default!;
 
         /// <summary>
         /// The full path of this file.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("path", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Path { get; set; }
+        public string? Path { get; set; } = default!;
 
         /// <summary>
         /// The date and time this file was uploaded.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("uploadStamp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UploadStamp { get; set; }
+        public string? UploadStamp { get; set; } = default!;
 
         /// <summary>
         /// Indicating whether the file is considered new for the current user
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isNew", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsNew { get; set; }
+        public bool? IsNew { get; set; } = default!;
 
         /// <summary>
         /// The name of this file.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Size in bytes of this file.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("size", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Size { get; set; }
+        public long? Size { get; set; } = default!;
 
         /// <summary>
         /// The unique ID of the file. Also known as the tracking number.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
     }
 
@@ -13747,13 +12562,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// New file name to set
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// IsNew to set
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isNew", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsNew { get; set; }
+        public bool? IsNew { get; set; } = default!;
 
     }
 
@@ -13764,13 +12579,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// File ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// Public link ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("filePublicLinkId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FilePublicLinkId { get; set; }
+        public string? FilePublicLinkId { get; set; } = default!;
 
     }
 
@@ -13781,68 +12596,68 @@ namespace Infrastructure.ApiClients.MoveIt
         /// File
         /// </summary>
         [Newtonsoft.Json.JsonProperty("file", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PublicFileModel File { get; set; }
+        public PublicFileModel? File { get; set; } = default!;
 
         /// <summary>
         /// Expiration value
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expirationValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ExpirationValue { get; set; }
+        public string? ExpirationValue { get; set; } = default!;
 
         /// <summary>
         /// Expiration type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expirationType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FilePublicLinkDetailsModelExpirationType? ExpirationType { get; set; }
+        public FilePublicLinkDetailsModelExpirationType? ExpirationType { get; set; } = default!;
 
         /// <summary>
         /// Organization id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orgId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OrgId { get; set; }
+        public int? OrgId { get; set; } = default!;
 
         /// <summary>
         /// Public link id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// Public link url
         /// </summary>
         [Newtonsoft.Json.JsonProperty("url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Url { get; set; }
+        public string? Url { get; set; } = default!;
 
         /// <summary>
         /// Download limit. Can be null
         /// </summary>
         [Newtonsoft.Json.JsonProperty("downloadLimit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? DownloadLimit { get; set; }
+        public int? DownloadLimit { get; set; } = default!;
 
         /// <summary>
         /// Download count
         /// </summary>
         [Newtonsoft.Json.JsonProperty("downloadCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? DownloadCount { get; set; }
+        public int? DownloadCount { get; set; } = default!;
 
         /// <summary>
         /// Creation date
         /// </summary>
         [Newtonsoft.Json.JsonProperty("creationDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string CreationDate { get; set; }
+        public string? CreationDate { get; set; } = default!;
 
         /// <summary>
         /// Expiration Date
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expirationDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ExpirationDate { get; set; }
+        public string? ExpirationDate { get; set; } = default!;
 
         /// <summary>
         /// User who created link
         /// </summary>
         [Newtonsoft.Json.JsonProperty("creator", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public SimpleUserModel Creator { get; set; }
+        public SimpleUserModel? Creator { get; set; } = default!;
 
     }
 
@@ -13856,19 +12671,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// The name of this file.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Size in bytes of this file.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("size", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Size { get; set; }
+        public long? Size { get; set; } = default!;
 
         /// <summary>
         /// The unique ID of the file. Also known as the tracking number.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
     }
 
@@ -13882,51 +12697,51 @@ namespace Infrastructure.ApiClients.MoveIt
         /// User ID.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// ID of organization user is a member of.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orgID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OrgID { get; set; }
+        public int? OrgID { get; set; } = default!;
 
         /// <summary>
         /// User login name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("username", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Username { get; set; }
+        public string? Username { get; set; } = default!;
 
         /// <summary>
         /// User full name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fullName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FullName { get; set; }
+        public string? FullName { get; set; } = default!;
 
         /// <summary>
         /// User permission.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("permission", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public SimpleUserModelPermission? Permission { get; set; }
+        public SimpleUserModelPermission? Permission { get; set; } = default!;
 
         /// <summary>
         /// User email address.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("email", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Email { get; set; }
+        public string? Email { get; set; } = default!;
 
         /// <summary>
         /// User security status.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public SimpleUserModelStatus? Status { get; set; }
+        public SimpleUserModelStatus? Status { get; set; } = default!;
 
         /// <summary>
         /// Time of last user login. Null if user has not logged in yet.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("lastLoginStamp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string LastLoginStamp { get; set; }
+        public string? LastLoginStamp { get; set; } = default!;
 
     }
 
@@ -13937,31 +12752,31 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Name of field to sort the results by. (username, isnew); Default is username.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
         /// <summary>
         /// File ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
     }
 
@@ -13975,19 +12790,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<FileIsNewForUserModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<FileIsNewForUserModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -13995,10 +12810,10 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class FileIsNewForUserModel
     {
         [Newtonsoft.Json.JsonProperty("user", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public SimpleUserModel User { get; set; }
+        public SimpleUserModel? User { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("isNew", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsNew { get; set; }
+        public bool? IsNew { get; set; } = default!;
 
     }
 
@@ -14009,7 +12824,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// User ID for user you want to reset/set file isNew state for
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UserId { get; set; }
+        public string? UserId { get; set; } = default!;
 
     }
 
@@ -14020,31 +12835,31 @@ namespace Infrastructure.ApiClients.MoveIt
         /// File ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Name of field to sort the results by. (creationDate); Default is creationDate.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
     }
 
@@ -14058,19 +12873,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SimpleFilePublicLinkModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<SimpleFilePublicLinkModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -14081,49 +12896,49 @@ namespace Infrastructure.ApiClients.MoveIt
         /// File
         /// </summary>
         [Newtonsoft.Json.JsonProperty("file", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PublicFileModel File { get; set; }
+        public PublicFileModel? File { get; set; } = default!;
 
         /// <summary>
         /// Public link id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// Public link url
         /// </summary>
         [Newtonsoft.Json.JsonProperty("url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Url { get; set; }
+        public string? Url { get; set; } = default!;
 
         /// <summary>
         /// Download limit. Can be null
         /// </summary>
         [Newtonsoft.Json.JsonProperty("downloadLimit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? DownloadLimit { get; set; }
+        public int? DownloadLimit { get; set; } = default!;
 
         /// <summary>
         /// Download count
         /// </summary>
         [Newtonsoft.Json.JsonProperty("downloadCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? DownloadCount { get; set; }
+        public int? DownloadCount { get; set; } = default!;
 
         /// <summary>
         /// Creation date
         /// </summary>
         [Newtonsoft.Json.JsonProperty("creationDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string CreationDate { get; set; }
+        public string? CreationDate { get; set; } = default!;
 
         /// <summary>
         /// Expiration Date
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expirationDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ExpirationDate { get; set; }
+        public string? ExpirationDate { get; set; } = default!;
 
         /// <summary>
         /// User who created link
         /// </summary>
         [Newtonsoft.Json.JsonProperty("creator", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public SimpleUserModel Creator { get; set; }
+        public SimpleUserModel? Creator { get; set; } = default!;
 
     }
 
@@ -14134,20 +12949,20 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Download limit. Can be null
         /// </summary>
         [Newtonsoft.Json.JsonProperty("downloadLimit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? DownloadLimit { get; set; }
+        public int? DownloadLimit { get; set; } = default!;
 
         /// <summary>
         /// Expiration value
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expirationValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ExpirationValue { get; set; }
+        public string? ExpirationValue { get; set; } = default!;
 
         /// <summary>
         /// Expiration type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expirationType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public CreateFilePublicLinkModelExpirationType? ExpirationType { get; set; }
+        public CreateFilePublicLinkModelExpirationType? ExpirationType { get; set; } = default!;
 
     }
 
@@ -14158,31 +12973,31 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Name of field to sort the results by. (name, size, datetime, uploadstamp or path); Default is Path.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
         /// <summary>
         /// Filter new files
         /// </summary>
         [Newtonsoft.Json.JsonProperty("newOnly", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? NewOnly { get; set; }
+        public bool? NewOnly { get; set; } = default!;
 
     }
 
@@ -14196,19 +13011,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SimpleFileResourceModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<SimpleFileResourceModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -14223,37 +13038,37 @@ namespace Infrastructure.ApiClients.MoveIt
         /// The full path of this file.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("path", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Path { get; set; }
+        public string? Path { get; set; } = default!;
 
         /// <summary>
         /// The date and time this file was uploaded.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("uploadStamp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UploadStamp { get; set; }
+        public string? UploadStamp { get; set; } = default!;
 
         /// <summary>
         /// Indicating whether the file is considered new for the current user
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isNew", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsNew { get; set; }
+        public bool? IsNew { get; set; } = default!;
 
         /// <summary>
         /// The name of this file.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Size in bytes of this file.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("size", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Size { get; set; }
+        public long? Size { get; set; } = default!;
 
         /// <summary>
         /// The unique ID of the file. Also known as the tracking number.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
     }
 
@@ -14261,7 +13076,7 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class FileCopyMoveModel
     {
         [Newtonsoft.Json.JsonProperty("destinationFolderId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string DestinationFolderId { get; set; }
+        public string? DestinationFolderId { get; set; } = default!;
 
     }
 
@@ -14272,13 +13087,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Public Link Id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("linkId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string LinkId { get; set; }
+        public string? LinkId { get; set; } = default!;
 
         /// <summary>
         /// FileId
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
     }
 
@@ -14289,37 +13104,37 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Parent Folder ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Field to sort by; Default is name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
         /// <summary>
         /// Folder Name mask to search by
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
     }
 
@@ -14333,19 +13148,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SimpleFolderModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<SimpleFolderModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -14359,74 +13174,74 @@ namespace Infrastructure.ApiClients.MoveIt
         /// The unique ID of this folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// The ID of this folder's parent folder or "0" if it does not have a parent folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("parentId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? ParentId { get; set; }
+        public int? ParentId { get; set; } = default!;
 
         /// <summary>
         /// The (short) name of this folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Last time the folder content changed
         /// </summary>
         [Newtonsoft.Json.JsonProperty("lastContentChangeTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string LastContentChangeTime { get; set; }
+        public string? LastContentChangeTime { get; set; } = default!;
 
         /// <summary>
         /// Indicates what kind of folder this is.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public SimpleFolderModelFolderType? FolderType { get; set; }
+        public SimpleFolderModelFolderType? FolderType { get; set; } = default!;
 
         /// <summary>
         /// The (long) name of this folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("path", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Path { get; set; }
+        public string? Path { get; set; } = default!;
 
         /// <summary>
         /// Indicates whether this folder is shared with someone
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isShared", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsShared { get; set; }
+        public bool? IsShared { get; set; } = default!;
 
         /// <summary>
         /// A MOVEit Permission describing the currently authorized user's permissions on this folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("permission", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public IFolderPermission Permission { get; set; }
+        public IFolderPermission? Permission { get; set; } = default!;
 
         /// <summary>
         /// Number of subfolders in this folder
         /// </summary>
         [Newtonsoft.Json.JsonProperty("subfolderCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? SubfolderCount { get; set; }
+        public int? SubfolderCount { get; set; } = default!;
 
         /// <summary>
         /// Number of files in this folder
         /// </summary>
         [Newtonsoft.Json.JsonProperty("totalFileCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? TotalFileCount { get; set; }
+        public int? TotalFileCount { get; set; } = default!;
 
         /// <summary>
         /// Number of users this folder is shared with
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sharedWithUsersCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? SharedWithUsersCount { get; set; }
+        public int? SharedWithUsersCount { get; set; } = default!;
 
         /// <summary>
         /// Number of groups this folder is shared with
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sharedWithGroupsCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? SharedWithGroupsCount { get; set; }
+        public int? SharedWithGroupsCount { get; set; } = default!;
 
     }
 
@@ -14440,55 +13255,55 @@ namespace Infrastructure.ApiClients.MoveIt
         /// User can list the subfolders of a folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("canListSubfolders", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? CanListSubfolders { get; set; }
+        public bool? CanListSubfolders { get; set; } = default!;
 
         /// <summary>
         /// User can add subfolders to the folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("canAddSubfolders", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? CanAddSubfolders { get; set; }
+        public bool? CanAddSubfolders { get; set; } = default!;
 
         /// <summary>
         /// User can change the settings of the folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("canChangeSettings", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? CanChangeSettings { get; set; }
+        public bool? CanChangeSettings { get; set; } = default!;
 
         /// <summary>
         /// User can delete the folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("canDelete", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? CanDelete { get; set; }
+        public bool? CanDelete { get; set; } = default!;
 
         /// <summary>
         /// User can list the files in the folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("canListFiles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? CanListFiles { get; set; }
+        public bool? CanListFiles { get; set; } = default!;
 
         /// <summary>
         /// User can download the files in the folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("canReadFiles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? CanReadFiles { get; set; }
+        public bool? CanReadFiles { get; set; } = default!;
 
         /// <summary>
         /// User can upload files to the folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("canWriteFiles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? CanWriteFiles { get; set; }
+        public bool? CanWriteFiles { get; set; } = default!;
 
         /// <summary>
         /// User can delete files in the folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("canDeleteFiles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? CanDeleteFiles { get; set; }
+        public bool? CanDeleteFiles { get; set; } = default!;
 
         /// <summary>
         /// User can share files in the folder
         /// </summary>
         [Newtonsoft.Json.JsonProperty("canShare", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? CanShare { get; set; }
+        public bool? CanShare { get; set; } = default!;
 
     }
 
@@ -14499,14 +13314,14 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Folder name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Indicates how parent folder permissions should be inherited
         /// </summary>
         [Newtonsoft.Json.JsonProperty("inheritPermissions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public AddFolderModelInheritPermissions? InheritPermissions { get; set; }
+        public AddFolderModelInheritPermissions? InheritPermissions { get; set; } = default!;
 
     }
 
@@ -14520,227 +13335,227 @@ namespace Infrastructure.ApiClients.MoveIt
         /// ID of the organization this folder exists in.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orgId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OrgId { get; set; }
+        public int? OrgId { get; set; } = default!;
 
         /// <summary>
         /// The username of this folder's owner. (Home folders only)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("owner", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Owner { get; set; }
+        public string? Owner { get; set; } = default!;
 
         /// <summary>
         /// Description of this folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Description { get; set; }
+        public string? Description { get; set; } = default!;
 
         /// <summary>
         /// Indicates if this folder is under the control of users or the MOVEit Transfer system.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("systemType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderDetailsModelSystemType? SystemType { get; set; }
+        public FolderDetailsModelSystemType? SystemType { get; set; } = default!;
 
         /// <summary>
         /// Describes what kind of automated clean up is regularly performed on this folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("cleanType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderDetailsModelCleanType? CleanType { get; set; }
+        public FolderDetailsModelCleanType? CleanType { get; set; } = default!;
 
         /// <summary>
         /// Describes after how many days old files in this folder will be cleaned up.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("cleanTimeDays", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? CleanTimeDays { get; set; }
+        public int? CleanTimeDays { get; set; } = default!;
 
         /// <summary>
         /// Describes after how many days empty subfolders in this folder will be cleaned up.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("subfolderCleanTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? SubfolderCleanTime { get; set; }
+        public int? SubfolderCleanTime { get; set; } = default!;
 
         /// <summary>
         /// Describes what kind of upload confirmation notifications are used in this folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("uploadNotificationConfirmationType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderDetailsModelUploadNotificationConfirmationType? UploadNotificationConfirmationType { get; set; }
+        public FolderDetailsModelUploadNotificationConfirmationType? UploadNotificationConfirmationType { get; set; } = default!;
 
         /// <summary>
         /// Describes how often batch notifications are sent.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("uploadNotificationConfirmationTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? UploadNotificationConfirmationTime { get; set; }
+        public int? UploadNotificationConfirmationTime { get; set; } = default!;
 
         /// <summary>
         /// Describes what kind of new file notifications are used in this folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("newFileNotificationType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderDetailsModelNewFileNotificationType? NewFileNotificationType { get; set; }
+        public FolderDetailsModelNewFileNotificationType? NewFileNotificationType { get; set; } = default!;
 
         /// <summary>
         /// Describes how often new file batch notifications are sent.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("newFileNotificationTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? NewFileNotificationTime { get; set; }
+        public int? NewFileNotificationTime { get; set; } = default!;
 
         /// <summary>
         /// Describes the unit of measurement for notifying the sender when the files have not been downloaded.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("alertSenderFileIsNotDownloadedTimeType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderDetailsModelAlertSenderFileIsNotDownloadedTimeType? AlertSenderFileIsNotDownloadedTimeType { get; set; }
+        public FolderDetailsModelAlertSenderFileIsNotDownloadedTimeType? AlertSenderFileIsNotDownloadedTimeType { get; set; } = default!;
 
         /// <summary>
         /// Describes after how many minutes, hours, days, depending on the value of {MOVEit.DMZ.WebApi.Models.Folders.FolderDetailsModel.AlertSenderFileIsNotDownloadedTimeType},
         /// <br/>the sender will receive the notifiation that the sent files have not been downloaded.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("alertSenderFileIsNotDownloadedTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? AlertSenderFileIsNotDownloadedTime { get; set; }
+        public int? AlertSenderFileIsNotDownloadedTime { get; set; } = default!;
 
         /// <summary>
         /// Describes what kind of delivery recipient notifications are used in this folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("deliveryRecepientNotificationType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderDetailsModelDeliveryRecepientNotificationType? DeliveryRecepientNotificationType { get; set; }
+        public FolderDetailsModelDeliveryRecepientNotificationType? DeliveryRecepientNotificationType { get; set; } = default!;
 
         /// <summary>
         /// For webpost folders, the webpost completion and redirection setting.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("responseType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderDetailsModelResponseType? ResponseType { get; set; }
+        public FolderDetailsModelResponseType? ResponseType { get; set; } = default!;
 
         /// <summary>
         /// For webpost folders, text to display after a post to this folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("responseText", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ResponseText { get; set; }
+        public string? ResponseText { get; set; } = default!;
 
         /// <summary>
         /// For webpost folders, the time after which redirection occurs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("responseTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? ResponseTime { get; set; }
+        public int? ResponseTime { get; set; } = default!;
 
         /// <summary>
         /// The maximum amount of time, in days, that files in this folder are considered "new".
         /// </summary>
         [Newtonsoft.Json.JsonProperty("newTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? NewTime { get; set; }
+        public int? NewTime { get; set; } = default!;
 
         /// <summary>
         /// Indicates whether files in this folder must have unique names.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("enforceUniqueFilenames", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? EnforceUniqueFilenames { get; set; }
+        public bool? EnforceUniqueFilenames { get; set; } = default!;
 
         /// <summary>
         /// Indicates whether files of the same name will silently overwrite existing files of the same name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("allowFileOverwrite", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? AllowFileOverwrite { get; set; }
+        public bool? AllowFileOverwrite { get; set; } = default!;
 
         /// <summary>
         /// Indicates whether the folder inherits its permissions from its parent folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("parentInheritRights", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? ParentInheritRights { get; set; }
+        public int? ParentInheritRights { get; set; } = default!;
 
         /// <summary>
         /// The folder quota, if any, in bytes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("quota", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Quota { get; set; }
+        public long? Quota { get; set; } = default!;
 
         /// <summary>
         /// Indicates whether files uploaded to the folder that match the configured filemasks will be allowed or denied.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fileMaskRule", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderDetailsModelFileMaskRule? FileMaskRule { get; set; }
+        public FolderDetailsModelFileMaskRule? FileMaskRule { get; set; } = default!;
 
         /// <summary>
         /// Comma-delimited list of filemasks which all files uploaded to the folder will be matched against.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fileMasks", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FileMasks { get; set; }
+        public string? FileMasks { get; set; } = default!;
 
         /// <summary>
         /// The unique ID of this folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// The ID of this folder's parent folder or "0" if it does not have a parent folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("parentId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? ParentId { get; set; }
+        public int? ParentId { get; set; } = default!;
 
         /// <summary>
         /// The (short) name of this folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Last time the folder content changed
         /// </summary>
         [Newtonsoft.Json.JsonProperty("lastContentChangeTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string LastContentChangeTime { get; set; }
+        public string? LastContentChangeTime { get; set; } = default!;
 
         /// <summary>
         /// Indicates what kind of folder this is.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderDetailsModelFolderType? FolderType { get; set; }
+        public FolderDetailsModelFolderType? FolderType { get; set; } = default!;
 
         /// <summary>
         /// The (long) name of this folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("path", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Path { get; set; }
+        public string? Path { get; set; } = default!;
 
         /// <summary>
         /// Indicates whether this folder is shared with someone
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isShared", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsShared { get; set; }
+        public bool? IsShared { get; set; } = default!;
 
         /// <summary>
         /// A MOVEit Permission describing the currently authorized user's permissions on this folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("permission", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public IFolderPermission Permission { get; set; }
+        public IFolderPermission? Permission { get; set; } = default!;
 
         /// <summary>
         /// Number of subfolders in this folder
         /// </summary>
         [Newtonsoft.Json.JsonProperty("subfolderCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? SubfolderCount { get; set; }
+        public int? SubfolderCount { get; set; } = default!;
 
         /// <summary>
         /// Number of files in this folder
         /// </summary>
         [Newtonsoft.Json.JsonProperty("totalFileCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? TotalFileCount { get; set; }
+        public int? TotalFileCount { get; set; } = default!;
 
         /// <summary>
         /// Number of users this folder is shared with
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sharedWithUsersCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? SharedWithUsersCount { get; set; }
+        public int? SharedWithUsersCount { get; set; } = default!;
 
         /// <summary>
         /// Number of groups this folder is shared with
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sharedWithGroupsCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? SharedWithGroupsCount { get; set; }
+        public int? SharedWithGroupsCount { get; set; } = default!;
 
     }
 
@@ -14751,43 +13566,43 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Parent Folder ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Field to sort by; Default is name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
         /// <summary>
         /// File Name mask to search by
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Filter new files
         /// </summary>
         [Newtonsoft.Json.JsonProperty("newOnly", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? NewOnly { get; set; }
+        public bool? NewOnly { get; set; } = default!;
 
     }
 
@@ -14798,19 +13613,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Upload type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("uploadType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UploadType { get; set; }
+        public string? UploadType { get; set; } = default!;
 
         /// <summary>
         /// Folder ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// File path hash for getting proper folder relations
         /// </summary>
         [Newtonsoft.Json.JsonProperty("pathHash", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PathHash { get; set; }
+        public string? PathHash { get; set; } = default!;
 
     }
 
@@ -14821,13 +13636,13 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class ResumableFileUploadModel
     {
         [Newtonsoft.Json.JsonProperty("fileId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FileId { get; set; }
+        public string? FileId { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("bytes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Bytes { get; set; }
+        public long? Bytes { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("maxChunkSize", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? MaxChunkSize { get; set; }
+        public long? MaxChunkSize { get; set; } = default!;
 
     }
 
@@ -14838,43 +13653,43 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Parent Folder ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// Parent Folder path hash
         /// </summary>
         [Newtonsoft.Json.JsonProperty("pathHash", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PathHash { get; set; }
+        public string? PathHash { get; set; } = default!;
 
         /// <summary>
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Field to sort by; (type, time, size or name); Sorting order starts with type and ends with name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
         /// <summary>
         /// Name mask to search by
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
     }
 
@@ -14888,19 +13703,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<FolderContentItemModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<FolderContentItemModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -14914,57 +13729,57 @@ namespace Infrastructure.ApiClients.MoveIt
         /// ID of the item.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// The ID of the parent folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("parentId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? ParentId { get; set; }
+        public int? ParentId { get; set; } = default!;
 
         /// <summary>
         /// Content Type.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderContentItemModelType? Type { get; set; }
+        public FolderContentItemModelType? Type { get; set; } = default!;
 
         /// <summary>
         /// The name of this item.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Last time this item changed
         /// </summary>
         [Newtonsoft.Json.JsonProperty("lastUpdateTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string LastUpdateTime { get; set; }
+        public string? LastUpdateTime { get; set; } = default!;
 
         /// <summary>
         /// Path to this item.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("path", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Path { get; set; }
+        public string? Path { get; set; } = default!;
 
         /// <summary>
         /// Size of this item in bytes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("size", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Size { get; set; }
+        public long? Size { get; set; } = default!;
 
         /// <summary>
         /// Indicates what kind of folder this is.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderContentItemModelFolderType? FolderType { get; set; }
+        public FolderContentItemModelFolderType? FolderType { get; set; } = default!;
 
         /// <summary>
         /// Indicates whether folder has been shared with someone.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isShared", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsShared { get; set; }
+        public bool? IsShared { get; set; } = default!;
 
     }
 
@@ -14978,40 +13793,40 @@ namespace Infrastructure.ApiClients.MoveIt
         /// File name mask for filtering list of Folders
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// File path mask for filtering list of Folders
         /// </summary>
         [Newtonsoft.Json.JsonProperty("path", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Path { get; set; }
+        public string? Path { get; set; } = default!;
 
         /// <summary>
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Name of field to sort the results by. (Name, Type or Path); Default is Path.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("sharedTo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> SharedTo { get; set; }
+        public System.Collections.Generic.ICollection<string>? SharedTo { get; set; } = default!;
 
     }
 
@@ -15023,19 +13838,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <br/>and subfolders in the folder details results.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("skipCounts", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? SkipCounts { get; set; }
+        public bool? SkipCounts { get; set; } = default!;
 
         /// <summary>
         /// Folder ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// File path hash for getting proper folder relations
         /// </summary>
         [Newtonsoft.Json.JsonProperty("pathHash", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PathHash { get; set; }
+        public string? PathHash { get; set; } = default!;
 
     }
 
@@ -15049,19 +13864,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// New file name to set.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// New file description to set.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Description { get; set; }
+        public string? Description { get; set; } = default!;
 
         /// <summary>
         /// Inherit Access From Parent.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("inheritAccess", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? InheritAccess { get; set; }
+        public bool? InheritAccess { get; set; } = default!;
 
     }
 
@@ -15072,13 +13887,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Folder ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// File path hash for getting proper folder relations
         /// </summary>
         [Newtonsoft.Json.JsonProperty("pathHash", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PathHash { get; set; }
+        public string? PathHash { get; set; } = default!;
 
     }
 
@@ -15089,37 +13904,37 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Field to sort by; Default is name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
         /// <summary>
         /// Folder ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// File path hash for getting proper folder relations
         /// </summary>
         [Newtonsoft.Json.JsonProperty("pathHash", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PathHash { get; set; }
+        public string? PathHash { get; set; } = default!;
 
     }
 
@@ -15133,19 +13948,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<FolderAclEntryResourceModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<FolderAclEntryResourceModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -15160,50 +13975,50 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Name of the entity referenced by the entry.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Type of the entry.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderAclEntryResourceModelType? Type { get; set; }
+        public FolderAclEntryResourceModelType? Type { get; set; } = default!;
 
         /// <summary>
         /// ID of the entity referenced by the entry.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// ID of the access control entry.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("entryId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string EntryId { get; set; }
+        public string? EntryId { get; set; } = default!;
 
         /// <summary>
         /// Is home folder user permissions.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isHomeFolderUser", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsHomeFolderUser { get; set; }
+        public bool? IsHomeFolderUser { get; set; } = default!;
 
         /// <summary>
         /// Is permissions can be edited by the current user.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isEditable", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsEditable { get; set; }
+        public bool? IsEditable { get; set; } = default!;
 
         /// <summary>
         /// Is permissions can be deleted by the current user.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isDeletable", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsDeletable { get; set; }
+        public bool? IsDeletable { get; set; } = default!;
 
         /// <summary>
         /// Permissions set on the entry.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("permissions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public FolderAclPermissionsModel Permissions { get; set; }
+        public FolderAclPermissionsModel? Permissions { get; set; } = default!;
 
     }
 
@@ -15211,34 +14026,34 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class FolderAclPermissionsModel
     {
         [Newtonsoft.Json.JsonProperty("readFiles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ReadFiles { get; set; }
+        public bool? ReadFiles { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("writeFiles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? WriteFiles { get; set; }
+        public bool? WriteFiles { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("deleteFiles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? DeleteFiles { get; set; }
+        public bool? DeleteFiles { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("listFiles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ListFiles { get; set; }
+        public bool? ListFiles { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("notify", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? Notify { get; set; }
+        public bool? Notify { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("addDeleteSubfolders", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? AddDeleteSubfolders { get; set; }
+        public bool? AddDeleteSubfolders { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("share", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? Share { get; set; }
+        public bool? Share { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("sharePermissions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public FolderShareAclPermissionsModel SharePermissions { get; set; }
+        public FolderShareAclPermissionsModel? SharePermissions { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("admin", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? Admin { get; set; }
+        public bool? Admin { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("listUsers", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ListUsers { get; set; }
+        public bool? ListUsers { get; set; } = default!;
 
     }
 
@@ -15246,22 +14061,22 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class FolderShareAclPermissionsModel
     {
         [Newtonsoft.Json.JsonProperty("readFiles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ReadFiles { get; set; }
+        public bool? ReadFiles { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("writeFiles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? WriteFiles { get; set; }
+        public bool? WriteFiles { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("deleteFiles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? DeleteFiles { get; set; }
+        public bool? DeleteFiles { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("listFiles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ListFiles { get; set; }
+        public bool? ListFiles { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("notify", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? Notify { get; set; }
+        public bool? Notify { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("listUsers", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ListUsers { get; set; }
+        public bool? ListUsers { get; set; } = default!;
 
     }
 
@@ -15273,26 +14088,26 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("overrideBehaviourType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public PutFolderAclEntryRequestModelOverrideBehaviourType? OverrideBehaviourType { get; set; }
+        public PutFolderAclEntryRequestModelOverrideBehaviourType? OverrideBehaviourType { get; set; } = default!;
 
         /// <summary>
         /// Type of the entry.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public PutFolderAclEntryRequestModelType? Type { get; set; }
+        public PutFolderAclEntryRequestModelType? Type { get; set; } = default!;
 
         /// <summary>
         /// ID of the entity referenced by the entry.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// Permissions set on the entry.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("permissions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public FolderAclPermissionsModel Permissions { get; set; }
+        public FolderAclPermissionsModel? Permissions { get; set; } = default!;
 
     }
 
@@ -15303,26 +14118,26 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Optional notification message.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("notificationMessage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string NotificationMessage { get; set; }
+        public string? NotificationMessage { get; set; } = default!;
 
         /// <summary>
         /// Type of the entry.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public SetFolderAclEntryRequestModelType? Type { get; set; }
+        public SetFolderAclEntryRequestModelType? Type { get; set; } = default!;
 
         /// <summary>
         /// ID of the entity referenced by the entry.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// Permissions set on the entry.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("permissions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public FolderAclPermissionsModel Permissions { get; set; }
+        public FolderAclPermissionsModel? Permissions { get; set; } = default!;
 
     }
 
@@ -15338,13 +14153,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public DeleteFolderAclEntryRequestModelType? Type { get; set; }
+        public DeleteFolderAclEntryRequestModelType? Type { get; set; } = default!;
 
         /// <summary>
         /// ID of the entity referenced by the entry.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
     }
 
@@ -15352,7 +14167,7 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class FolderCopyMoveModel
     {
         [Newtonsoft.Json.JsonProperty("destinationFolderId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? DestinationFolderId { get; set; }
+        public int? DestinationFolderId { get; set; } = default!;
 
     }
 
@@ -15361,19 +14176,19 @@ namespace Infrastructure.ApiClients.MoveIt
     {
         [Newtonsoft.Json.JsonProperty("rule", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UpdateFolderFileMasksSettingsModelRule? Rule { get; set; }
+        public UpdateFolderFileMasksSettingsModelRule? Rule { get; set; } = default!;
 
         /// <summary>
         /// List of filemasks.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("masks", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> Masks { get; set; }
+        public System.Collections.Generic.ICollection<string>? Masks { get; set; } = default!;
 
         /// <summary>
         /// Apply changes to subfolders.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("applyToSubfolders", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ApplyToSubfolders { get; set; }
+        public bool? ApplyToSubfolders { get; set; } = default!;
 
     }
 
@@ -15385,13 +14200,13 @@ namespace Infrastructure.ApiClients.MoveIt
     {
         [Newtonsoft.Json.JsonProperty("rule", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderFileMasksSettingsModelRule? Rule { get; set; }
+        public FolderFileMasksSettingsModelRule? Rule { get; set; } = default!;
 
         /// <summary>
         /// List of filemasks.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("masks", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> Masks { get; set; }
+        public System.Collections.Generic.ICollection<string>? Masks { get; set; } = default!;
 
     }
 
@@ -15399,19 +14214,19 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class UpdateFolderMaintenanceSettingsModel
     {
         [Newtonsoft.Json.JsonProperty("folderCleanup", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public FolderCleanup FolderCleanup { get; set; }
+        public FolderCleanup? FolderCleanup { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("displayNewFilesForDays", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? DisplayNewFilesForDays { get; set; }
+        public int? DisplayNewFilesForDays { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("folderQuota", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public FolderQuota FolderQuota { get; set; }
+        public FolderQuota? FolderQuota { get; set; } = default!;
 
         /// <summary>
         /// Apply changes to subfolders.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("applyToSubfolders", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ApplyToSubfolders { get; set; }
+        public bool? ApplyToSubfolders { get; set; } = default!;
 
     }
 
@@ -15419,13 +14234,13 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class FolderCleanup
     {
         [Newtonsoft.Json.JsonProperty("isCleanupEnabled", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsCleanupEnabled { get; set; }
+        public bool? IsCleanupEnabled { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("deleteOldFilesAfterDays", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? DeleteOldFilesAfterDays { get; set; }
+        public int? DeleteOldFilesAfterDays { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("deleteEmptySubfoldersAfterDays", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? DeleteEmptySubfoldersAfterDays { get; set; }
+        public int? DeleteEmptySubfoldersAfterDays { get; set; } = default!;
 
     }
 
@@ -15433,14 +14248,14 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class FolderQuota
     {
         [Newtonsoft.Json.JsonProperty("quota", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Quota { get; set; }
+        public long? Quota { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("quotaLevel", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderQuotaQuotaLevel? QuotaLevel { get; set; }
+        public FolderQuotaQuotaLevel? QuotaLevel { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("applyToFilesInSubfolders", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ApplyToFilesInSubfolders { get; set; }
+        public bool? ApplyToFilesInSubfolders { get; set; } = default!;
 
     }
 
@@ -15451,13 +14266,13 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class FolderMaintenanceSettingsModel
     {
         [Newtonsoft.Json.JsonProperty("folderCleanup", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public FolderCleanup FolderCleanup { get; set; }
+        public FolderCleanup? FolderCleanup { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("displayNewFilesForDays", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? DisplayNewFilesForDays { get; set; }
+        public int? DisplayNewFilesForDays { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("folderQuota", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public FolderQuota FolderQuota { get; set; }
+        public FolderQuota? FolderQuota { get; set; } = default!;
 
     }
 
@@ -15465,26 +14280,26 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class UpdateFolderMiscellaneousSettingsModel
     {
         [Newtonsoft.Json.JsonProperty("hideHistory", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? HideHistory { get; set; }
+        public bool? HideHistory { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("createThumbnails", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? CreateThumbnails { get; set; }
+        public bool? CreateThumbnails { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("enforceUniqueFilenames", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? EnforceUniqueFilenames { get; set; }
+        public bool? EnforceUniqueFilenames { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("allowFileOverwrite", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? AllowFileOverwrite { get; set; }
+        public bool? AllowFileOverwrite { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("customSortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UpdateFolderMiscellaneousSettingsModelCustomSortField? CustomSortField { get; set; }
+        public UpdateFolderMiscellaneousSettingsModelCustomSortField? CustomSortField { get; set; } = default!;
 
         /// <summary>
         /// Apply changes to subfolders.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("applyToSubfolders", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ApplyToSubfolders { get; set; }
+        public bool? ApplyToSubfolders { get; set; } = default!;
 
     }
 
@@ -15499,45 +14314,45 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("notificationStyle", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UpdateFolderNotificationSettingsModelNotificationStyle? NotificationStyle { get; set; }
+        public UpdateFolderNotificationSettingsModelNotificationStyle? NotificationStyle { get; set; } = default!;
 
         /// <summary>
         /// Upload Confirmation to Sender. Set -1 to turn off, 0 to send immediately or positive number (in minutes).
         /// </summary>
         [Newtonsoft.Json.JsonProperty("uploadConfirmationToSenderTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? UploadConfirmationToSenderTime { get; set; }
+        public int? UploadConfirmationToSenderTime { get; set; } = default!;
 
         /// <summary>
         /// New File Alert to Recipient. Set -1 to turn off, 0 to send immediately or positive number (in minutes).
         /// </summary>
         [Newtonsoft.Json.JsonProperty("newFileAlertToRecipientTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? NewFileAlertToRecipientTime { get; set; }
+        public int? NewFileAlertToRecipientTime { get; set; } = default!;
 
         /// <summary>
         /// Delivery Receipt to Sender.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("deliveryReceiptToSender", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UpdateFolderNotificationSettingsModelDeliveryReceiptToSender? DeliveryReceiptToSender { get; set; }
+        public UpdateFolderNotificationSettingsModelDeliveryReceiptToSender? DeliveryReceiptToSender { get; set; } = default!;
 
         /// <summary>
         /// Alert Sender if File is Not Downloaded. Set -1 to turn off or positive number.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("alertSenderFileIsNotDownloadedTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? AlertSenderFileIsNotDownloadedTime { get; set; }
+        public int? AlertSenderFileIsNotDownloadedTime { get; set; } = default!;
 
         /// <summary>
         /// Alert Sender if File is Not Downloaded time type. Used with "DeliveryReceiptToSender" set not to -1.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("alertSenderFileIsNotDownloadedTimeType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UpdateFolderNotificationSettingsModelAlertSenderFileIsNotDownloadedTimeType? AlertSenderFileIsNotDownloadedTimeType { get; set; }
+        public UpdateFolderNotificationSettingsModelAlertSenderFileIsNotDownloadedTimeType? AlertSenderFileIsNotDownloadedTimeType { get; set; } = default!;
 
         /// <summary>
         /// Apply changes to subfolders.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("applyToSubfolders", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ApplyToSubfolders { get; set; }
+        public bool? ApplyToSubfolders { get; set; } = default!;
 
     }
 
@@ -15548,25 +14363,25 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class FolderNotificationSettingsModel
     {
         [Newtonsoft.Json.JsonProperty("uploadConfirmationToSenderTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? UploadConfirmationToSenderTime { get; set; }
+        public int? UploadConfirmationToSenderTime { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("newFileAlertToRecipientTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? NewFileAlertToRecipientTime { get; set; }
+        public int? NewFileAlertToRecipientTime { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("deliveryReceiptToSender", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderNotificationSettingsModelDeliveryReceiptToSender? DeliveryReceiptToSender { get; set; }
+        public FolderNotificationSettingsModelDeliveryReceiptToSender? DeliveryReceiptToSender { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("alertSenderFileIsNotDownloadedTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? AlertSenderFileIsNotDownloadedTime { get; set; }
+        public int? AlertSenderFileIsNotDownloadedTime { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("alertSenderFileIsNotDownloadedTimeType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderNotificationSettingsModelAlertSenderFileIsNotDownloadedTimeType? AlertSenderFileIsNotDownloadedTimeType { get; set; }
+        public FolderNotificationSettingsModelAlertSenderFileIsNotDownloadedTimeType? AlertSenderFileIsNotDownloadedTimeType { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("notificationStyle", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderNotificationSettingsModelNotificationStyle? NotificationStyle { get; set; }
+        public FolderNotificationSettingsModelNotificationStyle? NotificationStyle { get; set; } = default!;
 
     }
 
@@ -15582,13 +14397,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("overrideBehaviourType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UpdateFolderAclEntryRequestModelOverrideBehaviourType? OverrideBehaviourType { get; set; }
+        public UpdateFolderAclEntryRequestModelOverrideBehaviourType? OverrideBehaviourType { get; set; } = default!;
 
         /// <summary>
         /// Permissions set on the entry.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("permissions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public FolderAclPermissionsModel Permissions { get; set; }
+        public FolderAclPermissionsModel? Permissions { get; set; } = default!;
 
     }
 
@@ -15603,32 +14418,32 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("charSet", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UpdateFolderCharacterRestrictionsModelCharSet? CharSet { get; set; }
+        public UpdateFolderCharacterRestrictionsModelCharSet? CharSet { get; set; } = default!;
 
         /// <summary>
         /// Custom character set. Use with "CustomDisallow" or "CustomAllow" CharSet.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("customCharSet", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string CustomCharSet { get; set; }
+        public string? CustomCharSet { get; set; } = default!;
 
         /// <summary>
         /// Replace illegal characters.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("replaceIllegalCharacters", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ReplaceIllegalCharacters { get; set; }
+        public bool? ReplaceIllegalCharacters { get; set; } = default!;
 
         /// <summary>
         /// Automatically replace illegal characters with the value.
         /// <br/>Use the [CharID] macro to return the illegal character's hexadecimal code point value.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("replacementValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ReplacementValue { get; set; }
+        public string? ReplacementValue { get; set; } = default!;
 
         /// <summary>
         /// Apply changes to subfolders.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("applyToSubfolders", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ApplyToSubfolders { get; set; }
+        public bool? ApplyToSubfolders { get; set; } = default!;
 
     }
 
@@ -15643,13 +14458,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("charSet", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public FolderCharacterRestrictionsModelCharSet? CharSet { get; set; }
+        public FolderCharacterRestrictionsModelCharSet? CharSet { get; set; } = default!;
 
         /// <summary>
         /// Custom character set.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("customCharSet", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string CustomCharSet { get; set; }
+        public string? CustomCharSet { get; set; } = default!;
 
     }
 
@@ -15663,13 +14478,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
     }
 
@@ -15683,19 +14498,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<GroupModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<GroupModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -15709,25 +14524,25 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Unique ID for this group.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// Amount of users, who are members of this particular group.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("membersCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? MembersCount { get; set; }
+        public int? MembersCount { get; set; } = default!;
 
         /// <summary>
         /// Name of the group.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Additional information, related to the group.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Description { get; set; }
+        public string? Description { get; set; } = default!;
 
     }
 
@@ -15738,13 +14553,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Name of the group.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Additional information, related to the group.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Description { get; set; }
+        public string? Description { get; set; } = default!;
 
     }
 
@@ -15755,19 +14570,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Group ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
     }
 
@@ -15781,19 +14596,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SimpleUserModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<SimpleUserModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -15804,13 +14619,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Group ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// List of user ids
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> UserIds { get; set; }
+        public System.Collections.Generic.ICollection<string>? UserIds { get; set; } = default!;
 
     }
 
@@ -15821,13 +14636,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Group ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// User ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UserId { get; set; }
+        public string? UserId { get; set; } = default!;
 
     }
 
@@ -15838,7 +14653,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Log ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Id { get; set; }
+        public long? Id { get; set; } = default!;
 
     }
 
@@ -15852,199 +14667,199 @@ namespace Infrastructure.ApiClients.MoveIt
         /// DLP metadata
         /// </summary>
         [Newtonsoft.Json.JsonProperty("dlpMetadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string DlpMetadata { get; set; }
+        public string? DlpMetadata { get; set; } = default!;
 
         /// <summary>
         /// Web farm node
         /// </summary>
         [Newtonsoft.Json.JsonProperty("webFarmNode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? WebFarmNode { get; set; }
+        public int? WebFarmNode { get; set; } = default!;
 
         /// <summary>
         /// Certificate
         /// </summary>
         [Newtonsoft.Json.JsonProperty("certificate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Certificate Certificate { get; set; }
+        public Certificate? Certificate { get; set; } = default!;
 
         /// <summary>
         /// Content scanner name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("contentScannerName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ContentScannerName { get; set; }
+        public string? ContentScannerName { get; set; } = default!;
 
         /// <summary>
         /// Interface type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("interfaceType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string InterfaceType { get; set; }
+        public string? InterfaceType { get; set; } = default!;
 
         /// <summary>
         /// Parameter 1
         /// </summary>
         [Newtonsoft.Json.JsonProperty("parm1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Parm1 { get; set; }
+        public string? Parm1 { get; set; } = default!;
 
         /// <summary>
         /// Parameter 2
         /// </summary>
         [Newtonsoft.Json.JsonProperty("parm2", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Parm2 { get; set; }
+        public string? Parm2 { get; set; } = default!;
 
         /// <summary>
         /// Parameter 3
         /// </summary>
         [Newtonsoft.Json.JsonProperty("parm3", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Parm3 { get; set; }
+        public string? Parm3 { get; set; } = default!;
 
         /// <summary>
         /// Parameter 4
         /// </summary>
         [Newtonsoft.Json.JsonProperty("parm4", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Parm4 { get; set; }
+        public string? Parm4 { get; set; } = default!;
 
         /// <summary>
         /// Log id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Id { get; set; }
+        public long? Id { get; set; } = default!;
 
         /// <summary>
         /// Log date and time
         /// </summary>
         [Newtonsoft.Json.JsonProperty("logTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string LogTime { get; set; }
+        public string? LogTime { get; set; } = default!;
 
         /// <summary>
         /// Upload comment
         /// </summary>
         [Newtonsoft.Json.JsonProperty("uploadNotes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UploadNotes { get; set; }
+        public string? UploadNotes { get; set; } = default!;
 
         /// <summary>
         /// Filename
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fileName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FileName { get; set; }
+        public string? FileName { get; set; } = default!;
 
         /// <summary>
         /// File Id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fileID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FileID { get; set; }
+        public string? FileID { get; set; } = default!;
 
         /// <summary>
         /// Folder id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? FolderID { get; set; }
+        public int? FolderID { get; set; } = default!;
 
         /// <summary>
         /// Folder path
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderPath", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FolderPath { get; set; }
+        public string? FolderPath { get; set; } = default!;
 
         /// <summary>
         /// Virtual folder id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("virtualFolderID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? VirtualFolderID { get; set; }
+        public int? VirtualFolderID { get; set; } = default!;
 
         /// <summary>
         /// Virtual folder path
         /// </summary>
         [Newtonsoft.Json.JsonProperty("virtualFolderPath", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string VirtualFolderPath { get; set; }
+        public string? VirtualFolderPath { get; set; } = default!;
 
         /// <summary>
         /// Rate
         /// </summary>
         [Newtonsoft.Json.JsonProperty("rate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public double? Rate { get; set; }
+        public double? Rate { get; set; } = default!;
 
         /// <summary>
         /// Duration
         /// </summary>
         [Newtonsoft.Json.JsonProperty("duration", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public double? Duration { get; set; }
+        public double? Duration { get; set; } = default!;
 
         /// <summary>
         /// Transfer size
         /// </summary>
         [Newtonsoft.Json.JsonProperty("transferSize", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? TransferSize { get; set; }
+        public long? TransferSize { get; set; } = default!;
 
         /// <summary>
         /// User id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("username", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Username { get; set; }
+        public string? Username { get; set; } = default!;
 
         /// <summary>
         /// User login name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userLoginName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UserLoginName { get; set; }
+        public string? UserLoginName { get; set; } = default!;
 
         /// <summary>
         /// User fullname
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userFullName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UserFullName { get; set; }
+        public string? UserFullName { get; set; } = default!;
 
         /// <summary>
         /// Target id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("targetID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TargetID { get; set; }
+        public string? TargetID { get; set; } = default!;
 
         /// <summary>
         /// Target name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("targetName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TargetName { get; set; }
+        public string? TargetName { get; set; } = default!;
 
         /// <summary>
         /// IP Address
         /// </summary>
         [Newtonsoft.Json.JsonProperty("ipAddress", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string IpAddress { get; set; }
+        public string? IpAddress { get; set; } = default!;
 
         /// <summary>
         /// Log Action
         /// </summary>
         [Newtonsoft.Json.JsonProperty("action", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Action { get; set; }
+        public string? Action { get; set; } = default!;
 
         /// <summary>
         /// Client brand
         /// </summary>
         [Newtonsoft.Json.JsonProperty("agentBrand", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string AgentBrand { get; set; }
+        public string? AgentBrand { get; set; } = default!;
 
         /// <summary>
         /// Client version
         /// </summary>
         [Newtonsoft.Json.JsonProperty("agentVersion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string AgentVersion { get; set; }
+        public string? AgentVersion { get; set; } = default!;
 
         /// <summary>
         /// Log message
         /// </summary>
         [Newtonsoft.Json.JsonProperty("message", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Message { get; set; }
+        public string? Message { get; set; } = default!;
 
         /// <summary>
         /// Error code
         /// </summary>
         [Newtonsoft.Json.JsonProperty("errorCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? ErrorCode { get; set; }
+        public int? ErrorCode { get; set; } = default!;
 
         /// <summary>
         /// Organization id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orgID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OrgID { get; set; }
+        public int? OrgID { get; set; } = default!;
 
     }
 
@@ -16052,34 +14867,34 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class Certificate
     {
         [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Type { get; set; }
+        public string? Type { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("subject", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Subject { get; set; }
+        public string? Subject { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("cn", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Cn { get; set; }
+        public string? Cn { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("issuer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Issuer { get; set; }
+        public string? Issuer { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("issuerCN", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string IssuerCN { get; set; }
+        public string? IssuerCN { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("thumbprint", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Thumbprint { get; set; }
+        public string? Thumbprint { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("validAfter", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ValidAfter { get; set; }
+        public string? ValidAfter { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("validUntil", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ValidUntil { get; set; }
+        public string? ValidUntil { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("subjectAlternativeName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SubjectAlternativeName { get; set; }
+        public string? SubjectAlternativeName { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("principalName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PrincipalName { get; set; }
+        public string? PrincipalName { get; set; } = default!;
 
     }
 
@@ -16090,37 +14905,37 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Name of field to sort the results by. (logtime, action, username, userrealname, targetname, filename, fileid, folderpath, xfersize, duration, rate, ipaddress, agentbrand, resilnode); Default is logtime.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
         /// <summary>
         /// Start Date/Time (MM-dd-yy, MM-dd-yyyy, MM-dd-yyyy HH:mm:ss, MM/dd/yyyy, MM/dd/yyyy HH:mm etc.)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("startDateTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string StartDateTime { get; set; }
+        public string? StartDateTime { get; set; } = default!;
 
         /// <summary>
         /// End Date/Time (MM-dd-yy, MM-dd-yyyy, MM-dd-yyyy HH:mm:ss, MM/dd/yyyy, MM/dd/yyyy HH:mm etc.)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("endDateTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string EndDateTime { get; set; }
+        public string? EndDateTime { get; set; } = default!;
 
         /// <summary>
         /// Name of action to filter by
@@ -16133,25 +14948,25 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Show usernames like this (For admin users only)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userNameContains", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UserNameContains { get; set; }
+        public string? UserNameContains { get; set; } = default!;
 
         /// <summary>
         /// Show only this user id (For admin users only. For non admin users current user ID is used.)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UserId { get; set; }
+        public string? UserId { get; set; } = default!;
 
         /// <summary>
         /// Show file IDs like this
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fileIdContains", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FileIdContains { get; set; }
+        public string? FileIdContains { get; set; } = default!;
 
         /// <summary>
         /// Show file names like this
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fileNameContains", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FileNameContains { get; set; }
+        public string? FileNameContains { get; set; } = default!;
 
         /// <summary>
         /// File size comparison selection
@@ -16164,31 +14979,31 @@ namespace Infrastructure.ApiClients.MoveIt
         /// File size (in KB)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("size", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Size { get; set; }
+        public string? Size { get; set; } = default!;
 
         /// <summary>
         /// Show only this Folder id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FolderId { get; set; }
+        public string? FolderId { get; set; } = default!;
 
         /// <summary>
         /// Show folder path like this
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderPathContains", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FolderPathContains { get; set; }
+        public string? FolderPathContains { get; set; } = default!;
 
         /// <summary>
         /// Show IP address like this
         /// </summary>
         [Newtonsoft.Json.JsonProperty("ipContains", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string IpContains { get; set; }
+        public string? IpContains { get; set; } = default!;
 
         /// <summary>
         /// Show Agent Brand like this
         /// </summary>
         [Newtonsoft.Json.JsonProperty("agentBrandContains", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string AgentBrandContains { get; set; }
+        public string? AgentBrandContains { get; set; } = default!;
 
         /// <summary>
         /// Filter Success/Errors
@@ -16201,19 +15016,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Suppress sign on/ sign off. Default is true
         /// </summary>
         [Newtonsoft.Json.JsonProperty("suppressSigns", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? SuppressSigns { get; set; }
+        public bool? SuppressSigns { get; set; } = default!;
 
         /// <summary>
         /// Suppress email notes. Default is true
         /// </summary>
         [Newtonsoft.Json.JsonProperty("suppressEmailNotes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? SuppressEmailNotes { get; set; }
+        public bool? SuppressEmailNotes { get; set; } = default!;
 
         /// <summary>
         /// Suppress log views. Default is true
         /// </summary>
         [Newtonsoft.Json.JsonProperty("suppressLogViews", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? SuppressLogViews { get; set; }
+        public bool? SuppressLogViews { get; set; } = default!;
 
     }
 
@@ -16227,19 +15042,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SimpleLogModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<SimpleLogModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -16253,145 +15068,145 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Log id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Id { get; set; }
+        public long? Id { get; set; } = default!;
 
         /// <summary>
         /// Log date and time
         /// </summary>
         [Newtonsoft.Json.JsonProperty("logTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string LogTime { get; set; }
+        public string? LogTime { get; set; } = default!;
 
         /// <summary>
         /// Upload comment
         /// </summary>
         [Newtonsoft.Json.JsonProperty("uploadNotes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UploadNotes { get; set; }
+        public string? UploadNotes { get; set; } = default!;
 
         /// <summary>
         /// Filename
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fileName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FileName { get; set; }
+        public string? FileName { get; set; } = default!;
 
         /// <summary>
         /// File Id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fileID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FileID { get; set; }
+        public string? FileID { get; set; } = default!;
 
         /// <summary>
         /// Folder id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? FolderID { get; set; }
+        public int? FolderID { get; set; } = default!;
 
         /// <summary>
         /// Folder path
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderPath", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FolderPath { get; set; }
+        public string? FolderPath { get; set; } = default!;
 
         /// <summary>
         /// Virtual folder id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("virtualFolderID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? VirtualFolderID { get; set; }
+        public int? VirtualFolderID { get; set; } = default!;
 
         /// <summary>
         /// Virtual folder path
         /// </summary>
         [Newtonsoft.Json.JsonProperty("virtualFolderPath", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string VirtualFolderPath { get; set; }
+        public string? VirtualFolderPath { get; set; } = default!;
 
         /// <summary>
         /// Rate
         /// </summary>
         [Newtonsoft.Json.JsonProperty("rate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public double? Rate { get; set; }
+        public double? Rate { get; set; } = default!;
 
         /// <summary>
         /// Duration
         /// </summary>
         [Newtonsoft.Json.JsonProperty("duration", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public double? Duration { get; set; }
+        public double? Duration { get; set; } = default!;
 
         /// <summary>
         /// Transfer size
         /// </summary>
         [Newtonsoft.Json.JsonProperty("transferSize", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? TransferSize { get; set; }
+        public long? TransferSize { get; set; } = default!;
 
         /// <summary>
         /// User id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("username", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Username { get; set; }
+        public string? Username { get; set; } = default!;
 
         /// <summary>
         /// User login name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userLoginName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UserLoginName { get; set; }
+        public string? UserLoginName { get; set; } = default!;
 
         /// <summary>
         /// User fullname
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userFullName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UserFullName { get; set; }
+        public string? UserFullName { get; set; } = default!;
 
         /// <summary>
         /// Target id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("targetID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TargetID { get; set; }
+        public string? TargetID { get; set; } = default!;
 
         /// <summary>
         /// Target name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("targetName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TargetName { get; set; }
+        public string? TargetName { get; set; } = default!;
 
         /// <summary>
         /// IP Address
         /// </summary>
         [Newtonsoft.Json.JsonProperty("ipAddress", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string IpAddress { get; set; }
+        public string? IpAddress { get; set; } = default!;
 
         /// <summary>
         /// Log Action
         /// </summary>
         [Newtonsoft.Json.JsonProperty("action", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Action { get; set; }
+        public string? Action { get; set; } = default!;
 
         /// <summary>
         /// Client brand
         /// </summary>
         [Newtonsoft.Json.JsonProperty("agentBrand", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string AgentBrand { get; set; }
+        public string? AgentBrand { get; set; } = default!;
 
         /// <summary>
         /// Client version
         /// </summary>
         [Newtonsoft.Json.JsonProperty("agentVersion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string AgentVersion { get; set; }
+        public string? AgentVersion { get; set; } = default!;
 
         /// <summary>
         /// Log message
         /// </summary>
         [Newtonsoft.Json.JsonProperty("message", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Message { get; set; }
+        public string? Message { get; set; } = default!;
 
         /// <summary>
         /// Error code
         /// </summary>
         [Newtonsoft.Json.JsonProperty("errorCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? ErrorCode { get; set; }
+        public int? ErrorCode { get; set; } = default!;
 
         /// <summary>
         /// Organization id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orgID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OrgID { get; set; }
+        public int? OrgID { get; set; } = default!;
 
     }
 
@@ -16411,92 +15226,92 @@ namespace Infrastructure.ApiClients.MoveIt
         /// The unique ID of this mailbox.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// The ID of this mailbox's parent folder or "0" if it does not have a parent mailbox.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("parentId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ParentId { get; set; }
+        public string? ParentId { get; set; } = default!;
 
         /// <summary>
         /// The (short) name of this mailbox.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Last time the mailbox content changed
         /// </summary>
         [Newtonsoft.Json.JsonProperty("lastContentChangeTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string LastContentChangeTime { get; set; }
+        public string? LastContentChangeTime { get; set; } = default!;
 
         /// <summary>
         /// Indicates what kind of folder this is.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public MailboxModelFolderType? FolderType { get; set; }
+        public MailboxModelFolderType? FolderType { get; set; } = default!;
 
         /// <summary>
         /// The (long) name of this mailbox.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("path", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Path { get; set; }
+        public string? Path { get; set; } = default!;
 
         /// <summary>
         /// Indicates whether this mailbox is shared with someone
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isShared", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsShared { get; set; }
+        public bool? IsShared { get; set; } = default!;
 
         /// <summary>
         /// Number of new packages
         /// </summary>
         [Newtonsoft.Json.JsonProperty("newPackagesCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? NewPackagesCount { get; set; }
+        public int? NewPackagesCount { get; set; } = default!;
 
         /// <summary>
         /// Number of all packages
         /// </summary>
         [Newtonsoft.Json.JsonProperty("allPackagesCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? AllPackagesCount { get; set; }
+        public int? AllPackagesCount { get; set; } = default!;
 
         /// <summary>
         /// Mailbox order index
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orderIndex", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OrderIndex { get; set; }
+        public int? OrderIndex { get; set; } = default!;
 
         /// <summary>
         /// Mailbox system type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("systemType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? SystemType { get; set; }
+        public int? SystemType { get; set; } = default!;
 
         /// <summary>
         /// Mailbox owner username
         /// </summary>
         [Newtonsoft.Json.JsonProperty("owner", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Owner { get; set; }
+        public string? Owner { get; set; } = default!;
 
         /// <summary>
         /// Mailbox relationship
         /// </summary>
         [Newtonsoft.Json.JsonProperty("relationship", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Relationship { get; set; }
+        public int? Relationship { get; set; } = default!;
 
         /// <summary>
         /// Mailbox owner login name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("ownerLoginName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string OwnerLoginName { get; set; }
+        public string? OwnerLoginName { get; set; } = default!;
 
         /// <summary>
         /// Mailbox owner real name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("ownerRealName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string OwnerRealName { get; set; }
+        public string? OwnerRealName { get; set; } = default!;
 
     }
 
@@ -16510,105 +15325,105 @@ namespace Infrastructure.ApiClients.MoveIt
         /// List of To recipients
         /// </summary>
         [Newtonsoft.Json.JsonProperty("toRecipients", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> ToRecipients { get; set; }
+        public System.Collections.Generic.ICollection<string>? ToRecipients { get; set; } = default!;
 
         /// <summary>
         /// Package id. The value is null for action operations
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// Organization id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orgId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OrgId { get; set; }
+        public int? OrgId { get; set; } = default!;
 
         /// <summary>
         /// Mailbox id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("mailboxId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string MailboxId { get; set; }
+        public string? MailboxId { get; set; } = default!;
 
         /// <summary>
         /// Mailbox time stamp
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sendStamp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SendStamp { get; set; }
+        public string? SendStamp { get; set; } = default!;
 
         /// <summary>
         /// Parent id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("parentId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ParentId { get; set; }
+        public string? ParentId { get; set; } = default!;
 
         /// <summary>
         /// Delivery receipts
         /// </summary>
         [Newtonsoft.Json.JsonProperty("deliveryReceipts", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? DeliveryReceipts { get; set; }
+        public bool? DeliveryReceipts { get; set; } = default!;
 
         /// <summary>
         /// Expiration hours
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expirationHours", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? ExpirationHours { get; set; }
+        public int? ExpirationHours { get; set; } = default!;
 
         /// <summary>
         /// True if package is recalled
         /// </summary>
         [Newtonsoft.Json.JsonProperty("recalled", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? Recalled { get; set; }
+        public bool? Recalled { get; set; } = default!;
 
         /// <summary>
         /// True if package is new
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isNew", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsNew { get; set; }
+        public bool? IsNew { get; set; } = default!;
 
         /// <summary>
         /// Package subject
         /// </summary>
         [Newtonsoft.Json.JsonProperty("subject", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Subject { get; set; }
+        public string? Subject { get; set; } = default!;
 
         /// <summary>
         /// Sender info
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sender", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public SimpleUserModel Sender { get; set; }
+        public SimpleUserModel? Sender { get; set; } = default!;
 
         /// <summary>
         /// Composer package type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("composerType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public SimplePackageModelComposerType? ComposerType { get; set; }
+        public SimplePackageModelComposerType? ComposerType { get; set; } = default!;
 
         /// <summary>
         /// File DLP violation info
         /// </summary>
         [Newtonsoft.Json.JsonProperty("dlpViolation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string DlpViolation { get; set; }
+        public string? DlpViolation { get; set; } = default!;
 
         /// <summary>
         /// When true, the package contains DLP violations that prevent it from being downloaded, according to currently configured DLP rules.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("dlpBlocked", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? DlpBlocked { get; set; }
+        public bool? DlpBlocked { get; set; } = default!;
 
         /// <summary>
         /// Package classification type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("packageClassificationType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public SimplePackageClassificationTypeModel PackageClassificationType { get; set; }
+        public SimplePackageClassificationTypeModel? PackageClassificationType { get; set; } = default!;
 
         /// <summary>
         /// Package read status
         /// </summary>
         [Newtonsoft.Json.JsonProperty("readStatus", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public SimplePackageModelReadStatus? ReadStatus { get; set; }
+        public SimplePackageModelReadStatus? ReadStatus { get; set; } = default!;
 
     }
 
@@ -16619,13 +15434,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Gets or sets id of classification type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// Gets or sets value of classification type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Value { get; set; }
+        public string? Value { get; set; } = default!;
 
     }
 
@@ -16639,13 +15454,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// New package mailbox to set
         /// </summary>
         [Newtonsoft.Json.JsonProperty("packageId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PackageId { get; set; }
+        public string? PackageId { get; set; } = default!;
 
         /// <summary>
         /// Source Mailbox Id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("mailboxId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string MailboxId { get; set; }
+        public string? MailboxId { get; set; } = default!;
 
     }
 
@@ -16659,136 +15474,136 @@ namespace Infrastructure.ApiClients.MoveIt
         /// If true body is secured
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isSecureBody", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsSecureBody { get; set; }
+        public bool? IsSecureBody { get; set; } = default!;
 
         /// <summary>
         /// List of attachments
         /// </summary>
         [Newtonsoft.Json.JsonProperty("attachments", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SimpleFileResourceModel> Attachments { get; set; }
+        public System.Collections.Generic.ICollection<SimpleFileResourceModel>? Attachments { get; set; } = default!;
 
         /// <summary>
         /// Package body
         /// </summary>
         [Newtonsoft.Json.JsonProperty("body", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Body { get; set; }
+        public string? Body { get; set; } = default!;
 
         /// <summary>
         /// Maximum downloads of attachment
         /// </summary>
         [Newtonsoft.Json.JsonProperty("maxAttachDownloads", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? MaxAttachDownloads { get; set; }
+        public int? MaxAttachDownloads { get; set; } = default!;
 
         /// <summary>
         /// List of recipients
         /// </summary>
         [Newtonsoft.Json.JsonProperty("recipients", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<Recipient> Recipients { get; set; }
+        public System.Collections.Generic.ICollection<Recipient>? Recipients { get; set; } = default!;
 
         /// <summary>
         /// Used to prevent reply
         /// </summary>
         [Newtonsoft.Json.JsonProperty("noReply", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public PackageDetailsModelNoReply? NoReply { get; set; }
+        public PackageDetailsModelNoReply? NoReply { get; set; } = default!;
 
         /// <summary>
         /// Package id. The value is null for action operations
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// Organization id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orgId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OrgId { get; set; }
+        public int? OrgId { get; set; } = default!;
 
         /// <summary>
         /// Mailbox id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("mailboxId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string MailboxId { get; set; }
+        public string? MailboxId { get; set; } = default!;
 
         /// <summary>
         /// Mailbox time stamp
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sendStamp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SendStamp { get; set; }
+        public string? SendStamp { get; set; } = default!;
 
         /// <summary>
         /// Parent id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("parentId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ParentId { get; set; }
+        public string? ParentId { get; set; } = default!;
 
         /// <summary>
         /// Delivery receipts
         /// </summary>
         [Newtonsoft.Json.JsonProperty("deliveryReceipts", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? DeliveryReceipts { get; set; }
+        public bool? DeliveryReceipts { get; set; } = default!;
 
         /// <summary>
         /// Expiration hours
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expirationHours", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? ExpirationHours { get; set; }
+        public int? ExpirationHours { get; set; } = default!;
 
         /// <summary>
         /// True if package is recalled
         /// </summary>
         [Newtonsoft.Json.JsonProperty("recalled", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? Recalled { get; set; }
+        public bool? Recalled { get; set; } = default!;
 
         /// <summary>
         /// True if package is new
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isNew", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsNew { get; set; }
+        public bool? IsNew { get; set; } = default!;
 
         /// <summary>
         /// Package subject
         /// </summary>
         [Newtonsoft.Json.JsonProperty("subject", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Subject { get; set; }
+        public string? Subject { get; set; } = default!;
 
         /// <summary>
         /// Sender info
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sender", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public SimpleUserModel Sender { get; set; }
+        public SimpleUserModel? Sender { get; set; } = default!;
 
         /// <summary>
         /// Composer package type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("composerType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public PackageDetailsModelComposerType? ComposerType { get; set; }
+        public PackageDetailsModelComposerType? ComposerType { get; set; } = default!;
 
         /// <summary>
         /// File DLP violation info
         /// </summary>
         [Newtonsoft.Json.JsonProperty("dlpViolation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string DlpViolation { get; set; }
+        public string? DlpViolation { get; set; } = default!;
 
         /// <summary>
         /// When true, the package contains DLP violations that prevent it from being downloaded, according to currently configured DLP rules.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("dlpBlocked", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? DlpBlocked { get; set; }
+        public bool? DlpBlocked { get; set; } = default!;
 
         /// <summary>
         /// Package classification type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("packageClassificationType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public SimplePackageClassificationTypeModel PackageClassificationType { get; set; }
+        public SimplePackageClassificationTypeModel? PackageClassificationType { get; set; } = default!;
 
         /// <summary>
         /// Package read status
         /// </summary>
         [Newtonsoft.Json.JsonProperty("readStatus", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public PackageDetailsModelReadStatus? ReadStatus { get; set; }
+        public PackageDetailsModelReadStatus? ReadStatus { get; set; } = default!;
 
     }
 
@@ -16800,26 +15615,26 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public RecipientType? Type { get; set; }
+        public RecipientType? Type { get; set; } = default!;
 
         /// <summary>
         /// Recipient role
         /// </summary>
         [Newtonsoft.Json.JsonProperty("role", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public RecipientRole? Role { get; set; }
+        public RecipientRole? Role { get; set; } = default!;
 
         /// <summary>
         /// Recipient identifier
         /// </summary>
         [Newtonsoft.Json.JsonProperty("identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Identifier { get; set; }
+        public string? Identifier { get; set; } = default!;
 
         /// <summary>
         /// Recipient name (read only)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
     }
 
@@ -16830,19 +15645,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Package id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("packageId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PackageId { get; set; }
+        public string? PackageId { get; set; } = default!;
 
         /// <summary>
         /// Mailbox id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// Package action (Reply, ReplyAll, Forward, Resend)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("action", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Action { get; set; }
+        public string? Action { get; set; } = default!;
 
     }
 
@@ -16856,13 +15671,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Set true to recall the package
         /// </summary>
         [Newtonsoft.Json.JsonProperty("recalled", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? Recalled { get; set; }
+        public bool? Recalled { get; set; } = default!;
 
         /// <summary>
         /// IsNew to set
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isNew", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsNew { get; set; }
+        public bool? IsNew { get; set; } = default!;
 
     }
 
@@ -16874,13 +15689,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <br/>NOTE: This value must be greater than or equal to the current Delete User After Expiration value.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("logRetention", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? LogRetention { get; set; }
+        public int? LogRetention { get; set; } = default!;
 
         /// <summary>
         /// Archive old log entries to /Archive/Logs before deleting.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("archiveLogs", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ArchiveLogs { get; set; }
+        public bool? ArchiveLogs { get; set; } = default!;
 
     }
 
@@ -16895,13 +15710,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <br/>NOTE: This value must be greater than or equal to the current Delete User After Expiration value.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("logRetention", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? LogRetention { get; set; }
+        public int? LogRetention { get; set; } = default!;
 
         /// <summary>
         /// Archive old log entries to /Archive/Logs before deleting.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("archiveLogs", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ArchiveLogs { get; set; }
+        public bool? ArchiveLogs { get; set; } = default!;
 
     }
 
@@ -16915,140 +15730,140 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Organization short name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("shortName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ShortName { get; set; }
+        public string? ShortName { get; set; } = default!;
 
         /// <summary>
         /// Organization language
         /// </summary>
         [Newtonsoft.Json.JsonProperty("language", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Language { get; set; }
+        public string? Language { get; set; } = default!;
 
         /// <summary>
         /// A Locale which is used for formatting dates and times in this organization.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("formattingLocale", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FormattingLocale { get; set; }
+        public string? FormattingLocale { get; set; } = default!;
 
         /// <summary>
         /// Organization security banner in default language
         /// </summary>
         [Newtonsoft.Json.JsonProperty("securityBanner", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SecurityBanner { get; set; }
+        public string? SecurityBanner { get; set; } = default!;
 
         /// <summary>
         /// Organization security notice in default language
         /// </summary>
         [Newtonsoft.Json.JsonProperty("securityNotice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SecurityNotice { get; set; }
+        public string? SecurityNotice { get; set; } = default!;
 
         /// <summary>
         /// Organization security notice change stamp
         /// </summary>
         [Newtonsoft.Json.JsonProperty("securityNoticeStamp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SecurityNoticeStamp { get; set; }
+        public string? SecurityNoticeStamp { get; set; } = default!;
 
         /// <summary>
         /// Organization security notice requirement setting
         /// </summary>
         [Newtonsoft.Json.JsonProperty("securityNoticeRequired", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public OrgDetailedModelSecurityNoticeRequired? SecurityNoticeRequired { get; set; }
+        public OrgDetailedModelSecurityNoticeRequired? SecurityNoticeRequired { get; set; } = default!;
 
         /// <summary>
         /// Organization tech support notice in default language
         /// </summary>
         [Newtonsoft.Json.JsonProperty("techInfo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TechInfo { get; set; }
+        public string? TechInfo { get; set; } = default!;
 
         /// <summary>
         /// Organization tech support name in default language
         /// </summary>
         [Newtonsoft.Json.JsonProperty("techName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TechName { get; set; }
+        public string? TechName { get; set; } = default!;
 
         /// <summary>
         /// Organization tech support phone in default language
         /// </summary>
         [Newtonsoft.Json.JsonProperty("techPhone", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TechPhone { get; set; }
+        public string? TechPhone { get; set; } = default!;
 
         /// <summary>
         /// Organization tech support email in default language
         /// </summary>
         [Newtonsoft.Json.JsonProperty("techEmail", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TechEmail { get; set; }
+        public string? TechEmail { get; set; } = default!;
 
         /// <summary>
         /// Organization information link in default language
         /// </summary>
         [Newtonsoft.Json.JsonProperty("informationLink", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string InformationLink { get; set; }
+        public string? InformationLink { get; set; } = default!;
 
         /// <summary>
         /// Organization information link name in default language
         /// </summary>
         [Newtonsoft.Json.JsonProperty("informationLinkName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string InformationLinkName { get; set; }
+        public string? InformationLinkName { get; set; } = default!;
 
         /// <summary>
         /// Organization contact link in default language
         /// </summary>
         [Newtonsoft.Json.JsonProperty("contactLink", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ContactLink { get; set; }
+        public string? ContactLink { get; set; } = default!;
 
         /// <summary>
         /// Organization contact link name in default language
         /// </summary>
         [Newtonsoft.Json.JsonProperty("contactLinkName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ContactLinkName { get; set; }
+        public string? ContactLinkName { get; set; } = default!;
 
         /// <summary>
         /// Organization allow password change requirement setting
         /// </summary>
         [Newtonsoft.Json.JsonProperty("allowPassChangeRequests", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? AllowPassChangeRequests { get; set; }
+        public bool? AllowPassChangeRequests { get; set; } = default!;
 
         /// <summary>
         /// Organization base URL
         /// </summary>
         [Newtonsoft.Json.JsonProperty("baseURL", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string BaseURL { get; set; }
+        public string? BaseURL { get; set; } = default!;
 
         /// <summary>
         /// Organization notes
         /// </summary>
         [Newtonsoft.Json.JsonProperty("notes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Notes { get; set; }
+        public string? Notes { get; set; } = default!;
 
         /// <summary>
         /// Organization Id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// Organization name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Number of users in organization
         /// </summary>
         [Newtonsoft.Json.JsonProperty("usersCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? UsersCount { get; set; }
+        public int? UsersCount { get; set; } = default!;
 
         /// <summary>
         /// Number of users in organization
         /// </summary>
         [Newtonsoft.Json.JsonProperty("foldersCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? FoldersCount { get; set; }
+        public int? FoldersCount { get; set; } = default!;
 
         /// <summary>
         /// Number of users in organization
         /// </summary>
         [Newtonsoft.Json.JsonProperty("filesCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? FilesCount { get; set; }
+        public int? FilesCount { get; set; } = default!;
 
     }
 
@@ -17059,25 +15874,25 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Name of field to sort the results by. (name, id); Default is Name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
     }
 
@@ -17091,19 +15906,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SimpleOrgModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<SimpleOrgModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -17114,31 +15929,31 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Organization Id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// Organization name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Number of users in organization
         /// </summary>
         [Newtonsoft.Json.JsonProperty("usersCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? UsersCount { get; set; }
+        public int? UsersCount { get; set; } = default!;
 
         /// <summary>
         /// Number of users in organization
         /// </summary>
         [Newtonsoft.Json.JsonProperty("foldersCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? FoldersCount { get; set; }
+        public int? FoldersCount { get; set; } = default!;
 
         /// <summary>
         /// Number of users in organization
         /// </summary>
         [Newtonsoft.Json.JsonProperty("filesCount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? FilesCount { get; set; }
+        public int? FilesCount { get; set; } = default!;
 
     }
 
@@ -17153,38 +15968,38 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         /// <summary>
         /// Organization short name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("shortName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ShortName { get; set; }
+        public string? ShortName { get; set; } = default!;
 
         /// <summary>
         /// Organization pass phrase.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("passPhrase", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        public string PassPhrase { get; set; }
+        public string PassPhrase { get; set; } = default!;
 
         /// <summary>
         /// Organization tech contact name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("techName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TechName { get; set; }
+        public string? TechName { get; set; } = default!;
 
         /// <summary>
         /// Organization tech phone.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("techPhone", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TechPhone { get; set; }
+        public string? TechPhone { get; set; } = default!;
 
         /// <summary>
         /// Organization tech email.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("techEmail", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TechEmail { get; set; }
+        public string? TechEmail { get; set; } = default!;
 
     }
 
@@ -17200,7 +16015,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <br/>May not exceed the "system Maximum User Count", which is the maximum number of users licensed.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("totalUsers", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? TotalUsers { get; set; }
+        public int? TotalUsers { get; set; } = default!;
 
         /// <summary>
         /// Defines the total number of End Users that may be created in the Organization.
@@ -17210,7 +16025,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <br/>Note: The sum of Maximum End Users and Maximum Temporary Users is allowed exceed the Total Maximum Users.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("endUsers", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? EndUsers { get; set; }
+        public int? EndUsers { get; set; } = default!;
 
         /// <summary>
         /// Defines the total number of Temporary Users that may be created in the Organization.
@@ -17219,7 +16034,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <br/>Note: If the Maximum Total Users is set to 0, the Maximum Temp Users is allowed to exceed the "system Maximum User Count" (and will, in fact, not be capped by the system Maximum User Count).
         /// </summary>
         [Newtonsoft.Json.JsonProperty("tempUsers", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? TempUsers { get; set; }
+        public int? TempUsers { get; set; } = default!;
 
     }
 
@@ -17234,7 +16049,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <br/>Default is false.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("applyToAllOrganizations", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ApplyToAllOrganizations { get; set; }
+        public bool? ApplyToAllOrganizations { get; set; } = default!;
 
         /// <summary>
         /// This setting, when enabled, allows audit log entries related to Ad Hoc Transfer to be shown in the main Logs page.
@@ -17242,7 +16057,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <br/>Default is false.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("showAdHocTransferEntriesInLog", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ShowAdHocTransferEntriesInLog { get; set; }
+        public bool? ShowAdHocTransferEntriesInLog { get; set; } = default!;
 
         /// <summary>
         /// This setting, when enabled, allows administrators to view the mailboxes and packages for users under their control, and download any attachments associated with those packages.
@@ -17252,7 +16067,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("adminPackageAccess", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public OrgPackageAccessUpdateModelAdminPackageAccess? AdminPackageAccess { get; set; }
+        public OrgPackageAccessUpdateModelAdminPackageAccess? AdminPackageAccess { get; set; } = default!;
 
     }
 
@@ -17268,7 +16083,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <br/>Default is false.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("showAdHocTransferEntriesInLog", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ShowAdHocTransferEntriesInLog { get; set; }
+        public bool? ShowAdHocTransferEntriesInLog { get; set; } = default!;
 
         /// <summary>
         /// This setting, when enabled, allows administrators to view the mailboxes and packages for users under their control, and download any attachments associated with those packages.
@@ -17278,7 +16093,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("adminPackageAccess", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public OrgPackageAccessModelAdminPackageAccess? AdminPackageAccess { get; set; }
+        public OrgPackageAccessModelAdminPackageAccess? AdminPackageAccess { get; set; } = default!;
 
     }
 
@@ -17293,7 +16108,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <br/>Default is false.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("enableAdminPasswordReset", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? EnableAdminPasswordReset { get; set; }
+        public bool? EnableAdminPasswordReset { get; set; } = default!;
 
     }
 
@@ -17307,19 +16122,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Show file and folder options
         /// </summary>
         [Newtonsoft.Json.JsonProperty("showFileAndFolder", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ShowFileAndFolder { get; set; }
+        public bool? ShowFileAndFolder { get; set; } = default!;
 
         /// <summary>
         /// Show ad hoc package options
         /// </summary>
         [Newtonsoft.Json.JsonProperty("showAdHocPackage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ShowAdHocPackage { get; set; }
+        public bool? ShowAdHocPackage { get; set; } = default!;
 
         /// <summary>
         /// Show secure folder sharing options (Could be enabled with ShowFileAndFolder option enabled only)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("showSecureFolderSharing", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ShowSecureFolderSharing { get; set; }
+        public bool? ShowSecureFolderSharing { get; set; } = default!;
 
     }
 
@@ -17330,25 +16145,25 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Organization name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Organization short name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("shortName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ShortName { get; set; }
+        public string? ShortName { get; set; } = default!;
 
         /// <summary>
         /// Organization base URL.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("baseUrl", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string BaseUrl { get; set; }
+        public string? BaseUrl { get; set; } = default!;
 
         /// <summary>
         /// Organization notes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("notes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Notes { get; set; }
+        public string? Notes { get; set; } = default!;
 
     }
 
@@ -17359,49 +16174,49 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Name of field to sort the results by. (sendStamp); Default is sendStamp.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
         /// <summary>
         /// Filter new files
         /// </summary>
         [Newtonsoft.Json.JsonProperty("newOnly", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? NewOnly { get; set; }
+        public bool? NewOnly { get; set; } = default!;
 
         /// <summary>
         /// Filter by recipients
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sentTo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> SentTo { get; set; }
+        public System.Collections.Generic.ICollection<string>? SentTo { get; set; } = default!;
 
         /// <summary>
         /// Filter by senders
         /// </summary>
         [Newtonsoft.Json.JsonProperty("receivedFrom", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> ReceivedFrom { get; set; }
+        public System.Collections.Generic.ICollection<string>? ReceivedFrom { get; set; } = default!;
 
         /// <summary>
         /// Filter by mailbox ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("mailboxId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string MailboxId { get; set; }
+        public string? MailboxId { get; set; } = default!;
 
     }
 
@@ -17415,19 +16230,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SimplePackageModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<SimplePackageModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -17438,112 +16253,112 @@ namespace Infrastructure.ApiClients.MoveIt
         /// List of file IDs
         /// </summary>
         [Newtonsoft.Json.JsonProperty("attachments", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<FileIdModel> Attachments { get; set; }
+        public System.Collections.Generic.ICollection<FileIdModel>? Attachments { get; set; } = default!;
 
         /// <summary>
         /// Note of the package
         /// </summary>
         [Newtonsoft.Json.JsonProperty("body", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Body { get; set; }
+        public string? Body { get; set; } = default!;
 
         /// <summary>
         /// Delivery receipts
         /// </summary>
         [Newtonsoft.Json.JsonProperty("deliveryReceipts", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? DeliveryReceipts { get; set; }
+        public bool? DeliveryReceipts { get; set; } = default!;
 
         /// <summary>
         /// Expiration hours
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expirationHours", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? ExpirationHours { get; set; }
+        public int? ExpirationHours { get; set; } = default!;
 
         /// <summary>
         /// Maximum downloads of attachments
         /// </summary>
         [Newtonsoft.Json.JsonProperty("maxAttachDownloads", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? MaxAttachDownloads { get; set; }
+        public int? MaxAttachDownloads { get; set; } = default!;
 
         /// <summary>
         /// Used to prevent reply
         /// </summary>
         [Newtonsoft.Json.JsonProperty("noReply", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public CreatePackageRequestModelNoReply? NoReply { get; set; }
+        public CreatePackageRequestModelNoReply? NoReply { get; set; } = default!;
 
         /// <summary>
         /// List of recipients
         /// </summary>
         [Newtonsoft.Json.JsonProperty("recipients", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<Recipient> Recipients { get; set; }
+        public System.Collections.Generic.ICollection<Recipient>? Recipients { get; set; } = default!;
 
         /// <summary>
         /// Recipients To list
         /// </summary>
         [Newtonsoft.Json.JsonProperty("recipToList", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> RecipToList { get; set; }
+        public System.Collections.Generic.ICollection<string>? RecipToList { get; set; } = default!;
 
         /// <summary>
         /// Recipients CC list
         /// </summary>
         [Newtonsoft.Json.JsonProperty("recipCCList", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> RecipCCList { get; set; }
+        public System.Collections.Generic.ICollection<string>? RecipCCList { get; set; } = default!;
 
         /// <summary>
         /// Recipients BCC list
         /// </summary>
         [Newtonsoft.Json.JsonProperty("recipBCCList", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> RecipBCCList { get; set; }
+        public System.Collections.Generic.ICollection<string>? RecipBCCList { get; set; } = default!;
 
         /// <summary>
         /// Package type. Use Draft or template for saving package and General for sending package.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public CreatePackageRequestModelType? Type { get; set; }
+        public CreatePackageRequestModelType? Type { get; set; } = default!;
 
         /// <summary>
         /// Composer package type. Use Request for requesting files.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("composerType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public CreatePackageRequestModelComposerType? ComposerType { get; set; }
+        public CreatePackageRequestModelComposerType? ComposerType { get; set; } = default!;
 
         /// <summary>
         /// Subject of package. Required
         /// </summary>
         [Newtonsoft.Json.JsonProperty("subject", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Subject { get; set; }
+        public string? Subject { get; set; } = default!;
 
         /// <summary>
         /// Parent ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("parentId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ParentId { get; set; }
+        public string? ParentId { get; set; } = default!;
 
         /// <summary>
         /// Set true to secure package body
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isSecureBody", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsSecureBody { get; set; }
+        public bool? IsSecureBody { get; set; } = default!;
 
         /// <summary>
         /// Derivative ID. Use to delete draft
         /// </summary>
         [Newtonsoft.Json.JsonProperty("derivativeId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string DerivativeId { get; set; }
+        public string? DerivativeId { get; set; } = default!;
 
         /// <summary>
         /// Package Classification Type ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("packageClassificationTypeId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PackageClassificationTypeId { get; set; }
+        public int? PackageClassificationTypeId { get; set; } = default!;
 
         /// <summary>
         /// Send notification from Transfer (true if being sent from Outlook)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("skipNotifyFromTransfer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? SkipNotifyFromTransfer { get; set; }
+        public bool? SkipNotifyFromTransfer { get; set; } = default!;
 
     }
 
@@ -17557,7 +16372,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// The unique ID of the file. Also known as the tracking number.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
     }
 
@@ -17568,72 +16383,72 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Whether the user is allowed to send packages at all.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("allowSendPackages", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? AllowSendPackages { get; set; }
+        public bool? AllowSendPackages { get; set; } = default!;
 
         /// <summary>
         /// Whether the user is allowed to attach files to packages.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("allowAttachFiles", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? AllowAttachFiles { get; set; }
+        public bool? AllowAttachFiles { get; set; } = default!;
 
         /// <summary>
         /// Value in hours which users can set specific expirations on their packages.
         /// <br/>-1 if not allowed.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("defaultUserPackageExpirationHours", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? DefaultUserPackageExpirationHours { get; set; }
+        public int? DefaultUserPackageExpirationHours { get; set; } = default!;
 
         /// <summary>
         /// Number of hours after packages expire and delete.
         /// <br/>-1 if not applied.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("maxUserPackageExpirationHours", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? MaxUserPackageExpirationHours { get; set; }
+        public int? MaxUserPackageExpirationHours { get; set; } = default!;
 
         /// <summary>
         /// Default download limit on user's packages which users can modify.
         /// <br/>-1 if not applied.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("defaultAttachmentDownloads", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? DefaultAttachmentDownloads { get; set; }
+        public int? DefaultAttachmentDownloads { get; set; } = default!;
 
         /// <summary>
         /// Number that specifies a download limit of a file from any package.
         /// <br/>-1 if not applied.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("maxAttachmentDownloads", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? MaxAttachmentDownloads { get; set; }
+        public int? MaxAttachmentDownloads { get; set; } = default!;
 
         /// <summary>
         /// Number that specifies a maximum number of files per package.
         /// <br/>-1 if the user is not authorized.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("maxFilesPerPackageLimit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? MaxFilesPerPackageLimit { get; set; }
+        public int? MaxFilesPerPackageLimit { get; set; } = default!;
 
         /// <summary>
         /// Whether the Secure The Note setting is enabled by default.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("defaultSecureNote", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? DefaultSecureNote { get; set; }
+        public bool? DefaultSecureNote { get; set; } = default!;
 
         /// <summary>
         /// Whether the user is allowed to change the Secure The Note setting value.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("allowChangeSecureNote", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? AllowChangeSecureNote { get; set; }
+        public bool? AllowChangeSecureNote { get; set; } = default!;
 
         /// <summary>
         /// Gets or sets is classification type required
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isClassificationFieldRequired", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsClassificationFieldRequired { get; set; }
+        public bool? IsClassificationFieldRequired { get; set; } = default!;
 
         /// <summary>
         /// Gets or sets classification types list
         /// </summary>
         [Newtonsoft.Json.JsonProperty("classificationTypes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<PackageClassificationTypeModel> ClassificationTypes { get; set; }
+        public System.Collections.Generic.ICollection<PackageClassificationTypeModel>? ClassificationTypes { get; set; } = default!;
 
     }
 
@@ -17644,19 +16459,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Gets or sets order of classification types
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orderIndex", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OrderIndex { get; set; }
+        public int? OrderIndex { get; set; } = default!;
 
         /// <summary>
         /// Gets or sets id of classification type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// Gets or sets value of classification type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Value { get; set; }
+        public string? Value { get; set; } = default!;
 
     }
 
@@ -17667,13 +16482,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Package id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// Mailbox id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("mailboxId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string MailboxId { get; set; }
+        public string? MailboxId { get; set; } = default!;
 
     }
 
@@ -17687,7 +16502,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<RecipientListItem> Items { get; set; }
+        public System.Collections.Generic.ICollection<RecipientListItem>? Items { get; set; } = default!;
 
     }
 
@@ -17703,51 +16518,51 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("viewStatus", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public RecipientListItemViewStatus? ViewStatus { get; set; }
+        public RecipientListItemViewStatus? ViewStatus { get; set; } = default!;
 
         /// <summary>
         /// Password of the recipient.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("password", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Password { get; set; }
+        public string? Password { get; set; } = default!;
 
         /// <summary>
         /// Whether child entries of the recipient should be shown.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("allowChildExpansion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? AllowChildExpansion { get; set; }
+        public bool? AllowChildExpansion { get; set; } = default!;
 
         /// <summary>
         /// Child entries of the recipient.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("children", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<RecipientListItem> Children { get; set; }
+        public System.Collections.Generic.ICollection<RecipientListItem>? Children { get; set; } = default!;
 
         /// <summary>
         /// Recipient type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public RecipientListItemType? Type { get; set; }
+        public RecipientListItemType? Type { get; set; } = default!;
 
         /// <summary>
         /// Recipient role
         /// </summary>
         [Newtonsoft.Json.JsonProperty("role", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public RecipientListItemRole? Role { get; set; }
+        public RecipientListItemRole? Role { get; set; } = default!;
 
         /// <summary>
         /// Recipient identifier
         /// </summary>
         [Newtonsoft.Json.JsonProperty("identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Identifier { get; set; }
+        public string? Identifier { get; set; } = default!;
 
         /// <summary>
         /// Recipient name (read only)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
     }
 
@@ -17758,19 +16573,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Package action (Reply, ReplyAll, Forward, Resend)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("action", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Action { get; set; }
+        public string? Action { get; set; } = default!;
 
         /// <summary>
         /// Package id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// Mailbox id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("mailboxId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string MailboxId { get; set; }
+        public string? MailboxId { get; set; } = default!;
 
     }
 
@@ -17778,19 +16593,19 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class PackageNotificationRequest
     {
         [Newtonsoft.Json.JsonProperty("includeImages", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IncludeImages { get; set; }
+        public bool? IncludeImages { get; set; } = default!;
 
         /// <summary>
         /// Package id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// Mailbox id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("mailboxId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string MailboxId { get; set; }
+        public string? MailboxId { get; set; } = default!;
 
     }
 
@@ -17801,31 +16616,31 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Notification subject
         /// </summary>
         [Newtonsoft.Json.JsonProperty("subject", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Subject { get; set; }
+        public string? Subject { get; set; } = default!;
 
         /// <summary>
         /// Main notification body
         /// </summary>
         [Newtonsoft.Json.JsonProperty("body", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Body { get; set; }
+        public string? Body { get; set; } = default!;
 
         /// <summary>
         /// Whether the main notification body is HTML-formatted
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isHtml", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsHtml { get; set; }
+        public bool? IsHtml { get; set; } = default!;
 
         /// <summary>
         /// Alternate text-formatted body if the main body is HTML-formatted
         /// </summary>
         [Newtonsoft.Json.JsonProperty("alternateBody", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string AlternateBody { get; set; }
+        public string? AlternateBody { get; set; } = default!;
 
         /// <summary>
         /// Collection of inline attachments to include with notification
         /// </summary>
         [Newtonsoft.Json.JsonProperty("inlineAttachments", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<InlineAttachment> InlineAttachments { get; set; }
+        public System.Collections.Generic.ICollection<InlineAttachment>? InlineAttachments { get; set; } = default!;
 
     }
 
@@ -17839,13 +16654,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Name of attachment file; this will also be the content ID value used to reference the attachment in the notification message body
         /// </summary>
         [Newtonsoft.Json.JsonProperty("filename", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Filename { get; set; }
+        public string? Filename { get; set; } = default!;
 
         /// <summary>
         /// Base64-encoded content of the attachment
         /// </summary>
         [Newtonsoft.Json.JsonProperty("base64Content", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Base64Content { get; set; }
+        public string? Base64Content { get; set; } = default!;
 
     }
 
@@ -17856,7 +16671,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// File ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
     }
 
@@ -17870,128 +16685,128 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Organization Id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// Organization name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Organization short name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("shortName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ShortName { get; set; }
+        public string? ShortName { get; set; } = default!;
 
         /// <summary>
         /// Organization language.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("language", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Language { get; set; }
+        public string? Language { get; set; } = default!;
 
         /// <summary>
         /// A Locale which is used for formatting dates and times in this organization.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("formattingLocale", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FormattingLocale { get; set; }
+        public string? FormattingLocale { get; set; } = default!;
 
         /// <summary>
         /// Organization security banner in default language.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("securityBanner", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SecurityBanner { get; set; }
+        public string? SecurityBanner { get; set; } = default!;
 
         /// <summary>
         /// Organization security notice in default language.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("securityNotice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SecurityNotice { get; set; }
+        public string? SecurityNotice { get; set; } = default!;
 
         /// <summary>
         /// Organization security notice change stamp.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("securityNoticeStamp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SecurityNoticeStamp { get; set; }
+        public string? SecurityNoticeStamp { get; set; } = default!;
 
         /// <summary>
         /// Organization security notice requirement setting.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("securityNoticeRequired", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public PublicOrgModelSecurityNoticeRequired? SecurityNoticeRequired { get; set; }
+        public PublicOrgModelSecurityNoticeRequired? SecurityNoticeRequired { get; set; } = default!;
 
         /// <summary>
         /// Organization security acceptance notice in default language.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("securityNoticeAcceptance", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SecurityNoticeAcceptance { get; set; }
+        public string? SecurityNoticeAcceptance { get; set; } = default!;
 
         /// <summary>
         /// Organization tech support notice in default language.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("techInfo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TechInfo { get; set; }
+        public string? TechInfo { get; set; } = default!;
 
         /// <summary>
         /// Organization tech support name in default language.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("techName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TechName { get; set; }
+        public string? TechName { get; set; } = default!;
 
         /// <summary>
         /// Organization tech support phone in default language.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("techPhone", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TechPhone { get; set; }
+        public string? TechPhone { get; set; } = default!;
 
         /// <summary>
         /// Organization tech support email in default language.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("techEmail", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TechEmail { get; set; }
+        public string? TechEmail { get; set; } = default!;
 
         /// <summary>
         /// Organization information link in default language.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("informationLink", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string InformationLink { get; set; }
+        public string? InformationLink { get; set; } = default!;
 
         /// <summary>
         /// Organization information link name in default language.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("informationLinkName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string InformationLinkName { get; set; }
+        public string? InformationLinkName { get; set; } = default!;
 
         /// <summary>
         /// Organization contact link in default language.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("contactLink", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ContactLink { get; set; }
+        public string? ContactLink { get; set; } = default!;
 
         /// <summary>
         /// Organization contact link name in default language.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("contactLinkName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ContactLinkName { get; set; }
+        public string? ContactLinkName { get; set; } = default!;
 
         /// <summary>
         /// Organization allow password change requirement setting.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("allowPassChangeRequests", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? AllowPassChangeRequests { get; set; }
+        public bool? AllowPassChangeRequests { get; set; } = default!;
 
         /// <summary>
         /// Organization base URL.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("baseURL", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string BaseURL { get; set; }
+        public string? BaseURL { get; set; } = default!;
 
         /// <summary>
         /// Defines if trust device functionality is enabled during mfa flow.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("mfaTrustDeviceEnabled", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? MfaTrustDeviceEnabled { get; set; }
+        public bool? MfaTrustDeviceEnabled { get; set; } = default!;
 
     }
 
@@ -18003,13 +16818,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("format", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public ReportDownloadRequestFormat? Format { get; set; }
+        public ReportDownloadRequestFormat? Format { get; set; } = default!;
 
         /// <summary>
         /// Report Id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
     }
 
@@ -18020,25 +16835,25 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Name of field to sort the results by. (title); Default is title.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
     }
 
@@ -18052,19 +16867,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SimpleReportModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<SimpleReportModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -18078,20 +16893,20 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Report Id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// Report name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Title { get; set; }
+        public string? Title { get; set; } = default!;
 
         /// <summary>
         /// Report category.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("category", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public SimpleReportModelCategory? Category { get; set; }
+        public SimpleReportModelCategory? Category { get; set; } = default!;
 
     }
 
@@ -18111,179 +16926,179 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Organization Id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orgId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OrgId { get; set; }
+        public int? OrgId { get; set; } = default!;
 
         /// <summary>
         /// Creation date/time.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("createStamp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string CreateStamp { get; set; }
+        public string? CreateStamp { get; set; } = default!;
 
         /// <summary>
         /// Creator username.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("createUsername", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string CreateUsername { get; set; }
+        public string? CreateUsername { get; set; } = default!;
 
         /// <summary>
         /// Last change stamp.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("lastChangeStamp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string LastChangeStamp { get; set; }
+        public string? LastChangeStamp { get; set; } = default!;
 
         /// <summary>
         /// Report type.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public ReportDetailedModelType? Type { get; set; }
+        public ReportDetailedModelType? Type { get; set; } = default!;
 
         /// <summary>
         /// Report output format.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("outputFormat", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public ReportDetailedModelOutputFormat? OutputFormat { get; set; }
+        public ReportDetailedModelOutputFormat? OutputFormat { get; set; } = default!;
 
         /// <summary>
         /// True if show query.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("showQuery", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ShowQuery { get; set; }
+        public bool? ShowQuery { get; set; } = default!;
 
         /// <summary>
         /// Delimiter.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("csvDelimiter", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string CsvDelimiter { get; set; }
+        public string? CsvDelimiter { get; set; } = default!;
 
         /// <summary>
         /// Quote char.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("csvQuoteMark", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string CsvQuoteMark { get; set; }
+        public string? CsvQuoteMark { get; set; } = default!;
 
         /// <summary>
         /// Escape formula prefix.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("csvEscapeFormulaPrefix", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? CsvEscapeFormulaPrefix { get; set; }
+        public int? CsvEscapeFormulaPrefix { get; set; } = default!;
 
         /// <summary>
         /// Schedule.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("schedule", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Schedule { get; set; }
+        public string? Schedule { get; set; } = default!;
 
         /// <summary>
         /// Folder path to save in.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("saveInFolder", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SaveInFolder { get; set; }
+        public string? SaveInFolder { get; set; } = default!;
 
         /// <summary>
         /// Save as file.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("saveAsFile", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SaveAsFile { get; set; }
+        public string? SaveAsFile { get; set; } = default!;
 
         /// <summary>
         /// True if overwrite existing file.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("overwriteExistingFile", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? OverwriteExistingFile { get; set; }
+        public bool? OverwriteExistingFile { get; set; } = default!;
 
         /// <summary>
         /// Report option start date.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("optionStartDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string OptionStartDate { get; set; }
+        public string? OptionStartDate { get; set; } = default!;
 
         /// <summary>
         /// Report option end date.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("optionEndDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string OptionEndDate { get; set; }
+        public string? OptionEndDate { get; set; } = default!;
 
         /// <summary>
         /// Report size unit.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("optionSizeUnits", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public ReportDetailedModelOptionSizeUnits? OptionSizeUnits { get; set; }
+        public ReportDetailedModelOptionSizeUnits? OptionSizeUnits { get; set; } = default!;
 
         /// <summary>
         /// Attempt threshold.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("optionAttemptThreshold", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OptionAttemptThreshold { get; set; }
+        public int? OptionAttemptThreshold { get; set; } = default!;
 
         /// <summary>
         /// IP threshold.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("optionIPThreshold", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OptionIPThreshold { get; set; }
+        public int? OptionIPThreshold { get; set; } = default!;
 
         /// <summary>
         /// Username threshold.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("optionUsernameThreshold", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OptionUsernameThreshold { get; set; }
+        public int? OptionUsernameThreshold { get; set; } = default!;
 
         /// <summary>
         /// Custom fields.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("customFields", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string CustomFields { get; set; }
+        public string? CustomFields { get; set; } = default!;
 
         /// <summary>
         /// Custom tables.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("customTables", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string CustomTables { get; set; }
+        public string? CustomTables { get; set; } = default!;
 
         /// <summary>
         /// Custom criteria.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("customCriteria", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string CustomCriteria { get; set; }
+        public string? CustomCriteria { get; set; } = default!;
 
         /// <summary>
         /// Custom grouping.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("customGrouping", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string CustomGrouping { get; set; }
+        public string? CustomGrouping { get; set; } = default!;
 
         /// <summary>
         /// Custom order.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("customOrder", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string CustomOrder { get; set; }
+        public string? CustomOrder { get; set; } = default!;
 
         /// <summary>
         /// Custom limit.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("customLimit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string CustomLimit { get; set; }
+        public string? CustomLimit { get; set; } = default!;
 
         /// <summary>
         /// Report Id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// Report name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("title", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Title { get; set; }
+        public string? Title { get; set; } = default!;
 
         /// <summary>
         /// Report category.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("category", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public ReportDetailedModelCategory? Category { get; set; }
+        public ReportDetailedModelCategory? Category { get; set; } = default!;
 
     }
 
@@ -18294,25 +17109,25 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Name of field to sort the results by. (name); Default is Name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
     }
 
@@ -18326,19 +17141,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SimplePasswordAgingPolicyModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<SimplePasswordAgingPolicyModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -18352,13 +17167,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Password aging policy id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// Password aging policy name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
     }
 
@@ -18372,32 +17187,32 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Password aging policy name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Password aging policy description.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Description { get; set; }
+        public string? Description { get; set; } = default!;
 
         /// <summary>
         /// Password expires every (x) days. Default is -1.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("passwordAgeTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PasswordAgeTime { get; set; }
+        public int? PasswordAgeTime { get; set; } = default!;
 
         /// <summary>
         /// Indicate days remaining at sign on and using email beginning (x) day(s) in advance. Default is -1.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("passwordAgeWarn", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PasswordAgeWarn { get; set; }
+        public int? PasswordAgeWarn { get; set; } = default!;
 
         /// <summary>
         /// Enable a grace period (x) day(s) after password expires. Default is -1.
         /// <br/>After the grace period the user account will be suspended and an administrator must reactivate it.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("passwordAgeGrace", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PasswordAgeGrace { get; set; }
+        public int? PasswordAgeGrace { get; set; } = default!;
 
     }
 
@@ -18411,44 +17226,44 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Password aging policy description.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Description { get; set; }
+        public string? Description { get; set; } = default!;
 
         /// <summary>
         /// Password expires every (x) days.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("passwordAgeTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PasswordAgeTime { get; set; }
+        public int? PasswordAgeTime { get; set; } = default!;
 
         /// <summary>
         /// Indicate days remaining at sign on and using email beginning (x) day(s) in advance.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("passwordAgeWarn", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PasswordAgeWarn { get; set; }
+        public int? PasswordAgeWarn { get; set; } = default!;
 
         /// <summary>
         /// Enable a grace period (x) day(s) after password expires.
         /// <br/>After the grace period the user account will be suspended and an administrator must reactivate it.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("passwordAgeGrace", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PasswordAgeGrace { get; set; }
+        public int? PasswordAgeGrace { get; set; } = default!;
 
         /// <summary>
         /// Number of password aging policy using.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("numUsing", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? NumUsing { get; set; }
+        public int? NumUsing { get; set; } = default!;
 
         /// <summary>
         /// Password aging policy id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// Password aging policy name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
     }
 
@@ -18459,25 +17274,25 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Name of field to sort the results by. (name); Default is Name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
     }
 
@@ -18491,19 +17306,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SimpleExpirationPolicyModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<SimpleExpirationPolicyModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -18517,13 +17332,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Expiration policy id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// Expiration policy name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
     }
 
@@ -18537,55 +17352,55 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Expiration policy name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Expiration policy description. Default is empty string.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Description { get; set; }
+        public string? Description { get; set; } = default!;
 
         /// <summary>
         /// Expire after date
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expireDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ExpireDate { get; set; }
+        public string? ExpireDate { get; set; } = default!;
 
         /// <summary>
         /// Expire X day(s) after creation. Default is -1.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("creationExpireTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? CreationExpireTime { get; set; }
+        public int? CreationExpireTime { get; set; } = default!;
 
         /// <summary>
         /// Expire X day(s) after last activity. Default is -1.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("activityExpireTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? ActivityExpireTime { get; set; }
+        public int? ActivityExpireTime { get; set; } = default!;
 
         /// <summary>
         /// Receiving packages counts as "activity". Default is false
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expireAfterActivityIncludesPkgs", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ExpireAfterActivityIncludesPkgs { get; set; }
+        public bool? ExpireAfterActivityIncludesPkgs { get; set; } = default!;
 
         /// <summary>
         /// Expire after (x) successful signon(s). Default is -1.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("signonExpireNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? SignonExpireNumber { get; set; }
+        public int? SignonExpireNumber { get; set; } = default!;
 
         /// <summary>
         /// Warn (x) day(s) before expiration. Default is -1.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expireWarnTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? ExpireWarnTime { get; set; }
+        public int? ExpireWarnTime { get; set; } = default!;
 
         /// <summary>
         /// Notify user when their account expires (Default is false)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expirationNotice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ExpirationNotice { get; set; }
+        public bool? ExpirationNotice { get; set; } = default!;
 
     }
 
@@ -18599,67 +17414,67 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Expiration policy description
         /// </summary>
         [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Description { get; set; }
+        public string? Description { get; set; } = default!;
 
         /// <summary>
         /// Expire after date
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expireDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ExpireDate { get; set; }
+        public string? ExpireDate { get; set; } = default!;
 
         /// <summary>
         /// Expire X day(s) after creation
         /// </summary>
         [Newtonsoft.Json.JsonProperty("creationExpireTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? CreationExpireTime { get; set; }
+        public int? CreationExpireTime { get; set; } = default!;
 
         /// <summary>
         /// Expire X day(s) after last activity
         /// </summary>
         [Newtonsoft.Json.JsonProperty("activityExpireTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? ActivityExpireTime { get; set; }
+        public int? ActivityExpireTime { get; set; } = default!;
 
         /// <summary>
         /// Receiving packages counts as "activity"
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expireAfterActivityIncludesPkgs", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ExpireAfterActivityIncludesPkgs { get; set; }
+        public bool? ExpireAfterActivityIncludesPkgs { get; set; } = default!;
 
         /// <summary>
         /// Expire after (x) successful signon(s)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("signonExpireNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? SignonExpireNumber { get; set; }
+        public int? SignonExpireNumber { get; set; } = default!;
 
         /// <summary>
         /// Warn (x) day(s) before expiration
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expireWarnTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? ExpireWarnTime { get; set; }
+        public int? ExpireWarnTime { get; set; } = default!;
 
         /// <summary>
         /// Notify user when their account expires
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expirationNotice", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ExpirationNotice { get; set; }
+        public bool? ExpirationNotice { get; set; } = default!;
 
         /// <summary>
         /// Number of expiration policy using
         /// </summary>
         [Newtonsoft.Json.JsonProperty("numUsing", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? NumUsing { get; set; }
+        public int? NumUsing { get; set; } = default!;
 
         /// <summary>
         /// Expiration policy id
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+        public int? Id { get; set; } = default!;
 
         /// <summary>
         /// Expiration policy name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
     }
 
@@ -18674,14 +17489,14 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("rule", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public RemoteAccessRuleAddModelRule? Rule { get; set; }
+        public RemoteAccessRuleAddModelRule? Rule { get; set; } = default!;
 
         /// <summary>
         /// Hostname/IP.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("host", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        public string Host { get; set; }
+        public string Host { get; set; } = default!;
 
         /// <summary>
         /// Permit type.
@@ -18689,20 +17504,20 @@ namespace Infrastructure.ApiClients.MoveIt
         [Newtonsoft.Json.JsonProperty("permitType", Required = Newtonsoft.Json.Required.Always)]
         [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public RemoteAccessRuleAddModelPermitType PermitType { get; set; }
+        public RemoteAccessRuleAddModelPermitType PermitType { get; set; } = default!;
 
         /// <summary>
         /// Rule priority level.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("priority", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public RemoteAccessRuleAddModelPriority? Priority { get; set; }
+        public RemoteAccessRuleAddModelPriority? Priority { get; set; } = default!;
 
         /// <summary>
         /// Rule comment.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Comment { get; set; }
+        public string? Comment { get; set; } = default!;
 
     }
 
@@ -18716,51 +17531,51 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Rule Id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// Organization Id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orgId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string OrgId { get; set; }
+        public string? OrgId { get; set; } = default!;
 
         /// <summary>
         /// Rule type (Allow/Deny).
         /// </summary>
         [Newtonsoft.Json.JsonProperty("rule", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public RemoteAccessRuleModelRule? Rule { get; set; }
+        public RemoteAccessRuleModelRule? Rule { get; set; } = default!;
 
         /// <summary>
         /// Hostname/IP.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("host", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Host { get; set; }
+        public string? Host { get; set; } = default!;
 
         /// <summary>
         /// Permit type.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("permitType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public RemoteAccessRuleModelPermitType? PermitType { get; set; }
+        public RemoteAccessRuleModelPermitType? PermitType { get; set; } = default!;
 
         /// <summary>
         /// Comment.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("comment", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Comment { get; set; }
+        public string? Comment { get; set; } = default!;
 
         /// <summary>
         /// Rule priority.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("priority", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Priority { get; set; }
+        public string? Priority { get; set; } = default!;
 
         /// <summary>
         /// Hostname lookup.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("hostnameLookup", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string HostnameLookup { get; set; }
+        public string? HostnameLookup { get; set; } = default!;
 
     }
 
@@ -18773,21 +17588,21 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("passwordChangeEmailNotificationType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public PasswordPermissionsUpdateRequestPasswordChangeEmailNotificationType? PasswordChangeEmailNotificationType { get; set; }
+        public PasswordPermissionsUpdateRequestPasswordChangeEmailNotificationType? PasswordChangeEmailNotificationType { get; set; } = default!;
 
         /// <summary>
         /// Allow end users to change their own passwords after signing on(e.g., from "My Account").
         /// <br/>Default is false.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("allowToChangeOwnPassword", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? AllowToChangeOwnPassword { get; set; }
+        public bool? AllowToChangeOwnPassword { get; set; } = default!;
 
         /// <summary>
         /// Allow end users to reset their own passwords without signing on (Email "Reset Password" links to users who request them from the signon page).
         /// <br/>Default is false.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("allowPasswordChangeRequests", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? AllowPasswordChangeRequests { get; set; }
+        public bool? AllowPasswordChangeRequests { get; set; } = default!;
 
         /// <summary>
         /// Require users to respond to reCAPTCHA when resetting their password without signing on.
@@ -18795,7 +17610,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <br/>Default is false.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isRecaptchaRequired", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsRecaptchaRequired { get; set; }
+        public bool? IsRecaptchaRequired { get; set; } = default!;
 
         /// <summary>
         /// Require users to answer security questions when resetting their password without signing on.
@@ -18803,13 +17618,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <br/>Default is false.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isSecurityQuestionsRequired", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsSecurityQuestionsRequired { get; set; }
+        public bool? IsSecurityQuestionsRequired { get; set; } = default!;
 
         /// <summary>
         /// Email links used in "Set Password" and "Reset Password" processes will expire after X minutes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("passwordEmailLinkMaxAge", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PasswordEmailLinkMaxAge { get; set; }
+        public int? PasswordEmailLinkMaxAge { get; set; } = default!;
 
     }
 
@@ -18825,21 +17640,21 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("passwordChangeEmailNotificationType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public PasswordPermissionsModelPasswordChangeEmailNotificationType? PasswordChangeEmailNotificationType { get; set; }
+        public PasswordPermissionsModelPasswordChangeEmailNotificationType? PasswordChangeEmailNotificationType { get; set; } = default!;
 
         /// <summary>
         /// Allow end users to change their own passwords after signing on(e.g., from "My Account").
         /// <br/>Default is false.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("allowToChangeOwnPassword", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? AllowToChangeOwnPassword { get; set; }
+        public bool? AllowToChangeOwnPassword { get; set; } = default!;
 
         /// <summary>
         /// Allow end users to reset their own passwords without signing on (Email "Reset Password" links to users who request them from the signon page).
         /// <br/>Default is false.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("allowPasswordChangeRequests", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? AllowPasswordChangeRequests { get; set; }
+        public bool? AllowPasswordChangeRequests { get; set; } = default!;
 
         /// <summary>
         /// Require users to respond to reCAPTCHA when resetting their password without signing on.
@@ -18847,7 +17662,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <br/>Default is false.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isRecaptchaRequired", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsRecaptchaRequired { get; set; }
+        public bool? IsRecaptchaRequired { get; set; } = default!;
 
         /// <summary>
         /// Require users to answer security questions when resetting their password without signing on.
@@ -18855,13 +17670,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <br/>Default is false.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isSecurityQuestionsRequired", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsSecurityQuestionsRequired { get; set; }
+        public bool? IsSecurityQuestionsRequired { get; set; } = default!;
 
         /// <summary>
         /// Email links used in "Set Password" and "Reset Password" processes will expire after X minutes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("passwordEmailLinkMaxAge", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PasswordEmailLinkMaxAge { get; set; }
+        public int? PasswordEmailLinkMaxAge { get; set; } = default!;
 
     }
 
@@ -18876,19 +17691,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userPermission", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UserClassPasswordAgingPolicyPatchModelUserPermission? UserPermission { get; set; }
+        public UserClassPasswordAgingPolicyPatchModelUserPermission? UserPermission { get; set; } = default!;
 
         /// <summary>
         /// User password aging policy id. Use "0" to set "None" value.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("policyId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PolicyId { get; set; }
+        public int? PolicyId { get; set; } = default!;
 
         /// <summary>
         /// Apply password aging policy to existing users. Default is true.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("applyToExistingUsers", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ApplyToExistingUsers { get; set; }
+        public bool? ApplyToExistingUsers { get; set; } = default!;
 
     }
 
@@ -18902,25 +17717,25 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Admin password aging policy id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("adminPasswordAgingPolicyId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? AdminPasswordAgingPolicyId { get; set; }
+        public int? AdminPasswordAgingPolicyId { get; set; } = default!;
 
         /// <summary>
         /// File admin password aging policy id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fileAdminPasswordAgingPolicyId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? FileAdminPasswordAgingPolicyId { get; set; }
+        public int? FileAdminPasswordAgingPolicyId { get; set; } = default!;
 
         /// <summary>
         /// End user password aging policy id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userPasswordAgingPolicyId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? UserPasswordAgingPolicyId { get; set; }
+        public int? UserPasswordAgingPolicyId { get; set; } = default!;
 
         /// <summary>
         /// Temporary user password aging policy id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("tempUserPasswordAgingPolicyId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? TempUserPasswordAgingPolicyId { get; set; }
+        public int? TempUserPasswordAgingPolicyId { get; set; } = default!;
 
     }
 
@@ -18935,19 +17750,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userPermission", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UserClassExpirationPolicyPatchModelUserPermission? UserPermission { get; set; }
+        public UserClassExpirationPolicyPatchModelUserPermission? UserPermission { get; set; } = default!;
 
         /// <summary>
         /// User expiration policy id. Use "0" to set "None" value.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("policyId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PolicyId { get; set; }
+        public int? PolicyId { get; set; } = default!;
 
         /// <summary>
         /// Apply expiration policy to existing users. Default is true.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("applyToExistingUsers", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ApplyToExistingUsers { get; set; }
+        public bool? ApplyToExistingUsers { get; set; } = default!;
 
     }
 
@@ -18961,25 +17776,25 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Admin expiration policy id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("adminExpirationPolicyId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? AdminExpirationPolicyId { get; set; }
+        public int? AdminExpirationPolicyId { get; set; } = default!;
 
         /// <summary>
         /// File admin expiration policy id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fileAdminExpirationPolicyId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? FileAdminExpirationPolicyId { get; set; }
+        public int? FileAdminExpirationPolicyId { get; set; } = default!;
 
         /// <summary>
         /// End user expiration policy id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userExpirationPolicyId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? UserExpirationPolicyId { get; set; }
+        public int? UserExpirationPolicyId { get; set; } = default!;
 
         /// <summary>
         /// Temporary user expiration policy id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("tempUserExpirationPolicyId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? TempUserExpirationPolicyId { get; set; }
+        public int? TempUserExpirationPolicyId { get; set; } = default!;
 
     }
 
@@ -18994,79 +17809,79 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Time period in seconds to return recently completed data. Default: 0
         /// </summary>
         [Newtonsoft.Json.JsonProperty("recentlyCompletedPeriod", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? RecentlyCompletedPeriod { get; set; }
+        public int? RecentlyCompletedPeriod { get; set; } = default!;
 
         /// <summary>
         /// Time period in seconds to calculate status distribution for. Default: RecentlyCompletedPeriod
         /// </summary>
         [Newtonsoft.Json.JsonProperty("statusDistributionPeriod", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? StatusDistributionPeriod { get; set; }
+        public int? StatusDistributionPeriod { get; set; } = default!;
 
         /// <summary>
         /// Filter expression for Login name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userLoginName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UserLoginName { get; set; }
+        public string? UserLoginName { get; set; } = default!;
 
         /// <summary>
         /// Filter expression for User Display name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userFullName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UserFullName { get; set; }
+        public string? UserFullName { get; set; } = default!;
 
         /// <summary>
         /// Filter expression for User IP
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userIp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UserIp { get; set; }
+        public string? UserIp { get; set; } = default!;
 
         /// <summary>
         /// Filter expression for Folder name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FolderName { get; set; }
+        public string? FolderName { get; set; } = default!;
 
         /// <summary>
         /// Filter expression for File name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fileName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FileName { get; set; }
+        public string? FileName { get; set; } = default!;
 
         /// <summary>
         /// Filter for status. Uses OR logic
         /// </summary>
         [Newtonsoft.Json.JsonProperty("transferStatus", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore, ItemConverterType = typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public System.Collections.Generic.ICollection<TransferStatus> TransferStatus { get; set; }
+        public System.Collections.Generic.ICollection<TransferStatus>? TransferStatus { get; set; } = default!;
 
         /// <summary>
         /// Filter expression for several fields. Fields are matched with OR logic. AND logic is used if you provide expression for each particular query. Fields being matched: userLoginName, userFullName, userIp, folderName, fileName
         /// </summary>
         [Newtonsoft.Json.JsonProperty("search", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Search { get; set; }
+        public string? Search { get; set; } = default!;
 
         /// <summary>
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Name of field to sort the results by.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
     }
 
@@ -19077,25 +17892,25 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Status distribution
         /// </summary>
         [Newtonsoft.Json.JsonProperty("statusDistribution", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public TransferStatusDistribution StatusDistribution { get; set; }
+        public TransferStatusDistribution? StatusDistribution { get; set; } = default!;
 
         /// <summary>
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<TransferStatusModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<TransferStatusModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -19109,31 +17924,31 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Number of records in Active state
         /// </summary>
         [Newtonsoft.Json.JsonProperty("active", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Active { get; set; }
+        public int? Active { get; set; } = default!;
 
         /// <summary>
         /// Number of records in Stalled state
         /// </summary>
         [Newtonsoft.Json.JsonProperty("stalled", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Stalled { get; set; }
+        public int? Stalled { get; set; } = default!;
 
         /// <summary>
         /// Number of records in Succeeded state
         /// </summary>
         [Newtonsoft.Json.JsonProperty("completed", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Completed { get; set; }
+        public int? Completed { get; set; } = default!;
 
         /// <summary>
         /// Number of records in Failed state
         /// </summary>
         [Newtonsoft.Json.JsonProperty("failed", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Failed { get; set; }
+        public int? Failed { get; set; } = default!;
 
         /// <summary>
         /// Number of transfers that have recently been completed but still are displayed as in progress
         /// </summary>
         [Newtonsoft.Json.JsonProperty("lingeringTransfers", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? LingeringTransfers { get; set; }
+        public int? LingeringTransfers { get; set; } = default!;
 
     }
 
@@ -19147,155 +17962,155 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Web Farm node number
         /// </summary>
         [Newtonsoft.Json.JsonProperty("nodeNum", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? NodeNum { get; set; }
+        public int? NodeNum { get; set; } = default!;
 
         /// <summary>
         /// Module which performs transfer
         /// </summary>
         [Newtonsoft.Json.JsonProperty("moduleName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public TransferStatusModelModuleName? ModuleName { get; set; }
+        public TransferStatusModelModuleName? ModuleName { get; set; } = default!;
 
         /// <summary>
         /// Transfer direction
         /// </summary>
         [Newtonsoft.Json.JsonProperty("direction", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public TransferStatusModelDirection? Direction { get; set; }
+        public TransferStatusModelDirection? Direction { get; set; } = default!;
 
         /// <summary>
         /// Transfer status
         /// </summary>
         [Newtonsoft.Json.JsonProperty("transferStatus", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public TransferStatusModelTransferStatus? TransferStatus { get; set; }
+        public TransferStatusModelTransferStatus? TransferStatus { get; set; } = default!;
 
         /// <summary>
         /// Information about the transfer status, such as an error message
         /// </summary>
         [Newtonsoft.Json.JsonProperty("statusMessage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string StatusMessage { get; set; }
+        public string? StatusMessage { get; set; } = default!;
 
         /// <summary>
         /// Information about the transfer status, such as an error code
         /// </summary>
         [Newtonsoft.Json.JsonProperty("errorCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? ErrorCode { get; set; }
+        public int? ErrorCode { get; set; } = default!;
 
         /// <summary>
         /// ID of organization this file belongs to
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orgId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OrgId { get; set; }
+        public int? OrgId { get; set; } = default!;
 
         /// <summary>
         /// ID of the user
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UserId { get; set; }
+        public string? UserId { get; set; } = default!;
 
         /// <summary>
         /// User Login Name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userLoginName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UserLoginName { get; set; }
+        public string? UserLoginName { get; set; } = default!;
 
         /// <summary>
         /// User Real Name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userFullName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UserFullName { get; set; }
+        public string? UserFullName { get; set; } = default!;
 
         /// <summary>
         /// IP Address of user
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userIp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UserIp { get; set; }
+        public string? UserIp { get; set; } = default!;
 
         /// <summary>
         /// Time when transfer started
         /// </summary>
         [Newtonsoft.Json.JsonProperty("timeStarted", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TimeStarted { get; set; }
+        public string? TimeStarted { get; set; } = default!;
 
         /// <summary>
         /// Time when transfer ended. Null if transfer is in progress
         /// </summary>
         [Newtonsoft.Json.JsonProperty("timeEnded", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TimeEnded { get; set; }
+        public string? TimeEnded { get; set; } = default!;
 
         /// <summary>
         /// Bytes already transferred
         /// </summary>
         [Newtonsoft.Json.JsonProperty("currentBytes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? CurrentBytes { get; set; }
+        public long? CurrentBytes { get; set; } = default!;
 
         /// <summary>
         /// Total file size, if known
         /// </summary>
         [Newtonsoft.Json.JsonProperty("totalBytes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? TotalBytes { get; set; }
+        public long? TotalBytes { get; set; } = default!;
 
         /// <summary>
         /// Rate of the transfer
         /// </summary>
         [Newtonsoft.Json.JsonProperty("transferRate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? TransferRate { get; set; }
+        public long? TransferRate { get; set; } = default!;
 
         /// <summary>
         /// ID of the file
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fileId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FileId { get; set; }
+        public string? FileId { get; set; } = default!;
 
         /// <summary>
         /// File Name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fileName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FileName { get; set; }
+        public string? FileName { get; set; } = default!;
 
         /// <summary>
         /// Parent Folder ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FolderId { get; set; }
+        public string? FolderId { get; set; } = default!;
 
         /// <summary>
         /// Parent Folder Name
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FolderName { get; set; }
+        public string? FolderName { get; set; } = default!;
 
         /// <summary>
         /// Parent Folder Path
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderPath", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FolderPath { get; set; }
+        public string? FolderPath { get; set; } = default!;
 
         /// <summary>
         /// Parent Folder Type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public TransferStatusModelFolderType? FolderType { get; set; }
+        public TransferStatusModelFolderType? FolderType { get; set; } = default!;
 
         /// <summary>
         /// User agent version
         /// </summary>
         [Newtonsoft.Json.JsonProperty("agentVersion", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string AgentVersion { get; set; }
+        public string? AgentVersion { get; set; } = default!;
 
         /// <summary>
         /// User agent brand
         /// </summary>
         [Newtonsoft.Json.JsonProperty("agentBrand", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string AgentBrand { get; set; }
+        public string? AgentBrand { get; set; } = default!;
 
         /// <summary>
         /// Integrity Verified
         /// </summary>
         [Newtonsoft.Json.JsonProperty("integrityVerified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IntegrityVerified { get; set; }
+        public bool? IntegrityVerified { get; set; } = default!;
 
     }
 
@@ -19310,50 +18125,50 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("emailFormat", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UserDetailsModelEmailFormat? EmailFormat { get; set; }
+        public UserDetailsModelEmailFormat? EmailFormat { get; set; } = default!;
 
         /// <summary>
         /// User description.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("notes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Notes { get; set; }
+        public string? Notes { get; set; } = default!;
 
         /// <summary>
         /// User security status description.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("statusNote", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string StatusNote { get; set; }
+        public string? StatusNote { get; set; } = default!;
 
         /// <summary>
         /// Time of last user password change. Null if user hasn't changed password yet
         /// </summary>
         [Newtonsoft.Json.JsonProperty("passwordChangeStamp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PasswordChangeStamp { get; set; }
+        public string? PasswordChangeStamp { get; set; } = default!;
 
         /// <summary>
         /// User email notifications setting.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("receivesNotification", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UserDetailsModelReceivesNotification? ReceivesNotification { get; set; }
+        public UserDetailsModelReceivesNotification? ReceivesNotification { get; set; } = default!;
 
         /// <summary>
         /// If set to 1, user must change their password on their next login.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("forceChangePassword", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ForceChangePassword { get; set; }
+        public bool? ForceChangePassword { get; set; } = default!;
 
         /// <summary>
         /// User quota value, or 0 for no quota.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderQuota", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? FolderQuota { get; set; }
+        public long? FolderQuota { get; set; } = default!;
 
         /// <summary>
         /// Total size of all files
         /// </summary>
         [Newtonsoft.Json.JsonProperty("totalFileSize", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? TotalFileSize { get; set; }
+        public long? TotalFileSize { get; set; } = default!;
 
         /// <summary>
         /// User authentication method; only takes effect if the organization
@@ -19361,84 +18176,84 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("authMethod", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UserDetailsModelAuthMethod? AuthMethod { get; set; }
+        public UserDetailsModelAuthMethod? AuthMethod { get; set; } = default!;
 
         /// <summary>
         /// User language code.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("language", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Language { get; set; }
+        public string? Language { get; set; } = default!;
 
         /// <summary>
         /// ID of user home folder, or 0 for no home folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("homeFolderID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? HomeFolderID { get; set; }
+        public long? HomeFolderID { get; set; } = default!;
 
         /// <summary>
         /// ID of user default folder; 0 indicates the home folder is the default folder.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("defaultFolderID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? DefaultFolderID { get; set; }
+        public long? DefaultFolderID { get; set; } = default!;
 
         /// <summary>
         /// ID of the expiration policy configured for this user, or 0 for no policy.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expirationPolicyID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? ExpirationPolicyID { get; set; }
+        public int? ExpirationPolicyID { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("displaySettings", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public DisplaySettingsModel DisplaySettings { get; set; }
+        public DisplaySettingsModel? DisplaySettings { get; set; } = default!;
 
         /// <summary>
         /// User ID.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// ID of organization user is a member of.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orgID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OrgID { get; set; }
+        public int? OrgID { get; set; } = default!;
 
         /// <summary>
         /// User login name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("username", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Username { get; set; }
+        public string? Username { get; set; } = default!;
 
         /// <summary>
         /// User full name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fullName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FullName { get; set; }
+        public string? FullName { get; set; } = default!;
 
         /// <summary>
         /// User permission.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("permission", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UserDetailsModelPermission? Permission { get; set; }
+        public UserDetailsModelPermission? Permission { get; set; } = default!;
 
         /// <summary>
         /// User email address.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("email", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Email { get; set; }
+        public string? Email { get; set; } = default!;
 
         /// <summary>
         /// User security status.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UserDetailsModelStatus? Status { get; set; }
+        public UserDetailsModelStatus? Status { get; set; } = default!;
 
         /// <summary>
         /// Time of last user login. Null if user has not logged in yet.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("lastLoginStamp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string LastLoginStamp { get; set; }
+        public string? LastLoginStamp { get; set; } = default!;
 
     }
 
@@ -19452,19 +18267,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// User/group entries per page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userListPageSize", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? UserListPageSize { get; set; }
+        public int? UserListPageSize { get; set; } = default!;
 
         /// <summary>
         /// Files/folders entries per page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fileListPageSize", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? FileListPageSize { get; set; }
+        public int? FileListPageSize { get; set; } = default!;
 
         /// <summary>
         /// Live transfer entries per page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("liveViewPageSize", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? LiveViewPageSize { get; set; }
+        public int? LiveViewPageSize { get; set; } = default!;
 
     }
 
@@ -19475,7 +18290,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// User ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
     }
 
@@ -19490,63 +18305,63 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("authMethod", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UserPatchModelAuthMethod? AuthMethod { get; set; }
+        public UserPatchModelAuthMethod? AuthMethod { get; set; } = default!;
 
         /// <summary>
         /// Default folder ID
         /// </summary>
         [Newtonsoft.Json.JsonProperty("defaultFolderId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? DefaultFolderId { get; set; }
+        public long? DefaultFolderId { get; set; } = default!;
 
         /// <summary>
         /// Email address
         /// </summary>
         [Newtonsoft.Json.JsonProperty("email", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Email { get; set; }
+        public string? Email { get; set; } = default!;
 
         /// <summary>
         /// Email format type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("emailFormat", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UserPatchModelEmailFormat? EmailFormat { get; set; }
+        public UserPatchModelEmailFormat? EmailFormat { get; set; } = default!;
 
         /// <summary>
         /// Force password change
         /// </summary>
         [Newtonsoft.Json.JsonProperty("forceChangePassword", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ForceChangePassword { get; set; }
+        public bool? ForceChangePassword { get; set; } = default!;
 
         /// <summary>
         /// Language
         /// </summary>
         [Newtonsoft.Json.JsonProperty("language", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Language { get; set; }
+        public string? Language { get; set; } = default!;
 
         /// <summary>
         /// Notes
         /// </summary>
         [Newtonsoft.Json.JsonProperty("notes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Notes { get; set; }
+        public string? Notes { get; set; } = default!;
 
         /// <summary>
         /// Notification type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("receivesNotification", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UserPatchModelReceivesNotification? ReceivesNotification { get; set; }
+        public UserPatchModelReceivesNotification? ReceivesNotification { get; set; } = default!;
 
         /// <summary>
         /// Current user password; required if the current user is updating their own password
         /// </summary>
         [Newtonsoft.Json.JsonProperty("currentPassword", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string CurrentPassword { get; set; }
+        public string? CurrentPassword { get; set; } = default!;
 
         /// <summary>
         /// User password
         /// </summary>
         [Newtonsoft.Json.JsonProperty("password", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Password { get; set; }
+        public string? Password { get; set; } = default!;
 
         /// <summary>
         /// When set to True, sends a notification to the user either informing them about
@@ -19554,39 +18369,39 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <br/>depending on the configuration of the organization.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sendPasswordChangeNotification", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? SendPasswordChangeNotification { get; set; }
+        public bool? SendPasswordChangeNotification { get; set; } = default!;
 
         /// <summary>
         /// User permission type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("permission", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UserPatchModelPermission? Permission { get; set; }
+        public UserPatchModelPermission? Permission { get; set; } = default!;
 
         /// <summary>
         /// User quota
         /// </summary>
         [Newtonsoft.Json.JsonProperty("folderQuota", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? FolderQuota { get; set; }
+        public long? FolderQuota { get; set; } = default!;
 
         /// <summary>
         /// Real name of user
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fullName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FullName { get; set; }
+        public string? FullName { get; set; } = default!;
 
         /// <summary>
         /// User status type
         /// </summary>
         [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UserPatchModelStatus? Status { get; set; }
+        public UserPatchModelStatus? Status { get; set; } = default!;
 
         /// <summary>
         /// User status note
         /// </summary>
         [Newtonsoft.Json.JsonProperty("statusNote", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string StatusNote { get; set; }
+        public string? StatusNote { get; set; } = default!;
 
     }
 
@@ -19600,19 +18415,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// User ID.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
     }
 
@@ -19626,19 +18441,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<UserGroupModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<UserGroupModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -19653,19 +18468,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("relationship", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UserGroupModelRelationship? Relationship { get; set; }
+        public UserGroupModelRelationship? Relationship { get; set; } = default!;
 
         /// <summary>
         /// Name of the group.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
+        public string? Name { get; set; } = default!;
 
         /// <summary>
         /// Additional information, related to the group.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Description { get; set; }
+        public string? Description { get; set; } = default!;
 
     }
 
@@ -19679,25 +18494,25 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Name of field to sort the results by. (TokenId, LastUsed, RegisteredAt or TokenType); Default is DisplayName.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
     }
 
@@ -19711,19 +18526,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Items on the given page
         /// </summary>
         [Newtonsoft.Json.JsonProperty("items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<UserExternalTokenModel> Items { get; set; }
+        public System.Collections.Generic.ICollection<UserExternalTokenModel>? Items { get; set; } = default!;
 
         /// <summary>
         /// Paging data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("paging", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PagingInfoModel Paging { get; set; }
+        public PagingInfoModel? Paging { get; set; } = default!;
 
         /// <summary>
         /// Sorting data for given response
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sorting", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<SortFieldDto> Sorting { get; set; }
+        public System.Collections.Generic.ICollection<SortFieldDto>? Sorting { get; set; } = default!;
 
     }
 
@@ -19734,45 +18549,45 @@ namespace Infrastructure.ApiClients.MoveIt
         /// ID of the token in the database.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// ID of the external token.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("tokenID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TokenID { get; set; }
+        public string? TokenID { get; set; } = default!;
 
         /// <summary>
         /// ID of the organization this external token exists in.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("instID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? InstID { get; set; }
+        public int? InstID { get; set; } = default!;
 
         /// <summary>
         /// Display Name of the external token. 
         /// <br/>Defaults to user's email address.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("displayName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string DisplayName { get; set; }
+        public string? DisplayName { get; set; } = default!;
 
         /// <summary>
         /// Time of token registration.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("registeredAt", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string RegisteredAt { get; set; }
+        public string? RegisteredAt { get; set; } = default!;
 
         /// <summary>
         /// Time of last token use.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("lastUsed", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string LastUsed { get; set; }
+        public string? LastUsed { get; set; } = default!;
 
         /// <summary>
         /// External Token Type.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("tokenType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UserExternalTokenModelTokenType? TokenType { get; set; }
+        public UserExternalTokenModelTokenType? TokenType { get; set; } = default!;
 
     }
 
@@ -19786,20 +18601,20 @@ namespace Infrastructure.ApiClients.MoveIt
         /// When true, check if token will be accepted, but do not register it
         /// </summary>
         [Newtonsoft.Json.JsonProperty("check", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? Check { get; set; }
+        public bool? Check { get; set; } = default!;
 
         /// <summary>
         /// Type of token
         /// </summary>
         [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public RegisterExternalTokenRequestType? Type { get; set; }
+        public RegisterExternalTokenRequestType? Type { get; set; } = default!;
 
         /// <summary>
         /// Token content
         /// </summary>
         [Newtonsoft.Json.JsonProperty("token", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Token { get; set; }
+        public string? Token { get; set; } = default!;
 
     }
 
@@ -19814,13 +18629,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public CurrentUserDeleteExternalTokenByTokenRequestType? Type { get; set; }
+        public CurrentUserDeleteExternalTokenByTokenRequestType? Type { get; set; } = default!;
 
         /// <summary>
         /// Token content
         /// </summary>
         [Newtonsoft.Json.JsonProperty("token", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Token { get; set; }
+        public string? Token { get; set; } = default!;
 
     }
 
@@ -19834,31 +18649,31 @@ namespace Infrastructure.ApiClients.MoveIt
         /// User ID.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
         /// <summary>
         /// Page number to display
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Name of field to sort the results by. (TokenId, LastUsed, RegisteredAt or TokenType); Default is DisplayName.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
     }
 
@@ -19872,69 +18687,69 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Page number to display.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("page", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Page { get; set; }
+        public int? Page { get; set; } = default!;
 
         /// <summary>
         /// Items per page in result collection; Default is 25.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("perPage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? PerPage { get; set; }
+        public int? PerPage { get; set; } = default!;
 
         /// <summary>
         /// Name of field to sort the results by. (username, fullname, lastLoginStamp or email); Default is username.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortField", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortField { get; set; }
+        public string? SortField { get; set; } = default!;
 
         /// <summary>
         /// Sort direction; Default is ascending.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sortDirection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortDirection { get; set; }
+        public string? SortDirection { get; set; } = default!;
 
         /// <summary>
         /// User permission filter.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("permission", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UserListRequestPermission? Permission { get; set; }
+        public UserListRequestPermission? Permission { get; set; } = default!;
 
         /// <summary>
         /// User status filter.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public UserListRequestStatus? Status { get; set; }
+        public UserListRequestStatus? Status { get; set; } = default!;
 
         /// <summary>
         /// User login name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("username", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Username { get; set; }
+        public string? Username { get; set; } = default!;
 
         /// <summary>
         /// User full name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fullName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FullName { get; set; }
+        public string? FullName { get; set; } = default!;
 
         /// <summary>
         /// User email.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("email", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Email { get; set; }
+        public string? Email { get; set; } = default!;
 
         /// <summary>
         /// If true, it will search for exact match of username, fullname and email.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("isExactMatch", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? IsExactMatch { get; set; }
+        public bool? IsExactMatch { get; set; } = default!;
 
         /// <summary>
         /// Organization ID. (For sysadmin users only. For non sysadmin users current user organization ID is used.)
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orgId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OrgId { get; set; }
+        public int? OrgId { get; set; } = default!;
 
     }
 
@@ -19945,44 +18760,44 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Source user ID to clone from.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("sourceUserId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SourceUserId { get; set; }
+        public string? SourceUserId { get; set; } = default!;
 
         /// <summary>
         /// User full name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("fullName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string FullName { get; set; }
+        public string? FullName { get; set; } = default!;
 
         /// <summary>
         /// User login name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("username", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Username { get; set; }
+        public string? Username { get; set; } = default!;
 
         /// <summary>
         /// User password.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("password", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Password { get; set; }
+        public string? Password { get; set; } = default!;
 
         /// <summary>
         /// User email address.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("email", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Email { get; set; }
+        public string? Email { get; set; } = default!;
 
         /// <summary>
         /// User permission.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("permission", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public AddUserModelPermission? Permission { get; set; }
+        public AddUserModelPermission? Permission { get; set; } = default!;
 
         /// <summary>
         /// If set to true, user must change his password on his next login.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("forceChangePassword", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? ForceChangePassword { get; set; }
+        public bool? ForceChangePassword { get; set; } = default!;
 
         /// <summary>
         /// ID of organization new user has to be member of.
@@ -19990,20 +18805,20 @@ namespace Infrastructure.ApiClients.MoveIt
         /// <br/>Otherwise it will be ignored and current user organization ID will be used.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("orgID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? OrgID { get; set; }
+        public int? OrgID { get; set; } = default!;
 
         /// <summary>
         /// User description.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("notes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Notes { get; set; }
+        public string? Notes { get; set; } = default!;
 
         /// <summary>
         /// Path of user home folder to create.
         /// <br/>If empty no home folder will be created.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("homeFolderPath", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string HomeFolderPath { get; set; }
+        public string? HomeFolderPath { get; set; } = default!;
 
         /// <summary>
         /// Describes a behavior when
@@ -20011,7 +18826,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// </summary>
         [Newtonsoft.Json.JsonProperty("homeFolderInUseOption", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public AddUserModelHomeFolderInUseOption? HomeFolderInUseOption { get; set; }
+        public AddUserModelHomeFolderInUseOption? HomeFolderInUseOption { get; set; } = default!;
 
     }
 
@@ -20025,7 +18840,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Token ID.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
     }
 
@@ -20036,13 +18851,13 @@ namespace Infrastructure.ApiClients.MoveIt
         /// User ID.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("userId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string UserId { get; set; }
+        public string? UserId { get; set; } = default!;
 
         /// <summary>
         /// Token ID.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
+        public string? Id { get; set; } = default!;
 
     }
 
@@ -20056,37 +18871,37 @@ namespace Infrastructure.ApiClients.MoveIt
         /// API Token
         /// </summary>
         [Newtonsoft.Json.JsonProperty("access_token", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Access_token { get; set; }
+        public string? Access_token { get; set; } = default!;
 
         /// <summary>
         /// Type of the token
         /// </summary>
         [Newtonsoft.Json.JsonProperty("token_type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Token_type { get; set; }
+        public string? Token_type { get; set; } = default!;
 
         /// <summary>
         /// Number of seconds till token expiration
         /// </summary>
         [Newtonsoft.Json.JsonProperty("expires_in", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Expires_in { get; set; }
+        public int? Expires_in { get; set; } = default!;
 
         /// <summary>
         /// Refresh token
         /// </summary>
         [Newtonsoft.Json.JsonProperty("refresh_token", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Refresh_token { get; set; }
+        public string? Refresh_token { get; set; } = default!;
 
         /// <summary>
         /// (Optional) Multi-factor authentication trust device token. Could be returned in case of using "otp" grant_type and "mfa_remember_this_device" set to true.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("mfa_trust_device_token", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Mfa_trust_device_token { get; set; }
+        public string? Mfa_trust_device_token { get; set; } = default!;
 
         /// <summary>
         /// (Optional) Multi-factor authentication trust device token expire date. Could be returned in case of using "otp" grant_type and "mfa_remember_this_device" set to true.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("mfa_trust_device_token_expire_date", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Mfa_trust_device_token_expire_date { get; set; }
+        public string? Mfa_trust_device_token_expire_date { get; set; } = default!;
 
     }
 
@@ -20100,19 +18915,19 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Error title
         /// </summary>
         [Newtonsoft.Json.JsonProperty("error", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Error { get; set; }
+        public string? Error { get; set; } = default!;
 
         /// <summary>
         /// Error code
         /// </summary>
         [Newtonsoft.Json.JsonProperty("error_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Error_code { get; set; }
+        public int? Error_code { get; set; } = default!;
 
         /// <summary>
         /// Error details
         /// </summary>
         [Newtonsoft.Json.JsonProperty("error_description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Error_description { get; set; }
+        public string? Error_description { get; set; } = default!;
 
     }
 
@@ -20126,22 +18941,22 @@ namespace Infrastructure.ApiClients.MoveIt
         /// MFA access token
         /// </summary>
         [Newtonsoft.Json.JsonProperty("mfa_access_token", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Mfa_access_token { get; set; }
+        public string? Mfa_access_token { get; set; } = default!;
 
         /// <summary>
         /// Password requirements in effect for the current organization.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("password_requirements", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public PasswordRequirementsHeaderDto Password_requirements { get; set; }
+        public PasswordRequirementsHeaderDto? Password_requirements { get; set; } = default!;
 
         /// <summary>
         /// Information about the user signing on.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("user", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public SignonUserInfoHeaderDto User { get; set; }
+        public SignonUserInfoHeaderDto? User { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("error", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Error { get; set; } = "password_change_required";
+        public string? Error { get; set; } = "password_change_required";
 
         [Newtonsoft.Json.JsonProperty("error_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? Error_code { get; set; } = 3988;
@@ -20150,7 +18965,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Error details
         /// </summary>
         [Newtonsoft.Json.JsonProperty("error_description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Error_description { get; set; }
+        public string? Error_description { get; set; } = default!;
 
     }
 
@@ -20164,38 +18979,38 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Minimum number of characters in passwords
         /// </summary>
         [Newtonsoft.Json.JsonProperty("minimum_length", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Minimum_length { get; set; }
+        public int? Minimum_length { get; set; } = default!;
 
         /// <summary>
         /// Username matching limitation requirement
         /// </summary>
         [Newtonsoft.Json.JsonProperty("username_match_requirement", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public PasswordRequirementsHeaderDtoUsername_match_requirement? Username_match_requirement { get; set; }
+        public PasswordRequirementsHeaderDtoUsername_match_requirement? Username_match_requirement { get; set; } = default!;
 
         /// <summary>
         /// Whether both letters and numbers are required in passwords
         /// </summary>
         [Newtonsoft.Json.JsonProperty("require_letters_numbers", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? Require_letters_numbers { get; set; }
+        public bool? Require_letters_numbers { get; set; } = default!;
 
         /// <summary>
         /// Whether dictionary words are prohibited from passwords
         /// </summary>
         [Newtonsoft.Json.JsonProperty("no_dictionary_words", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? No_dictionary_words { get; set; }
+        public bool? No_dictionary_words { get; set; } = default!;
 
         /// <summary>
         /// Whether both upper- and lower-case letters are required in passwords
         /// </summary>
         [Newtonsoft.Json.JsonProperty("require_mixed_case", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? Require_mixed_case { get; set; }
+        public bool? Require_mixed_case { get; set; } = default!;
 
         /// <summary>
         /// Whether non-alphanumeric characters are required in passwords
         /// </summary>
         [Newtonsoft.Json.JsonProperty("require_non_alphanumeric", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? Require_non_alphanumeric { get; set; }
+        public bool? Require_non_alphanumeric { get; set; } = default!;
 
     }
 
@@ -20203,7 +19018,7 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class SignonUserInfoHeaderDto
     {
         [Newtonsoft.Json.JsonProperty("org_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Org_id { get; set; }
+        public int? Org_id { get; set; } = default!;
 
     }
 
@@ -20217,16 +19032,16 @@ namespace Infrastructure.ApiClients.MoveIt
         /// MFA access token
         /// </summary>
         [Newtonsoft.Json.JsonProperty("mfa_access_token", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Mfa_access_token { get; set; }
+        public string? Mfa_access_token { get; set; } = default!;
 
         /// <summary>
         /// Information about the user signing on.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("user", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public SignonUserInfoHeaderDto User { get; set; }
+        public SignonUserInfoHeaderDto? User { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("error", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Error { get; set; } = "accept_security_notice_required";
+        public string? Error { get; set; } = "accept_security_notice_required";
 
         [Newtonsoft.Json.JsonProperty("error_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? Error_code { get; set; } = 3985;
@@ -20235,7 +19050,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Error details
         /// </summary>
         [Newtonsoft.Json.JsonProperty("error_description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Error_description { get; set; }
+        public string? Error_description { get; set; } = default!;
 
     }
 
@@ -20249,16 +19064,16 @@ namespace Infrastructure.ApiClients.MoveIt
         /// MFA access token
         /// </summary>
         [Newtonsoft.Json.JsonProperty("mfa_access_token", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Mfa_access_token { get; set; }
+        public string? Mfa_access_token { get; set; } = default!;
 
         /// <summary>
         /// MFA supported types
         /// </summary>
         [Newtonsoft.Json.JsonProperty("mfa_supported_methods", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public MfaSupportedMethodsHeaderDto Mfa_supported_methods { get; set; }
+        public MfaSupportedMethodsHeaderDto? Mfa_supported_methods { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("error", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Error { get; set; } = "mfa_required";
+        public string? Error { get; set; } = "mfa_required";
 
         [Newtonsoft.Json.JsonProperty("error_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? Error_code { get; set; } = 2028;
@@ -20267,7 +19082,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Error details
         /// </summary>
         [Newtonsoft.Json.JsonProperty("error_description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Error_description { get; set; }
+        public string? Error_description { get; set; } = default!;
 
     }
 
@@ -20275,10 +19090,10 @@ namespace Infrastructure.ApiClients.MoveIt
     public partial class MfaSupportedMethodsHeaderDto
     {
         [Newtonsoft.Json.JsonProperty("is_mfa_authenticator_enabled", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? Is_mfa_authenticator_enabled { get; set; }
+        public bool? Is_mfa_authenticator_enabled { get; set; } = default!;
 
         [Newtonsoft.Json.JsonProperty("is_mfa_email_enabled", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool? Is_mfa_email_enabled { get; set; }
+        public bool? Is_mfa_email_enabled { get; set; } = default!;
 
     }
 
@@ -20292,7 +19107,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Message
         /// </summary>
         [Newtonsoft.Json.JsonProperty("message", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Message { get; set; }
+        public string? Message { get; set; } = default!;
 
     }
 
@@ -20306,7 +19121,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// User to whom the email was sent.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("user", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public SendOtpUserModel User { get; set; }
+        public SendOtpUserModel? User { get; set; } = default!;
 
     }
 
@@ -20320,7 +19135,7 @@ namespace Infrastructure.ApiClients.MoveIt
         /// Masked email of the user.
         /// </summary>
         [Newtonsoft.Json.JsonProperty("masked_email", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Masked_email { get; set; }
+        public string? Masked_email { get; set; } = default!;
 
     }
 
@@ -22636,12 +21451,12 @@ namespace Infrastructure.ApiClients.MoveIt
         {
         }
 
-        public FileParameter(System.IO.Stream data, string fileName)
+        public FileParameter(System.IO.Stream data, string? fileName)
             : this(data, fileName, null)
         {
         }
 
-        public FileParameter(System.IO.Stream data, string fileName, string contentType)
+        public FileParameter(System.IO.Stream data, string? fileName, string? contentType)
         {
             Data = data;
             FileName = fileName;
@@ -22650,16 +21465,16 @@ namespace Infrastructure.ApiClients.MoveIt
 
         public System.IO.Stream Data { get; private set; }
 
-        public string FileName { get; private set; }
+        public string? FileName { get; private set; }
 
-        public string ContentType { get; private set; }
+        public string? ContentType { get; private set; }
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.0.7.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class FileResponse : System.IDisposable
     {
-        private System.IDisposable _client;
-        private System.IDisposable _response;
+        private System.IDisposable? _client;
+        private System.IDisposable? _response;
 
         public int StatusCode { get; private set; }
 
@@ -22672,7 +21487,7 @@ namespace Infrastructure.ApiClients.MoveIt
             get { return StatusCode == 206; }
         }
 
-        public FileResponse(int statusCode, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.IO.Stream stream, System.IDisposable client, System.IDisposable response)
+        public FileResponse(int statusCode, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.IO.Stream stream, System.IDisposable? client, System.IDisposable? response)
         {
             StatusCode = statusCode;
             Headers = headers;
@@ -22697,11 +21512,11 @@ namespace Infrastructure.ApiClients.MoveIt
     {
         public int StatusCode { get; private set; }
 
-        public string Response { get; private set; }
+        public string? Response { get; private set; }
 
         public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
 
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException)
+        public ApiException(string message, int statusCode, string? response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception? innerException)
             : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + ((response == null) ? "(null)" : response.Substring(0, response.Length >= 512 ? 512 : response.Length)), innerException)
         {
             StatusCode = statusCode;
@@ -22720,7 +21535,7 @@ namespace Infrastructure.ApiClients.MoveIt
     {
         public TResult Result { get; private set; }
 
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException)
+        public ApiException(string message, int statusCode, string? response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception? innerException)
             : base(message, statusCode, response, headers, innerException)
         {
             Result = result;
