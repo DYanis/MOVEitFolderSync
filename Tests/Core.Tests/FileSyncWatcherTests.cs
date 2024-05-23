@@ -53,7 +53,7 @@ namespace Core.Tests
             string filePath = Path.Combine(Path.GetTempPath(), testFileName);
 
             FileSystemEventArgs fileSystemEventArgs = new(WatcherChangeTypes.Created, Path.GetTempPath(), testFileName);
-            InvokePrivateMethod(_fileSyncWatcher!, "OnCreated", [_watcher!, fileSystemEventArgs]);
+            InvokePrivateMethod(_fileSyncWatcher!, "OnCreatedAsync", [_watcher!, fileSystemEventArgs]);
 
             _cloudFileSyncManagerMock!.Verify(x => x.UploadAsync(filePath, testFileName), Times.Once);
         }
@@ -65,7 +65,7 @@ namespace Core.Tests
             Directory.CreateDirectory(dirPath);
 
             FileSystemEventArgs fileSystemEventArgs = new(WatcherChangeTypes.Created, Path.GetTempPath(), testDirectory);
-            InvokePrivateMethod(_fileSyncWatcher!, "OnCreated", [_watcher!, fileSystemEventArgs]);
+            InvokePrivateMethod(_fileSyncWatcher!, "OnCreatedAsync", [_watcher!, fileSystemEventArgs]);
 
             _cloudFileSyncManagerMock!.Verify(x => x.UploadAsync(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
 
@@ -76,7 +76,7 @@ namespace Core.Tests
         public void OnDeleted_ShouldDeleteFile_WhenFileDeleted()
         {
             FileSystemEventArgs fileSystemEventArgs = new(WatcherChangeTypes.Deleted, Path.GetTempPath(), testFileName);
-            InvokePrivateMethod(_fileSyncWatcher!, "OnDeleted", [_watcher!, fileSystemEventArgs]);
+            InvokePrivateMethod(_fileSyncWatcher!, "OnDeletedAsync", [_watcher!, fileSystemEventArgs]);
 
             _cloudFileSyncManagerMock!.Verify(x => x.DeleteFileAsync(testFileName), Times.Once);
         }
