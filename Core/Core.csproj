@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Polly" Version="8.4.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
       
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />

@@ -32,16 +32,16 @@ namespace Core.Tests
         }
 
         [TestMethod]
-        public void Start_ShouldEnableRaisingEvents()
+        public async Task Start_ShouldEnableRaisingEvents()
         {
-            _fileSyncWatcher!.Start();
+            await _fileSyncWatcher!.Start();
             Assert.IsTrue(_watcher!.EnableRaisingEvents);
         }
 
         [TestMethod]
-        public void StopWatching_ShouldDisableRaisingEventsAndDisposeWatcher()
+        public async Task StopWatching_ShouldDisableRaisingEventsAndDisposeWatcher()
         {
-            _fileSyncWatcher!.Start();
+            await _fileSyncWatcher!.Start();
             _fileSyncWatcher.StopWatching();
 
             Assert.IsFalse(_watcher!.EnableRaisingEvents);
