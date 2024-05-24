@@ -1,6 +1,6 @@
 ﻿namespace Infrastructure
 {
-    public class ApiOptions
+    public record ApiOptions
     {
         public required string BaseUrl { get; set; }
     }

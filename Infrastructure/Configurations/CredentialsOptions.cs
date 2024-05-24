@@ -1,6 +1,6 @@
 ﻿namespace Infrastructure.Configurations
 {
-    public class CredentialsOptions
+    public record CredentialsOptions
     {
         public required string Username { get; set; }
 

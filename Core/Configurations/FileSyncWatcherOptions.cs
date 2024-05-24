@@ -1,6 +1,6 @@
 ﻿namespace Core.Configurations
 {
-    public class FileSyncWatcherOptions
+    public record FileSyncWatcherOptions
     {
         public required string LocalFolderPath { get; set; }
     }
