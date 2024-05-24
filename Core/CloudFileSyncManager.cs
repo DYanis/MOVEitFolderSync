@@ -51,9 +51,7 @@ namespace Core
 
             try
             {
-                AsyncRetryPolicy retryPolicy = GetUploadRetryPolicy(fileName);
-
-                await ExecuteUploadWithRetryAsync(retryPolicy, filePath, fileName);
+                await ExecuteUploadWithRetryAsync(filePath, fileName);
 
                 _logger.LogInformation("File {FileName} uploaded", fileName);
             }
@@ -196,13 +194,15 @@ namespace Core
             }
         }
 
-        private async Task ExecuteUploadWithRetryAsync(AsyncRetryPolicy retryPolicy, string filePath, string fileName)
+        private async Task ExecuteUploadWithRetryAsync(string filePath, string fileName)
         {
             if (!_folderId.HasValue)
             {
                 _logger.LogError("Home folder ID is not set. Cannot upload file.");
                 throw new InvalidOperationException("Home folder ID is not set. Cannot upload file.");
             }
+
+            AsyncRetryPolicy retryPolicy = GetUploadRetryPolicy(fileName);
 
             await retryPolicy.ExecuteAsync(async () =>
             {
