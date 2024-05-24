@@ -20,7 +20,7 @@ namespace Core.Tests
             _apiClientMock = new Mock<MoveItApiClient>(new HttpClient());
             _loggerMock = new Mock<ILogger<CloudFileSyncManager>>();
 
-            IOptions<CloudFileSyncManagerOptions> options = Options.Create(new CloudFileSyncManagerOptions { FetchFilesPerPage = 100, MaxDegreeOfParallelism = 5, BufferSize = 8192 });
+            IOptions<CloudFileSyncManagerOptions> options = Options.Create(new CloudFileSyncManagerOptions { FetchFilesPerPage = 100, MaxDegreeOfParallelism = 5, BufferSize = 8192, RetryCount = 3, RetryDelaySeconds = 2 });
             _cloudFileSyncManager = new CloudFileSyncManager(options, _apiClientMock.Object, _loggerMock.Object);
         }
 

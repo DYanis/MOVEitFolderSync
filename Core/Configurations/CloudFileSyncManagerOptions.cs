@@ -1,15 +1,15 @@
 ﻿namespace Core.Configurations
 {
-    public class CloudFileSyncManagerOptions
+    public record CloudFileSyncManagerOptions
     {
-        public int FetchFilesPerPage { get; set; }
+        public required int FetchFilesPerPage { get; set; }
 
-        public int MaxDegreeOfParallelism { get; set; }
+        public required int MaxDegreeOfParallelism { get; set; }
 
-        public int BufferSize { get; set; }
+        public required int BufferSize { get; set; }
 
-        public int RetryCount { get; set; }
+        public required int RetryCount { get; set; }
 
-        public int RetryDelaySeconds { get; set; }
+        public required int RetryDelaySeconds { get; set; }
     }
 }
